@@ -3,10 +3,19 @@
 
 #include "QString"
 
-class club
+class Club
 {
 public:
-    club(const QString& name);
+    Club(const QString& name);
+
+    /*!
+     * Inline getter and setter
+     */
+    inline void setName(const QString& name){
+        m_name = name;}
+    inline const QString& getName() const {
+        return m_name;}
+
 
 private:
     QString m_name;

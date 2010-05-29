@@ -6,7 +6,7 @@
 #include "club.h"
 #include "tomanycompetitorsexception.h"
 
-class group
+class Group
 {
 public:
     enum categorieType{
@@ -17,9 +17,9 @@ public:
         GROUP
     };
 
-    group(const std::vector<Competitor>& competitors,
+    Group(const std::vector<Competitor>& competitors,
           const categorieType categorie,
-          const club& cl);
+          const Club& cl);
 
     void addCompetitor(Competitor comp) throw (ToManyCompetitorsException);
     categorieType guessType();
@@ -34,16 +34,16 @@ public:
     inline void setType(const categorieType categorie){
         m_categorie = categorie;
     }
-    inline void setClub(const club& cl){
+    inline void setClub(const Club& cl){
         m_club = cl;
     }
     inline const std::vector<Competitor>& getCompetitors() const {
         return m_competitors;
     }
-    inline const categorieType getType() const{
+    inline categorieType getType() const{
         return m_categorie;
     }
-    inline const club& getClub() const{
+    inline const Club& getClub() const{
         return m_club;
     }
 
@@ -51,7 +51,7 @@ public:
 private:
     std::vector<Competitor> m_competitors;
     categorieType m_categorie;
-    club m_club;
+    Club m_club;
 
 };
 

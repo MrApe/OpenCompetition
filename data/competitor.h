@@ -22,10 +22,9 @@ public:
         m_gender = gender;
     }
     inline void setBirth(unsigned int const birth){
-        m_birth = birth;};
-    inline const genderType getGender() const {
-        return m_gender;
-    }
+        m_birth = birth;}
+    inline genderType getGender() const {
+        return m_gender;}
     inline unsigned int getBirth() const{
         return m_birth;}
 

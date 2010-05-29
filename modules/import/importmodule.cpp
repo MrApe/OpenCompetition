@@ -1,12 +1,15 @@
 #include "importmodule.h"
 #include "ui_importmodule.h"
 #include <QFileDialog>
+#include "text/textimporter.h"
 
 importModule::importModule(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::importModule)
+    ui(new Ui::importModule),
+    m_importPlugins()
 {
     ui->setupUi(this);
+    m_importPlugins.push_back(new TextImporter());
 }
 
 importModule::~importModule()

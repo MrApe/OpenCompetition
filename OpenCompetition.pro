@@ -14,7 +14,10 @@ SOURCES += main.cpp \
     data/club.cpp \
     data/tomanycompetitorsexception.cpp \
     data/judge.cpp \
-    data/judgespanel.cpp
+    data/judgespanel.cpp \
+    data/competition.cpp \
+    modules/import/text/textimporter.cpp \
+    modules/import/filenotopenedexception.cpp
 HEADERS += mainwindow.h \
     modules/import/importmodule.h \
     modules/import/abstractimporter.h \
@@ -24,6 +27,9 @@ HEADERS += mainwindow.h \
     data/club.h \
     data/tomanycompetitorsexception.h \
     data/judge.h \
-    data/judgespanel.h
+    data/judgespanel.h \
+    data/competition.h \
+    modules/import/text/textimporter.h \
+    modules/import/filenotopenedexception.h
 FORMS += mainwindow.ui \
     modules/import/importmodule.ui

@@ -1,6 +1,6 @@
 #include "club.h"
 
-club::club(const QString &name):
+Club::Club(const QString &name):
         m_name(name)
 {
 }

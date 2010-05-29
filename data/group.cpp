@@ -1,8 +1,8 @@
 #include "group.h"
 
-group::group(const std::vector<Competitor>& competitors,
+Group::Group(const std::vector<Competitor>& competitors,
              const categorieType categorie,
-             const club& cl):
+             const Club& cl):
         m_competitors(competitors),
         m_categorie(categorie),
         m_club(cl)
@@ -10,7 +10,7 @@ group::group(const std::vector<Competitor>& competitors,
 
 }
 
-void group::addCompetitor(Competitor comp) throw (ToManyCompetitorsException){
+void Group::addCompetitor(Competitor comp) throw (ToManyCompetitorsException){
     if (m_competitors.size() == 6) {
         throw new ToManyCompetitorsException();
     } else {
@@ -18,7 +18,7 @@ void group::addCompetitor(Competitor comp) throw (ToManyCompetitorsException){
         }
 }
 
-group::categorieType group::guessType(){
+Group::categorieType Group::guessType(){
     unsigned int size = m_competitors.size();
 
     switch (size) {

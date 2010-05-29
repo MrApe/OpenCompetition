@@ -2,6 +2,7 @@
 #define IMPORTMODULE_H
 
 #include <QWidget>
+#include "abstractimporter.h"
 
 namespace Ui {
     class importModule;
@@ -18,6 +19,7 @@ protected:
 
 private:
     Ui::importModule *ui;
+    std::vector<AbstractImporter*> m_importPlugins;
 
 public slots:
     void nextPage();
