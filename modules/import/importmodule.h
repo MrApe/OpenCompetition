@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "abstractimporter.h"
+#include "importpluginprovider.h"
 
 namespace Ui {
     class importModule;
@@ -19,10 +20,10 @@ protected:
 
 private:
     Ui::importModule *ui;
-    std::vector<AbstractImporter*> m_importPlugins;
+    ImportPluginProvider m_pluginProvider;
 
 public slots:
-    void nextPage();
+    void importFiles();
     void selectFiles();
 
 private slots:

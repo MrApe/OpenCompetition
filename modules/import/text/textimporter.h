@@ -7,15 +7,12 @@
 class TextImporter : public AbstractImporter
 {
 public:
-    TextImporter();
+    TextImporter(const QString& filter);
 
-    virtual const std::vector<Group>& importFiles(const QStringList& files) throw (FileNotOpenedException);
-    virtual const std::vector<Group>& importFile(const QString& file) throw (FileNotOpenedException);
+    virtual const std::vector<Group>& importFile(const QString& fileName) throw (FileNotOpenedException);
 
 private:
     std::vector<Group> parseText(QString text);
-
-    static const QString m_filter;
 };
 
 #endif // TEXTIMPORTER_H

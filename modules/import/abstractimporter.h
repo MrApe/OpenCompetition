@@ -10,11 +10,19 @@
 class AbstractImporter
 {
 public:
-    AbstractImporter();
-    ~AbstractImporter();
+    AbstractImporter(const QString& filter);
+    virtual ~AbstractImporter();
 
-    virtual const std::vector<Group>& importFiles(const QStringList& files) throw (FileNotOpenedException) = 0;
     virtual const std::vector<Group>& importFile(const QString& file) throw (FileNotOpenedException) = 0;
+
+    /*!
+     * Inline getter
+     */
+    inline const QString& getFilter() const {
+        return m_filter;}
+
+private:
+    QString m_filter;
 };
 
 #endif // ABSTRACTIMPORTER_H

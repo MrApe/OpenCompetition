@@ -115,14 +115,14 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="next1">
+          <widget class="QPushButton" name="cancel">
            <property name="text">
             <string>Abbrechen</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="cancel1">
+          <widget class="QPushButton" name="next">
            <property name="text">
             <string>Weiter</string>
            </property>
@@ -156,8 +156,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>98</width>
-               <height>28</height>
+               <width>336</width>
+               <height>191</height>
               </rect>
              </property>
             </widget>
@@ -329,23 +329,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>cancel1</sender>
-   <signal>clicked()</signal>
-   <receiver>importModule</receiver>
-   <slot>nextPage()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>341</x>
-     <y>271</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>319</x>
-     <y>294</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>next1</sender>
+   <sender>cancel</sender>
    <signal>clicked()</signal>
    <receiver>importModule</receiver>
    <slot>close()</slot>

@@ -3,40 +3,30 @@
 #include "data/club.h"
 #include "iostream"
 
-const QString TextImporter::m_filter;
-
-TextImporter::TextImporter()
+TextImporter::TextImporter(const QString& filter):
+        AbstractImporter(filter)
 {
 }
 
-const std::vector<Group>& TextImporter::importFiles(const QStringList& files) throw (FileNotOpenedException)
+const std::vector<Group>& TextImporter::importFile(const QString &fileName) throw (FileNotOpenedException)
 {
     std::vector<Group> foundGroups;
-
-    for (QStringList::const_iterator i = files.constBegin(); i != files.constEnd(); i++)
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        QFile current((*i));
-        if (!current.open(QIODevice::ReadOnly | QIODevice::Text))
+        throw new FileNotOpenedException(file.fileName().toStdString().c_str());
+    }
+    else
+    {
+        QByteArray fileContent = file.readAll();
+        std::vector<Group> foundInCurrent = parseText(QString(fileContent));
+        for (uint i = 0; i < foundInCurrent.size(); i++)
         {
-            throw new FileNotOpenedException(current.fileName().toStdString().c_str());
-        }
-        else
-        {
-            QByteArray fileContent = current.readAll();
-            std::vector<Group> foundInCurrent = parseText(QString(fileContent));
-            for (uint i = 0; i < foundInCurrent.size(); i++)
-            {
-                foundGroups.push_back(foundInCurrent.at(i));
-            }
+            foundGroups.push_back(foundInCurrent.at(i));
         }
     }
 
     return foundGroups;
-}
-
-const std::vector<Group>& TextImporter::importFile(const QString &file) throw (FileNotOpenedException)
-{
-    return importFiles(QStringList(file));
 }
 
 std::vector<Group> TextImporter::parseText(QString text){

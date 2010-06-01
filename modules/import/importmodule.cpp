@@ -6,10 +6,11 @@
 importModule::importModule(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::importModule),
-    m_importPlugins()
+    m_pluginProvider()
 {
     ui->setupUi(this);
-    m_importPlugins.push_back(new TextImporter());
+    TextImporter* textimporter = new TextImporter("txt");
+    m_pluginProvider.addPlugin(textimporter);
 }
 
 importModule::~importModule()
@@ -29,7 +30,14 @@ void importModule::changeEvent(QEvent *e)
     }
 }
 
-void importModule::nextPage(){
+void importModule::importFiles(){
+    std::vector<Group> foundGroups;
+    int i = 0;
+    for (unsigned int i = 0; i < ui->meldungenListe->count();i++ )
+    {
+        QString current = ui->meldungenListe->itemAt(i,0)->text();
+        foundGroups = m_pluginProvider.getPluginFor(current.section('.',1,2))->importFile(current);
+    }
     ui->stackedWidget->setCurrentIndex(ui->stackedWidget->currentIndex()+1);
 }
 

@@ -17,7 +17,8 @@ SOURCES += main.cpp \
     data/judgespanel.cpp \
     data/competition.cpp \
     modules/import/text/textimporter.cpp \
-    modules/import/filenotopenedexception.cpp
+    modules/import/filenotopenedexception.cpp \
+    modules/import/importpluginprovider.cpp
 HEADERS += mainwindow.h \
     modules/import/importmodule.h \
     modules/import/abstractimporter.h \
@@ -30,6 +31,7 @@ HEADERS += mainwindow.h \
     data/judgespanel.h \
     data/competition.h \
     modules/import/text/textimporter.h \
-    modules/import/filenotopenedexception.h
+    modules/import/filenotopenedexception.h \
+    modules/import/importpluginprovider.h
 FORMS += mainwindow.ui \
     modules/import/importmodule.ui
