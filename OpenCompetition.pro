@@ -1,7 +1,7 @@
 # -------------------------------------------------
 # Project created by QtCreator 2010-05-04T12:31:20
 # -------------------------------------------------
-QT += sql
+QT += sql xml
 TARGET = OpenCompetition
 TEMPLATE = app
 SOURCES += main.cpp \

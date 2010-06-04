@@ -91,11 +91,14 @@ void OpenDialog::on_createNewBtn_clicked()
         filenames = filenameDiag.selectedFiles();
         if (filenames.size() > 0)
         {
-            NewCompDialog newCompDiag("Eigenschaften - "+filenames.at(0).section('/',-1),this);
+            QString filename = filenames.at(0);
+            NewCompDialog newCompDiag("Eigenschaften - "+filename.section('/',-1),this);
             Competition* compToOpen = newCompDiag.getNewCompetition();
             if (compToOpen != NULL) {
                 emit competitionChanged(compToOpen);
             }
+            compToOpen->saveToFile(filename);
+            m_fileToOpen = filename;
         }
 
     }

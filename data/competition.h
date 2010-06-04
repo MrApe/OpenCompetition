@@ -57,6 +57,12 @@ public:
 
     //! Inline setter as slots
 public slots:
+
+    /*!
+      This function saves the competition as XML-Data
+      */
+    bool saveToFile(const QString& filename);
+
     /*!
       Set the name of the competition.
         @param name Name of the Competition.

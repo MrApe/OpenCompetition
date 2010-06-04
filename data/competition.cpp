@@ -1,4 +1,7 @@
 #include "competition.h"
+#include <QFile>
+#include <QTextStream>
+#include <QDomDocument>
 
 Competition::Competition() :
         m_name(),
@@ -27,5 +30,28 @@ Competition::Competition(const QString &name,
     m_judgesPanel(judgesPanel),
     m_starter(starter)
 {
+}
+
+bool Competition::saveToFile(const QString &filename)
+{
+    QFile outputFile(filename);
+
+
+    //Create XMl Model for Competition
+    QDomDocument compXMLDoc("Competition");
+    QDomElement baseDataElement = compXMLDoc.createElement("BaseData");
+    compXMLDoc.appendChild(baseDataElement);
+    QDomElement nameElement = compXMLDoc.createElement("Name");
+    baseDataElement.appendChild(nameElement);
+    QDomText name = compXMLDoc.createTextNode(m_name);
+    nameElement.appendChild(name);
+
+    if (outputFile.open(QFile::WriteOnly | QFile::Text)) {
+            QTextStream outputStream(&outputFile);
+            compXMLDoc.save(outputStream,3);
+    }
+
+    return true;
+
 }
 
