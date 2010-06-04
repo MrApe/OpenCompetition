@@ -8,7 +8,7 @@ TextImporter::TextImporter(const QString& filter):
 {
 }
 
-const std::vector<Group>& TextImporter::importFile(const QString &fileName) throw (FileNotOpenedException)
+const std::vector<Group> TextImporter::importFile(const QString &fileName) throw (FileNotOpenedException)
 {
     std::vector<Group> foundGroups;
     QFile file(fileName);

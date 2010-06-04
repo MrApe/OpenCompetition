@@ -5,7 +5,6 @@ QT += sql
 TARGET = OpenCompetition
 TEMPLATE = app
 SOURCES += main.cpp \
-    mainwindow.cpp \
     modules/import/importmodule.cpp \
     modules/import/abstractimporter.cpp \
     data/abstractperson.cpp \
@@ -18,9 +17,11 @@ SOURCES += main.cpp \
     data/competition.cpp \
     modules/import/text/textimporter.cpp \
     modules/import/filenotopenedexception.cpp \
-    modules/import/importpluginprovider.cpp
-HEADERS += mainwindow.h \
-    modules/import/importmodule.h \
+    modules/import/importpluginprovider.cpp \
+    ui/opendialog.cpp \
+    ui/mainwindow.cpp \
+    ui/newcompdialog.cpp
+HEADERS += modules/import/importmodule.h \
     modules/import/abstractimporter.h \
     data/abstractperson.h \
     data/competitor.h \
@@ -32,6 +33,11 @@ HEADERS += mainwindow.h \
     data/competition.h \
     modules/import/text/textimporter.h \
     modules/import/filenotopenedexception.h \
-    modules/import/importpluginprovider.h
-FORMS += mainwindow.ui \
-    modules/import/importmodule.ui
+    modules/import/importpluginprovider.h \
+    ui/opendialog.h \
+    ui/mainwindow.h \
+    ui/newcompdialog.h
+FORMS += modules/import/importmodule.ui \
+    ui/opendialog.ui \
+    ui/mainwindow.ui \
+    ui/newcompdialog.ui

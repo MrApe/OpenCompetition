@@ -32,8 +32,7 @@ void importModule::changeEvent(QEvent *e)
 
 void importModule::importFiles(){
     std::vector<Group> foundGroups;
-    int i = 0;
-    for (unsigned int i = 0; i < ui->meldungenListe->count();i++ )
+    for (int i = 0; i < ui->meldungenListe->count();i++ )
     {
         QString current = ui->meldungenListe->itemAt(i,0)->text();
         foundGroups = m_pluginProvider.getPluginFor(current.section('.',1,2))->importFile(current);

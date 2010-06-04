@@ -1,10 +1,19 @@
 #include <QtGui/QApplication>
-#include "mainwindow.h"
+#include "ui/mainwindow.h"
+#include "ui/opendialog.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
+    QSettings settings("TUBS","OpenCompetition");
+
+    OpenDialog od(&settings);
+    QString openFileName = od.getSelectedFile();
+
+    if (openFileName != "") {
+        MainWindow w(openFileName, &settings);
+        w.show();
+        return a.exec();
+    }
+
 }
