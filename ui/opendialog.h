@@ -20,6 +20,8 @@ class OpenDialog : public QDialog {
         QString name;
         QDate date;
         QTime time;
+        bool isRLT;
+        QString description;
     };
 
 public:

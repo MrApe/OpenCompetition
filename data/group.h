@@ -5,8 +5,9 @@
 #include "competitor.h"
 #include "club.h"
 #include "tomanycompetitorsexception.h"
+#include "abstractXMLElement.h"
 
-class Group
+class Group : public AbstractXMLElement
 {
 public:
     enum categorieType{
@@ -17,12 +18,29 @@ public:
         GROUP
     };
 
+    static QString categorieToString(const categorieType categorie);
+
     Group(const std::vector<Competitor>& competitors,
           const categorieType categorie,
           const Club& cl);
 
+    /*!
+      This method adds a competitor to the group. It throws an exception is the group is full.
+      @param comp The competitor to be added.
+      @throw ToManyCompetitorsException Thrown if the group has to many member.
+      */
     void addCompetitor(Competitor comp) throw (ToManyCompetitorsException);
+    /*!
+      This method tries to guess the category type. However, it only counts the male and female member and returns what it thinks to be the best type.
+      @return Type of the group.
+      */
     categorieType guessType();
+
+    /*!
+      This method creates a DomElement out of this object and returns it to the caller.
+      @return The current object as DomElement.
+      */
+    virtual QDomElement toDomElement(QDomDocument* parentDocument);
 
 
     /*
@@ -52,6 +70,7 @@ private:
     std::vector<Competitor> m_competitors;
     categorieType m_categorie;
     Club m_club;
+
 
 };
 

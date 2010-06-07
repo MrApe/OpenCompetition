@@ -1,7 +1,8 @@
 # -------------------------------------------------
 # Project created by QtCreator 2010-05-04T12:31:20
 # -------------------------------------------------
-QT += sql xml
+QT += sql \
+    xml
 TARGET = OpenCompetition
 TEMPLATE = app
 SOURCES += main.cpp \
@@ -36,7 +37,8 @@ HEADERS += modules/import/importmodule.h \
     modules/import/importpluginprovider.h \
     ui/opendialog.h \
     ui/mainwindow.h \
-    ui/newcompdialog.h
+    ui/newcompdialog.h \
+    data/abstractXMLElement.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \

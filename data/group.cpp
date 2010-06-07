@@ -1,4 +1,17 @@
+#include <QObject>
 #include "group.h"
+
+QString Group::categorieToString(categorieType categorie)
+{
+    switch (categorie) {
+    case INDIVIDUAL_MEN: return QObject::QObject::tr("IM");
+    case INDIVIDUAL_WOMEN:return QObject::tr("IW");
+    case MIXED_PAIR: return QObject::tr("Mixed");
+    case PAIR_TRIO: return QObject::tr("Pair/Trio");
+    case GROUP: return QObject::tr("Group");
+    default: return ""; //should not be reached
+    }
+}
 
 Group::Group(const std::vector<Competitor>& competitors,
              const categorieType categorie,
@@ -28,4 +41,21 @@ Group::categorieType Group::guessType(){
     case 3 : return PAIR_TRIO;
     default : return GROUP;
     }
+}
+
+QDomElement Group::toDomElement(QDomDocument *parentDocument)
+{
+    QDomElement groupElement = parentDocument->createElement("group");
+    groupElement.setAttribute("categorie",categorieToString(m_categorie));
+    groupElement.appendChild(m_club.toDomElement(parentDocument));
+    QDomElement competitorsElement = parentDocument->createElement("competitors");
+        groupElement.appendChild(competitorsElement);
+
+        std::vector<Competitor>::iterator it;
+        for (it = m_competitors.begin();it != m_competitors.end();it++)
+        {
+            competitorsElement.appendChild(it->toDomElement(parentDocument));
+        }
+
+    return groupElement;
 }

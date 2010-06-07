@@ -2,8 +2,9 @@
 #define COMPETITOR_H
 
 #include "abstractperson.h"
+#include "abstractXMLElement.h"
 
-class Competitor : public AbstractPerson
+class Competitor : public AbstractPerson, public AbstractXMLElement
 {
 public:
     enum genderType{
@@ -14,6 +15,12 @@ public:
     Competitor(const QString& name,
                const unsigned int birth,
                genderType gender);
+
+    /*!
+      This method creates a DomElement out of this object and returns it to the caller.
+      @return The current object as DomElement.
+      */
+    virtual QDomElement toDomElement(QDomDocument* parentDocument);
 
     /*
      * Inline getter and setter

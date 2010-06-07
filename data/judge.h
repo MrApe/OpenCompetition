@@ -2,8 +2,9 @@
 #define JUDGE_H
 
 #include "abstractperson.h"
+#include "abstractXMLElement.h"
 
-class Judge : public AbstractPerson
+class Judge : public AbstractPerson, public AbstractXMLElement
 {
 public:
     enum scoreType{
@@ -14,6 +15,13 @@ public:
         SUPERIOR,
         ASSISTANT
     };
+    
+    /*!
+      Returns the given score type to a string representation.
+      @return String representation of the score type.
+      */
+    static QString scoreTypeToString(const scoreType& score);
+    
     enum brevetType{
         NONE,
         LTV,
@@ -23,10 +31,22 @@ public:
         FIG2,
         FIG1
     };
+    
+    /*!
+      Returns the given brevet type to a string representation.
+      @return String representation of the brevet type.
+      */
+    static QString brevetTypeToString(const brevetType& brevet);
 
     Judge(const QString& name,
           scoreType score,
           brevetType brevet);
+
+    /*!
+      This method creates a DomElement out of this object and returns it to the caller.
+      @return The current object as DomElement.
+      */
+    virtual QDomElement toDomElement(QDomDocument* parentDocument);
 
     /*
      * Inline getter and setter

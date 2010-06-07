@@ -3,8 +3,9 @@
 
 #include <vector>
 #include "judge.h"
+#include "abstractXMLElement.h"
 
-class JudgesPanel
+class JudgesPanel : public AbstractXMLElement
 {
 public:
     JudgesPanel(std::vector<Judge> artisticJudges,
@@ -14,6 +15,12 @@ public:
                 std::vector<Judge> lineJudges,
                 Judge chairJudge,
                 Judge assistantJudge);
+    /*!
+      This method creates a DomElement out of this object and returns it to the caller.
+      @return The current object as DomElement.
+      */
+    virtual QDomElement toDomElement(QDomDocument* parentDocument);
+
     /*
      * Inline getter ans setter
      */

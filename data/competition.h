@@ -1,14 +1,16 @@
 #ifndef COMPETITION_H
 #define COMPETITION_H
 
-#include "vector"
-#include "QObject"
-#include "QString"
-#include "QDate"
+#include <vector>
+#include <QObject>
+#include <QString>
+#include <QDate>
+#include <QDomDocument>
 #include "judgespanel.h"
 #include "group.h"
+#include "abstractXMLElement.h"
 
-class Competition : public QObject
+class Competition : public QObject, AbstractXMLElement
 {
 
     Q_OBJECT
@@ -36,6 +38,12 @@ public:
       Empty Constructor.
      */
     Competition();
+
+    /*!
+      This method creates a QDomDocument and returnes it as an xml-Structure.
+      @return The Competition as QDomDocument.
+      */
+    virtual QDomElement toDomElement(QDomDocument* parentDocument);
 
 
     //! Inline getter

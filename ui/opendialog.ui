@@ -303,7 +303,7 @@
            <string>Ranglistenturnier</string>
           </property>
           <property name="checkable">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="tristate">
            <bool>false</bool>

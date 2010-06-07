@@ -1,7 +1,6 @@
 #include "competition.h"
 #include <QFile>
 #include <QTextStream>
-#include <QDomDocument>
 
 Competition::Competition() :
         m_name(),
@@ -32,19 +31,39 @@ Competition::Competition(const QString &name,
 {
 }
 
+QDomElement Competition::toDomElement(QDomDocument* parentDocument)
+{
+
+    //Create XMl Model for Competition
+    //Store base data
+    QDomElement competitionElement = parentDocument->createElement("competitiondata");
+    competitionElement.setAttribute("name", m_name);
+    competitionElement.setAttribute("date",m_date.toString("dd.MM.yyyy"));
+    competitionElement.setAttribute("time",m_time.toString());
+    competitionElement.setAttribute("isrlt",m_isRLT?"true":"false");
+    competitionElement.setAttribute("desc",m_description);
+
+    // Add judges panel
+    if (m_judgesPanel) {
+        competitionElement.appendChild(m_judgesPanel->toDomElement(parentDocument));
+    }
+
+    //Add competitors
+    QDomElement starterElement = parentDocument->createElement("starterdata");
+    std::vector<Group>::iterator it;
+    for (it = m_starter.begin() ; it != m_starter.end();it++){
+        starterElement.appendChild(it->toDomElement(parentDocument));
+    }
+
+    return competitionElement;
+}
+
 bool Competition::saveToFile(const QString &filename)
 {
     QFile outputFile(filename);
 
-
-    //Create XMl Model for Competition
-    QDomDocument compXMLDoc("Competition");
-    QDomElement baseDataElement = compXMLDoc.createElement("BaseData");
-    compXMLDoc.appendChild(baseDataElement);
-    QDomElement nameElement = compXMLDoc.createElement("Name");
-    baseDataElement.appendChild(nameElement);
-    QDomText name = compXMLDoc.createTextNode(m_name);
-    nameElement.appendChild(name);
+    QDomDocument compXMLDoc("competition");
+    compXMLDoc.appendChild(toDomElement(&compXMLDoc));
 
     if (outputFile.open(QFile::WriteOnly | QFile::Text)) {
             QTextStream outputStream(&outputFile);

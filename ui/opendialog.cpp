@@ -25,6 +25,8 @@ OpenDialog::OpenDialog(QSettings* settings, QWidget *parent) :
             comp.name = m_settings->value(base+"name","").toString();
             comp.date = m_settings->value(base+"date",QDate()).toDate();
             comp.time = m_settings->value(base+"time",QTime()).toTime();
+            comp.isRLT = m_settings->value(base+"rlt",false).toBool();
+            comp.description = m_settings->value(base+"description",QString()).toString();
             m_recentComp.push_back(comp);
         }
     }
