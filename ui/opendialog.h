@@ -6,6 +6,7 @@
 #include <QString>
 #include <QDate>
 #include <QTime>
+#include <QFileDialog>
 #include "data/competition.h"
 
 namespace Ui {
@@ -16,6 +17,20 @@ class OpenDialog : public QDialog {
     Q_OBJECT
 
     struct smallCompT{
+        smallCompT(const QString& filename,
+                   const QString& name,
+                   const QDate& date,
+                   const QTime& time,
+                   const bool isRLT,
+                   const QString& description
+                   ):
+            filename(filename),
+            name(name),
+            date(date),
+            time(time),
+            isRLT(isRLT),
+            description(description){}
+
         QString filename;
         QString name;
         QDate date;
@@ -43,13 +58,23 @@ private:
     QSettings* m_settings;
     std::vector<smallCompT> m_recentComp;
 
+    void addToHistory(smallCompT& comp);
+    void addToHistory(Competition* comp, const QString& filename);
+    void updateHistoryWidget();
+    void saveHistory();
+    QString getFilenameFromDialog(const QString& title, QFileDialog::FileMode fileMode);
+
 private slots:
+    void on_openBtn_clicked();
     void on_createNewBtn_clicked();
     void on_historyWidget_itemSelectionChanged();
-    void setShownCompetition(Competition* competition);
+    void setShownCompetition(Competition* competition, const QString& filename);
+    void setShownCompetition(smallCompT competition);
 
 signals:
-    void competitionChanged(Competition* competition);
+    void competitionChanged(Competition* competition, const QString& filename);
+    void competitionChanged(smallCompT competition);
+    void openFileChanged(const QString& filename);
 
 };
 

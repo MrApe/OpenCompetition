@@ -1,6 +1,7 @@
 #include "competition.h"
 #include <QFile>
 #include <QTextStream>
+#include <QMessageBox>
 
 Competition::Competition() :
         m_name(),
@@ -29,6 +30,7 @@ Competition::Competition(const QString &name,
     m_judgesPanel(judgesPanel),
     m_starter(starter)
 {
+    QMessageBox::critical(NULL,tr("Open error!"),tr("Competition could not be opened due to the following error: "),QMessageBox::Ok,QMessageBox::Ok);
 }
 
 QDomElement Competition::toDomElement(QDomDocument* parentDocument)
@@ -63,14 +65,30 @@ bool Competition::saveToFile(const QString &filename)
     QFile outputFile(filename);
 
     QDomDocument compXMLDoc("competition");
+    QDomAttr versionAttr = compXMLDoc.createAttribute("version");
+    versionAttr.setValue("1.0");
     compXMLDoc.appendChild(toDomElement(&compXMLDoc));
 
-    if (outputFile.open(QFile::WriteOnly | QFile::Text)) {
-            QTextStream outputStream(&outputFile);
-            compXMLDoc.save(outputStream,3);
+    if (outputFile.open(QFile::WriteOnly | QFile::Text))
+    {
+        QTextStream outputStream(&outputFile);
+        compXMLDoc.save(outputStream,3);
+        return true;
+    } else {
+        return false;
     }
+}
 
-    return true;
+bool Competition::loadFromFile(const QString &filename)
+{
+    QFile inputFile(filename);
+
+    QDomDocument compXMLDoc;
+    if (compXMLDoc.setContent(&inputFile))
+    {
+        return true;
+    }
+    return false;
 
 }
 

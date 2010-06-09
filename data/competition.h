@@ -10,7 +10,7 @@
 #include "group.h"
 #include "abstractXMLElement.h"
 
-class Competition : public QObject, AbstractXMLElement
+class Competition : public QObject, public AbstractXMLElement
 {
 
     Q_OBJECT
@@ -70,7 +70,10 @@ public slots:
       This function saves the competition as XML-Data
       */
     bool saveToFile(const QString& filename);
-
+    /*!
+      This function loades the competition from an XML-file
+      */
+    bool loadFromFile(const QString& filename);
     /*!
       Set the name of the competition.
         @param name Name of the Competition.

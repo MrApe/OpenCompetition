@@ -1,5 +1,4 @@
 #include <QTreeWidgetItem>
-#include <QFileDialog>
 #include "ui/opendialog.h"
 #include "ui_opendialog.h"
 #include "ui/newcompdialog.h"
@@ -13,28 +12,28 @@ OpenDialog::OpenDialog(QSettings* settings, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(this,SIGNAL(competitionChanged(Competition*)),this,SLOT(setShownCompetition(Competition*)));
+    connect(this,SIGNAL(competitionChanged(Competition*,QString)),this,SLOT(setShownCompetition(Competition*,QString)));
+    connect(this,SIGNAL(competitionChanged(smallCompT)),this,SLOT(setShownCompetition(smallCompT)));
+    connect(this,SIGNAL(openFileChanged(QString)),ui->openLineEdit,SLOT(setText(QString)));
 
     //Read settings
+    QString base;
     for (unsigned int i = 0; i<=5; i++)
     {
-        QString base = "recent/comp"+QString::number(i)+"/";
-        smallCompT comp;
-        comp.filename = m_settings->value(base+"filename","NULL").toString();
-        if (comp.filename != "NULL"){
-            comp.name = m_settings->value(base+"name","").toString();
-            comp.date = m_settings->value(base+"date",QDate()).toDate();
-            comp.time = m_settings->value(base+"time",QTime()).toTime();
-            comp.isRLT = m_settings->value(base+"rlt",false).toBool();
-            comp.description = m_settings->value(base+"description",QString()).toString();
+        base = "recent/comp"+QString::number(i)+"/";
+        QString filename = m_settings->value(base+"filename","NULL").toString();
+        if (filename != "NULL"){
+            smallCompT comp(filename,
+                            m_settings->value(base+"name","").toString(),
+                            m_settings->value(base+"date",QDate()).toDate(),
+                            m_settings->value(base+"time",QTime()).toTime(),
+                            m_settings->value(base+"rlt",false).toBool(),
+                            m_settings->value(base+"description",QString()).toString());
             m_recentComp.push_back(comp);
         }
     }
+    updateHistoryWidget();
 
-    for (unsigned int i = 0; i<m_recentComp.size(); i++)
-    {
-        ui->historyWidget->insertTopLevelItem(0,new QTreeWidgetItem(ui->historyWidget,QStringList(m_recentComp.at(i).name)));
-    }
 }
 
 QString OpenDialog::getSelectedFile()
@@ -50,7 +49,6 @@ QString OpenDialog::getSelectedFile()
 OpenDialog::~OpenDialog()
 {
     delete ui;
-
 }
 
 void OpenDialog::changeEvent(QEvent *e)
@@ -65,44 +63,120 @@ void OpenDialog::changeEvent(QEvent *e)
     }
 }
 
-void OpenDialog::setShownCompetition(Competition* competition)
+void OpenDialog::addToHistory(smallCompT& comp)
 {
-    ui->name->setText(competition->getName());
-    ui->date->setText(competition->getDate().toString(Qt::SystemLocaleLongDate));
-    ui->time->setText(competition->getTime().toString(Qt::SystemLocaleLongDate));
-    ui->isRLTBox->setChecked(competition->isRLT());
-    ui->description->setText(competition->getDescription());
+    m_recentComp.push_back(comp);
+    if (m_recentComp.size() > 5)
+    {
+        std::vector<smallCompT>::iterator frontElement= m_recentComp.begin();
+        m_recentComp.erase(frontElement);
+    }
+    updateHistoryWidget();
+    saveHistory();
+}
+
+void OpenDialog::addToHistory(Competition *comp,const QString& filename)
+{
+    smallCompT compSmall(filename,
+                         comp->getName(),
+                         comp->getDate(),
+                         comp->getTime(),
+                         comp->isRLT(),
+                         comp->getDescription());
+    addToHistory(compSmall);
+}
+
+void OpenDialog::updateHistoryWidget()
+{
+    ui->historyWidget->clear();
+    for (unsigned int i = 0; i<m_recentComp.size(); i++)
+    {
+        ui->historyWidget->insertTopLevelItem(0,new QTreeWidgetItem(ui->historyWidget,QStringList(m_recentComp.at(i).name)));
+    }
+}
+
+void OpenDialog::saveHistory()
+{
+    QString base;
+    for (unsigned int i = 0; i < m_recentComp.size(); i++)
+    {
+        base = "recent/comp"+QString::number(i)+"/";
+        m_settings->setValue(base+"filename",m_recentComp.at(i).filename);
+        m_settings->setValue(base+"name",m_recentComp.at(i).name);
+        m_settings->setValue(base+"date",m_recentComp.at(i).date);
+        m_settings->setValue(base+"time",m_recentComp.at(i).time);
+        m_settings->setValue(base+"rlt",m_recentComp.at(i).isRLT);
+        m_settings->setValue(base+"description",m_recentComp.at(i).description);
+    }
+}
+
+void OpenDialog::setShownCompetition(smallCompT competition)
+{
+    ui->name->setText(competition.name);
+    ui->date->setText(competition.date.toString(Qt::SystemLocaleLongDate));
+    ui->time->setText(competition.time.toString(Qt::SystemLocaleLongDate));
+    ui->isRLTBox->setChecked(competition.isRLT);
+    ui->description->setText(competition.description);
+    emit openFileChanged(competition.filename);
+}
+
+void OpenDialog::setShownCompetition(Competition* competition,const QString& filename)
+{
+    smallCompT compSmall(filename,
+                         competition->getName(),
+                         competition->getDate(),
+                         competition->getTime(),
+                         competition->isRLT(),
+                         competition->getDescription());
+    setShownCompetition(compSmall);
 }
 
 void OpenDialog::on_historyWidget_itemSelectionChanged()
 {
-
+    // Get selected Item
+    int selectedIndex = ui->historyWidget->indexOfTopLevelItem(ui->historyWidget->selectedItems().at(0));
+    emit competitionChanged(m_recentComp.at(selectedIndex));
 }
 
-void OpenDialog::on_createNewBtn_clicked()
+QString OpenDialog::getFilenameFromDialog(const QString& title, QFileDialog::FileMode fileMode)
 {
+    QString filename = "";
     QFileDialog filenameDiag(this,
-                             tr("Namen des neuen Wettkampfes angeben"),
-                             "",
-                             tr("Wettkampf *.cmp"));
-    filenameDiag.setFileMode(QFileDialog::AnyFile);
+                                 title,
+                                 "",
+                                 tr("Wettkampf *.cmp"));
+    filenameDiag.setFileMode(fileMode);
     filenameDiag.setDefaultSuffix("cmp");
     QStringList filenames;
     if (filenameDiag.exec())
     {
         filenames = filenameDiag.selectedFiles();
-        if (filenames.size() > 0)
-        {
-            QString filename = filenames.at(0);
-            NewCompDialog newCompDiag("Eigenschaften - "+filename.section('/',-1),this);
-            Competition* compToOpen = newCompDiag.getNewCompetition();
-            if (compToOpen != NULL) {
-                emit competitionChanged(compToOpen);
-            }
-            compToOpen->saveToFile(filename);
-            m_fileToOpen = filename;
+        filename = filenames.size() > 0?filenames.at(0):"";
+    }
+    return filename;
+}
+
+void OpenDialog::on_createNewBtn_clicked()
+{
+    QString filename = getFilenameFromDialog(tr("Name des neuen Wettkampfes angeben."), QFileDialog::AnyFile);
+    if (filename != "")
+    {
+        NewCompDialog newCompDiag("Eigenschaften - "+filename.section('/',-1),this);
+        Competition* compToOpen = newCompDiag.getNewCompetition();
+        if (compToOpen != NULL) {
+            emit competitionChanged(compToOpen, filename);
+            addToHistory(compToOpen, filename);
         }
+        compToOpen->saveToFile(filename);
+        m_fileToOpen = filename;
+    }
+}
+
+void OpenDialog::on_openBtn_clicked()
+{
+    QString filename = getFilenameFromDialog(tr("Wettkampf öffnen."),QFileDialog::ExistingFile);
+    if (filename!="")
+    {
 
     }
-
 }
