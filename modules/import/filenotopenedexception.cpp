@@ -1,3 +1,5 @@
+#include <QObject>
+#include <QString>
 #include "filenotopenedexception.h"
 
 FileNotOpenedException::FileNotOpenedException(const char *filename):
@@ -7,5 +9,5 @@ FileNotOpenedException::FileNotOpenedException(const char *filename):
 
 const char* FileNotOpenedException::what() const throw()
 {
-    return "Datei konnte nicht geöffnet werden. Mögliecherweise existiert sie nicht oder wird von einem anderen Programm verwendet.";
+    return QObject::tr("Opening file failed. It may not exist or is in use by another program.").toStdString().c_str();
 }

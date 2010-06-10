@@ -4,20 +4,17 @@
 #include <QLocale>
 #include "ui/mainwindow.h"
 #include "ui/opendialog.h"
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QSettings settings("TUBS","OpenCompetition");
 
+    QLocale::setDefault(QLocale::system());
     QTranslator qtTranslator;
-    qtTranslator.load("qt_" + QLocale::system().name(),
-    QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    qtTranslator.load(QLocale::system().name(),"lang");
     a.installTranslator(&qtTranslator);
-
-    QTranslator appTranslator;
-    appTranslator.load("myapp_" + QLocale::system().name());
-    a.installTranslator(&appTranslator);
 
     OpenDialog od(&settings);
     QString openFileName = od.getSelectedFile();

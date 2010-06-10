@@ -43,9 +43,9 @@ void importModule::importFiles(){
 void importModule::selectFiles(){
     QStringList fileNames;
     QFileDialog dialog(this);
-    dialog.setWindowTitle(tr("Meldungen auswählen"));
+    dialog.setWindowTitle(tr("Select Registration"));
     dialog.setFileMode(QFileDialog::ExistingFiles);
-    dialog.setNameFilter("Meldungen *.doc *.pdf *.txt");
+    dialog.setNameFilter("Registration *.doc *.pdf *.txt");
     if (dialog.exec())
         fileNames = dialog.selectedFiles();
 
