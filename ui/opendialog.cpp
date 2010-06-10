@@ -46,7 +46,7 @@ OpenDialog::OpenDialog(QSettings* settings, QWidget *parent) :
 
 QString OpenDialog::getSelectedFile()
 {
-    int ret;
+    int ret = -1;
     while (m_fileToOpen == "" && ret != QDialog::Rejected){
         ret = exec();
     }

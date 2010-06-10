@@ -5,6 +5,8 @@ QT += sql \
     xml
 TARGET = OpenCompetition
 TEMPLATE = app
+TRANSLATIONS = lang/de_de.ts \
+    lang/en_us.ts
 SOURCES += main.cpp \
     modules/import/importmodule.cpp \
     modules/import/abstractimporter.cpp \
@@ -43,3 +45,5 @@ FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \
     ui/newcompdialog.ui
+OTHER_FILES += lang/en_us.ts \
+    lang/de_de.ts
