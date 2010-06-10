@@ -147,6 +147,8 @@ void OpenDialog::setShownCompetition(smallCompT competition)
     ui->isRLTBox->setChecked(competition.isRLT);
     ui->description->setText(competition.description);
 
+//      The following Selection detection is buggy (infinitive loop with SelectionChanged Signal)
+    //      TODO: Repair!
 //    unsigned int index = 0;
 //    bool contains = false;
 //    for (; index < m_recentComp.size() && !contains;index++)
@@ -205,7 +207,7 @@ void OpenDialog::on_createNewBtn_clicked()
     QString filename = getFilenameFromDialog(tr("Specify the name of the competition."), QFileDialog::AnyFile);
     if (filename != "")
     {
-        NewCompDialog newCompDiag("Properties - "+filename.section('/',-1),this);
+        NewCompDialog newCompDiag(tr("Properties - ")+filename.section('/',-1),this);
         Competition* compToOpen = newCompDiag.getNewCompetition();
         if (compToOpen != NULL) {
             addToHistory(compToOpen, filename);

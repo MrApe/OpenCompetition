@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Create new competition</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -20,6 +20,9 @@
       <widget class="QLabel" name="label">
        <property name="text">
         <string>Name:</string>
+       </property>
+       <property name="buddy">
+        <cstring>nameEdit</cstring>
        </property>
       </widget>
      </item>
@@ -33,7 +36,10 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Datum:</string>
+        <string>Date:</string>
+       </property>
+       <property name="buddy">
+        <cstring>dateEdit</cstring>
        </property>
       </widget>
      </item>
@@ -60,7 +66,10 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Uhrzeit:</string>
+        <string>Time:</string>
+       </property>
+       <property name="buddy">
+        <cstring>timeEdit</cstring>
        </property>
       </widget>
      </item>
@@ -86,7 +95,7 @@
    <item>
     <widget class="QCheckBox" name="RLTCheck">
      <property name="text">
-      <string>Dieser Wettkampf ist ein Ranglistenturnier</string>
+      <string>This competition counts for the national ranking</string>
      </property>
     </widget>
    </item>
@@ -95,7 +104,10 @@
      <item>
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Beschreibung:</string>
+        <string>Description:</string>
+       </property>
+       <property name="buddy">
+        <cstring>descriptionEdit</cstring>
        </property>
       </widget>
      </item>
@@ -129,8 +141,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>227</x>
-     <y>278</y>
+     <x>236</x>
+     <y>338</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -145,8 +157,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
-     <y>284</y>
+     <x>304</x>
+     <y>338</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>

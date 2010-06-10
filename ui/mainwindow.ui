@@ -32,7 +32,7 @@
          <string notr="true"/>
         </property>
         <property name="title">
-         <string>Meldung</string>
+         <string>Registration</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -44,7 +44,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_import">
            <property name="text">
-            <string>importieren...</string>
+            <string>Import..</string>
            </property>
            <property name="checkable">
             <bool>false</bool>
@@ -54,7 +54,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_gemVer">
            <property name="text">
-            <string>gemeldete Vereine</string>
+            <string>Registered clubs</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -64,7 +64,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_startfeld">
            <property name="text">
-            <string>Starterfeld</string>
+            <string>Competitors</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -74,7 +74,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_Kampfrichter">
            <property name="text">
-            <string>Kampfrichter</string>
+            <string>Judges</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -87,7 +87,7 @@
       <item>
        <widget class="QGroupBox" name="WettBox">
         <property name="title">
-         <string>Wettkampf</string>
+         <string>Competition</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -99,7 +99,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_Startliste">
            <property name="text">
-            <string>Startliste</string>
+            <string>Starting list</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -109,7 +109,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_Wertungen">
            <property name="text">
-            <string>Wertungseingabe</string>
+            <string>Score input</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -119,7 +119,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_Beamer">
            <property name="text">
-            <string>Beamer Anzeige</string>
+            <string>Beamer output</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -135,7 +135,7 @@
          <bool>false</bool>
         </property>
         <property name="title">
-         <string>Ergebnisse</string>
+         <string>Results</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -150,7 +150,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_Urkunden">
            <property name="text">
-            <string>Urkunden</string>
+            <string>Certificates</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -160,7 +160,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_Ergebnisliste">
            <property name="text">
-            <string>Ergebnisliste</string>
+            <string>Result list</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -170,7 +170,7 @@
          <item>
           <widget class="QCommandLinkButton" name="Btn_Rangliste">
            <property name="text">
-            <string>Ranglistenpunkte</string>
+            <string>Ranking points</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -193,12 +193,12 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDatei">
     <property name="title">
-     <string>Datei</string>
+     <string>File</string>
     </property>
     <addaction name="action_ffnen_Dialog"/>
     <addaction name="actionSpeichern"/>
@@ -211,22 +211,22 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionSchlie_en">
    <property name="text">
-    <string>Schließen</string>
+    <string>Close</string>
    </property>
   </action>
   <action name="action_ffnen_Dialog">
    <property name="text">
-    <string>Öffnen...</string>
+    <string>Open..</string>
    </property>
   </action>
   <action name="actionSpeichern">
    <property name="text">
-    <string>Speichern</string>
+    <string>Save</string>
    </property>
   </action>
   <action name="actionSpeichern_unter">
    <property name="text">
-    <string>Speichern unter...</string>
+    <string>Save as..</string>
    </property>
   </action>
  </widget>
