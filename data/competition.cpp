@@ -2,6 +2,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QDomNamedNodeMap>
 
 Competition::Competition() :
         m_name(),
@@ -41,7 +42,7 @@ QDomElement Competition::toDomElement(QDomDocument* parentDocument)
     QDomElement competitionElement = parentDocument->createElement("competitiondata");
     competitionElement.setAttribute("name", m_name);
     competitionElement.setAttribute("date",m_date.toString("dd.MM.yyyy"));
-    competitionElement.setAttribute("time",m_time.toString());
+    competitionElement.setAttribute("time",m_time.toString("hh:mm"));
     competitionElement.setAttribute("isrlt",m_isRLT?"true":"false");
     competitionElement.setAttribute("desc",m_description);
 
@@ -67,6 +68,7 @@ bool Competition::saveToFile(const QString &filename)
     QDomDocument compXMLDoc("competition");
     QDomAttr versionAttr = compXMLDoc.createAttribute("version");
     versionAttr.setValue("1.0");
+    compXMLDoc.appendChild(versionAttr);
     compXMLDoc.appendChild(toDomElement(&compXMLDoc));
 
     if (outputFile.open(QFile::WriteOnly | QFile::Text))
@@ -86,6 +88,12 @@ bool Competition::loadFromFile(const QString &filename)
     QDomDocument compXMLDoc;
     if (compXMLDoc.setContent(&inputFile))
     {
+        QDomNamedNodeMap attrMap = compXMLDoc.elementsByTagName("competitiondata").item(0).attributes();
+        m_name = attrMap.namedItem("name").nodeValue();
+        m_date = QDate::fromString(attrMap.namedItem("date").nodeValue(),"dd.MM.yyyy");
+        m_time = QTime::fromString(attrMap.namedItem("time").nodeValue(),"hh:mm");
+        m_isRLT = attrMap.namedItem("isrlt").nodeValue()=="true";
+        m_description = attrMap.namedItem("desc").nodeValue();
         return true;
     }
     return false;

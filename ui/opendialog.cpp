@@ -1,4 +1,5 @@
 #include <QTreeWidgetItem>
+#include <QMessageBox>
 #include "ui/opendialog.h"
 #include "ui_opendialog.h"
 #include "ui/newcompdialog.h"
@@ -65,11 +66,20 @@ void OpenDialog::changeEvent(QEvent *e)
 
 void OpenDialog::addToHistory(smallCompT& comp)
 {
+    std::vector<smallCompT>::iterator it;
+    // delete competions already listed equal to this
+    for (it = m_recentComp.begin(); it != m_recentComp.end();it++)
+    {
+        if ((*it) == comp) m_recentComp.erase(it);
+    }
+    //add to history
     m_recentComp.push_back(comp);
+
+    //cut history List
     if (m_recentComp.size() > 5)
     {
-        std::vector<smallCompT>::iterator frontElement= m_recentComp.begin();
-        m_recentComp.erase(frontElement);
+        it = m_recentComp.begin();
+        m_recentComp.erase(it);
     }
     updateHistoryWidget();
     saveHistory();
@@ -117,6 +127,7 @@ void OpenDialog::setShownCompetition(smallCompT competition)
     ui->time->setText(competition.time.toString(Qt::SystemLocaleLongDate));
     ui->isRLTBox->setChecked(competition.isRLT);
     ui->description->setText(competition.description);
+    ui->historyWidget->isItemSelected()
     emit openFileChanged(competition.filename);
 }
 
@@ -144,7 +155,7 @@ QString OpenDialog::getFilenameFromDialog(const QString& title, QFileDialog::Fil
     QFileDialog filenameDiag(this,
                                  title,
                                  "",
-                                 tr("Wettkampf *.cmp"));
+                                 tr("Competition *.cmp"));
     filenameDiag.setFileMode(fileMode);
     filenameDiag.setDefaultSuffix("cmp");
     QStringList filenames;
@@ -158,25 +169,38 @@ QString OpenDialog::getFilenameFromDialog(const QString& title, QFileDialog::Fil
 
 void OpenDialog::on_createNewBtn_clicked()
 {
-    QString filename = getFilenameFromDialog(tr("Name des neuen Wettkampfes angeben."), QFileDialog::AnyFile);
+    QString filename = getFilenameFromDialog(tr("Specify the name of the competition."), QFileDialog::AnyFile);
     if (filename != "")
     {
-        NewCompDialog newCompDiag("Eigenschaften - "+filename.section('/',-1),this);
+        NewCompDialog newCompDiag("Properties - "+filename.section('/',-1),this);
         Competition* compToOpen = newCompDiag.getNewCompetition();
         if (compToOpen != NULL) {
             emit competitionChanged(compToOpen, filename);
             addToHistory(compToOpen, filename);
         }
         compToOpen->saveToFile(filename);
-        m_fileToOpen = filename;
+        emit openFileChanged(filename);
     }
 }
 
 void OpenDialog::on_openBtn_clicked()
 {
-    QString filename = getFilenameFromDialog(tr("Wettkampf öffnen."),QFileDialog::ExistingFile);
+    QString filename = getFilenameFromDialog(tr("Open Competition."),QFileDialog::ExistingFile);
     if (filename!="")
     {
+        Competition cmp;
+        if (cmp.loadFromFile(filename))
+        {
+            addToHistory(*cmp);
+            setShownCompetition(&cmp,filename);
 
+            emit openFileChanged(filename);
+        } else {
+            QMessageBox::information(this,
+                                     tr("Open Error."),
+                                     tr("Opening competition file failed. "),
+                                     QMessageBox::Ok,
+                                     QMessageBox::Ok);
+        }
     }
 }

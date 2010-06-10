@@ -30,6 +30,14 @@ class OpenDialog : public QDialog {
             time(time),
             isRLT(isRLT),
             description(description){}
+        bool operator ==(const smallCompT& other){
+            return (filename == other.filename &&
+                    name == other.name &&
+                    date == other.date &&
+                    time == other.time &&
+                    isRLT == other.isRLT &&
+                    description == other.description);
+        }
 
         QString filename;
         QString name;

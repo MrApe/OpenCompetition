@@ -57,7 +57,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <value key="QtVersionId" type="int">0</value>
-   <value key="ToolChain" type="int">0</value>
+   <value key="ToolChain" type="int">2</value>
    <value key="addQDumper" type=""></value>
    <value key="buildConfiguration" type="int">2</value>
   </valuemap>
@@ -67,7 +67,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Release</value>
    <value key="QtVersionId" type="int">0</value>
-   <value key="ToolChain" type="int">0</value>
+   <value key="ToolChain" type="int">2</value>
    <value key="addQDumper" type=""></value>
    <value key="buildConfiguration" type="int">0</value>
   </valuemap>
@@ -77,47 +77,50 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-7nydR1oAUj,guid=1a9256de2fd0b0ada565acc04c0e24a6</value>
-    <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
-    <value type="QString">DESKTOP_SESSION=gnome</value>
-    <value type="QString">DISPLAY=:0.0</value>
-    <value type="QString">GDMSESSION=gnome</value>
-    <value type="QString">GDM_KEYBOARD_LAYOUT=de	nodeadkeys</value>
-    <value type="QString">GDM_LANG=de_DE.utf8</value>
-    <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-nyLwB3</value>
-    <value type="QString">GTK_MODULES=canberra-gtk-module</value>
-    <value type="QString">HOME=/home/jonas</value>
-    <value type="QString">LANG=de_DE.utf8</value>
-    <value type="QString">LD_LIBRARY_PATH=/home/jonas/Entwicklung/QtSDK/lib/qtcreator:</value>
-    <value type="QString">LOGNAME=jonas</value>
-    <value type="QString">MANDATORY_PATH=/usr/share/gconf/gnome.mandatory.path</value>
-    <value type="QString">ORBIT_SOCKETDIR=/tmp/orbit-jonas</value>
-    <value type="QString">PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
-    <value type="QString">PWD=/home/jonas/Entwicklung/QtSDK/bin</value>
-    <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/JonesBook:@/tmp/.ICE-unix/1291,unix/JonesBook:/tmp/.ICE-unix/1291</value>
-    <value type="QString">SHELL=/bin/bash</value>
-    <value type="QString">SPEECHD_PORT=7560</value>
-    <value type="QString">SSH_AGENT_PID=1325</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-nyLwB3/ssh</value>
-    <value type="QString">USER=jonas</value>
+    <value type="QString">ALLUSERSPROFILE=C:\ProgramData</value>
+    <value type="QString">APPDATA=C:\Users\jonas\AppData\Roaming</value>
+    <value type="QString">CLASSPATH=.;C:\Program Files\Java\jre6\lib\ext\QTJava.zip</value>
+    <value type="QString">COMMONPROGRAMFILES=C:\Program Files\Common Files</value>
+    <value type="QString">COMPUTERNAME=JONESNETBOOK</value>
+    <value type="QString">COMSPEC=C:\Windows\system32\cmd.exe</value>
+    <value type="QString">FP_NO_HOST_CHECK=NO</value>
+    <value type="QString">HOMEDRIVE=C:</value>
+    <value type="QString">HOMEPATH=\Users\jonas</value>
+    <value type="QString">LOCALAPPDATA=C:\Users\jonas\AppData\Local</value>
+    <value type="QString">LOGONSERVER=\\JONESNETBOOK</value>
+    <value type="QString">NUMBER_OF_PROCESSORS=2</value>
+    <value type="QString">OS=Windows_NT</value>
+    <value type="QString">PATH=D:\Entwicklung\QtSDK\qt\bin;D:\MinGW\bin;D:\Office\MiKTeX\miktex\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\QuickTime\QTSystem\</value>
+    <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</value>
+    <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
+    <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 6 Model 28 Stepping 2, GenuineIntel</value>
+    <value type="QString">PROCESSOR_LEVEL=6</value>
+    <value type="QString">PROCESSOR_REVISION=1c02</value>
+    <value type="QString">PROGRAMDATA=C:\ProgramData</value>
+    <value type="QString">PROGRAMFILES=C:\Program Files</value>
+    <value type="QString">PSMODULEPATH=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\</value>
+    <value type="QString">PUBLIC=C:\Users\Public</value>
+    <value type="QString">QTDIR=D:/Entwicklung/QtSDK/qt</value>
+    <value type="QString">QTJAVA=C:\Program Files\Java\jre6\lib\ext\QTJava.zip</value>
+    <value type="QString">SESSIONNAME=Console</value>
+    <value type="QString">SYSTEMDRIVE=C:</value>
+    <value type="QString">SYSTEMROOT=C:\Windows</value>
+    <value type="QString">TEMP=C:\Users\jonas\AppData\Local\Temp</value>
+    <value type="QString">TMP=C:\Users\jonas\AppData\Local\Temp</value>
+    <value type="QString">USERDOMAIN=JonesNetBook</value>
     <value type="QString">USERNAME=jonas</value>
-    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-jonas-lMbGlP/database</value>
-    <value type="QString">XDG_CONFIG_DIRS=/etc/xdg/xdg-gnome:/etc/xdg</value>
-    <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/</value>
-    <value type="QString">XDG_SESSION_COOKIE=19e0238ffaa80d821ab4211e4bfcf587-1275995301.723060-300670376</value>
+    <value type="QString">USERPROFILE=C:\Users\jonas</value>
+    <value type="QString">WINDIR=C:\Windows</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
-    <value type="QString">/home/jonas/Documents/Studium/Vorlesungen/SS10/Padi/Project/OpenCompetition/OpenCompetition.pro</value>
+    <value type="QString">D:/Documents/Studium/Vorlesungen/SS10/Padi/Project/OpenCompetition/OpenCompetition.pro</value>
     <value type="QString">-spec</value>
-    <value type="QString">linux-g++</value>
+    <value type="QString">win32-g++</value>
     <value type="QString">-r</value>
-    <value type="QString">CONFIG+=debug</value>
    </valuelist>
-   <value key="abstractProcess.command" type="QString">/usr/bin/qmake-qt4</value>
+   <value key="abstractProcess.command" type="QString">d:/entwicklung/qtsdk/qt/bin/qmake.exe</value>
    <value key="abstractProcess.enabled" type="bool">false</value>
-   <value key="abstractProcess.workingDirectory" type="QString">/home/jonas/Documents/Studium/Vorlesungen/SS10/Padi/Project/OpenCompetition</value>
+   <value key="abstractProcess.workingDirectory" type="QString">D:/Documents/Studium/Vorlesungen/SS10/Padi/Project/OpenCompetition</value>
   </valuemap>
  </data>
  <data>
@@ -125,44 +128,48 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-7nydR1oAUj,guid=1a9256de2fd0b0ada565acc04c0e24a6</value>
-    <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
-    <value type="QString">DESKTOP_SESSION=gnome</value>
-    <value type="QString">DISPLAY=:0.0</value>
-    <value type="QString">GDMSESSION=gnome</value>
-    <value type="QString">GDM_KEYBOARD_LAYOUT=de	nodeadkeys</value>
-    <value type="QString">GDM_LANG=de_DE.utf8</value>
-    <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-nyLwB3</value>
-    <value type="QString">GTK_MODULES=canberra-gtk-module</value>
-    <value type="QString">HOME=/home/jonas</value>
-    <value type="QString">LANG=de_DE.utf8</value>
-    <value type="QString">LD_LIBRARY_PATH=/home/jonas/Entwicklung/QtSDK/lib/qtcreator:</value>
-    <value type="QString">LOGNAME=jonas</value>
-    <value type="QString">MANDATORY_PATH=/usr/share/gconf/gnome.mandatory.path</value>
-    <value type="QString">ORBIT_SOCKETDIR=/tmp/orbit-jonas</value>
-    <value type="QString">PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
-    <value type="QString">PWD=/home/jonas/Entwicklung/QtSDK/bin</value>
-    <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/JonesBook:@/tmp/.ICE-unix/1291,unix/JonesBook:/tmp/.ICE-unix/1291</value>
-    <value type="QString">SHELL=/bin/bash</value>
-    <value type="QString">SPEECHD_PORT=7560</value>
-    <value type="QString">SSH_AGENT_PID=1325</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-nyLwB3/ssh</value>
-    <value type="QString">USER=jonas</value>
+    <value type="QString">ALLUSERSPROFILE=C:\ProgramData</value>
+    <value type="QString">APPDATA=C:\Users\jonas\AppData\Roaming</value>
+    <value type="QString">CLASSPATH=.;C:\Program Files\Java\jre6\lib\ext\QTJava.zip</value>
+    <value type="QString">COMMONPROGRAMFILES=C:\Program Files\Common Files</value>
+    <value type="QString">COMPUTERNAME=JONESNETBOOK</value>
+    <value type="QString">COMSPEC=C:\Windows\system32\cmd.exe</value>
+    <value type="QString">FP_NO_HOST_CHECK=NO</value>
+    <value type="QString">HOMEDRIVE=C:</value>
+    <value type="QString">HOMEPATH=\Users\jonas</value>
+    <value type="QString">LOCALAPPDATA=C:\Users\jonas\AppData\Local</value>
+    <value type="QString">LOGONSERVER=\\JONESNETBOOK</value>
+    <value type="QString">NUMBER_OF_PROCESSORS=2</value>
+    <value type="QString">OS=Windows_NT</value>
+    <value type="QString">PATH=D:\Entwicklung\QtSDK\qt\bin;D:\MinGW\bin;D:\Office\MiKTeX\miktex\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\QuickTime\QTSystem\</value>
+    <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</value>
+    <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
+    <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 6 Model 28 Stepping 2, GenuineIntel</value>
+    <value type="QString">PROCESSOR_LEVEL=6</value>
+    <value type="QString">PROCESSOR_REVISION=1c02</value>
+    <value type="QString">PROGRAMDATA=C:\ProgramData</value>
+    <value type="QString">PROGRAMFILES=C:\Program Files</value>
+    <value type="QString">PSMODULEPATH=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\</value>
+    <value type="QString">PUBLIC=C:\Users\Public</value>
+    <value type="QString">QTDIR=D:/Entwicklung/QtSDK/qt</value>
+    <value type="QString">QTJAVA=C:\Program Files\Java\jre6\lib\ext\QTJava.zip</value>
+    <value type="QString">SESSIONNAME=Console</value>
+    <value type="QString">SYSTEMDRIVE=C:</value>
+    <value type="QString">SYSTEMROOT=C:\Windows</value>
+    <value type="QString">TEMP=C:\Users\jonas\AppData\Local\Temp</value>
+    <value type="QString">TMP=C:\Users\jonas\AppData\Local\Temp</value>
+    <value type="QString">USERDOMAIN=JonesNetBook</value>
     <value type="QString">USERNAME=jonas</value>
-    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-jonas-lMbGlP/database</value>
-    <value type="QString">XDG_CONFIG_DIRS=/etc/xdg/xdg-gnome:/etc/xdg</value>
-    <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/</value>
-    <value type="QString">XDG_SESSION_COOKIE=19e0238ffaa80d821ab4211e4bfcf587-1275995301.723060-300670376</value>
+    <value type="QString">USERPROFILE=C:\Users\jonas</value>
+    <value type="QString">WINDIR=C:\Windows</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
     <value type="QString">-w</value>
    </valuelist>
-   <value key="abstractProcess.command" type="QString">/usr/bin/make</value>
+   <value key="abstractProcess.command" type="QString">D:/MinGW/bin/mingw32-make.exe</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">/home/jonas/Documents/Studium/Vorlesungen/SS10/Padi/Project/OpenCompetition</value>
+   <value key="abstractProcess.workingDirectory" type="QString">D:/Documents/Studium/Vorlesungen/SS10/Padi/Project/OpenCompetition</value>
   </valuemap>
  </data>
  <data>
@@ -170,36 +177,37 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-7nydR1oAUj,guid=1a9256de2fd0b0ada565acc04c0e24a6</value>
-    <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
-    <value type="QString">DESKTOP_SESSION=gnome</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-7VKQc2rUDZ,guid=13e719b51a3b303c4466dcf94c0f49d9</value>
+    <value type="QString">DESKTOP_SESSION=default</value>
     <value type="QString">DISPLAY=:0.0</value>
-    <value type="QString">GDMSESSION=gnome</value>
-    <value type="QString">GDM_KEYBOARD_LAYOUT=de	nodeadkeys</value>
-    <value type="QString">GDM_LANG=de_DE.utf8</value>
+    <value type="QString">GDMSESSION=default</value>
+    <value type="QString">GDM_LANG=de_DE.UTF-8</value>
+    <value type="QString">GDM_XSERVER_LOCATION=local</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-nyLwB3</value>
+    <value type="QString">GNOME_KEYRING_PID=2759</value>
+    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-3z4pjP/socket</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-XLM0rp/S.gpg-agent:2854:1</value>
     <value type="QString">GTK_MODULES=canberra-gtk-module</value>
+    <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/home/jonas/.gtkrc-1.2-gnome2</value>
     <value type="QString">HOME=/home/jonas</value>
-    <value type="QString">LANG=de_DE.utf8</value>
-    <value type="QString">LD_LIBRARY_PATH=/home/jonas/Entwicklung/QtSDK/lib/qtcreator:</value>
+    <value type="QString">LANG=de_DE.UTF-8</value>
+    <value type="QString">LAUNCHER_NORESTART=0</value>
+    <value type="QString">LD_LIBRARY_PATH=/host/Entwicklung/QtSDK_X11/lib/qtcreator:</value>
     <value type="QString">LOGNAME=jonas</value>
-    <value type="QString">MANDATORY_PATH=/usr/share/gconf/gnome.mandatory.path</value>
     <value type="QString">ORBIT_SOCKETDIR=/tmp/orbit-jonas</value>
-    <value type="QString">PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
-    <value type="QString">PWD=/home/jonas/Entwicklung/QtSDK/bin</value>
-    <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/JonesBook:@/tmp/.ICE-unix/1291,unix/JonesBook:/tmp/.ICE-unix/1291</value>
+    <value type="QString">PATH=/host/Entwicklung/QtSDK_X11/qt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
+    <value type="QString">PWD=/home/jonas</value>
+    <value type="QString">QTDIR=/host/Entwicklung/QtSDK_X11/qt</value>
+    <value type="QString">SESSION_MANAGER=local/JonesNetBook:/tmp/.ICE-unix/2776</value>
     <value type="QString">SHELL=/bin/bash</value>
-    <value type="QString">SPEECHD_PORT=7560</value>
-    <value type="QString">SSH_AGENT_PID=1325</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-nyLwB3/ssh</value>
+    <value type="QString">SSH_AGENT_PID=2831</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-3z4pjP/socket.ssh</value>
     <value type="QString">USER=jonas</value>
     <value type="QString">USERNAME=jonas</value>
-    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-jonas-lMbGlP/database</value>
-    <value type="QString">XDG_CONFIG_DIRS=/etc/xdg/xdg-gnome:/etc/xdg</value>
-    <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/</value>
-    <value type="QString">XDG_SESSION_COOKIE=19e0238ffaa80d821ab4211e4bfcf587-1275995301.723060-300670376</value>
+    <value type="QString">WINDOWPATH=7</value>
+    <value type="QString">XAUTHORITY=/home/jonas/.Xauthority</value>
+    <value type="QString">XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
+    <value type="QString">XDG_SESSION_COOKIE=82a6d7e59de2ff8f18f8a8cb4b040e97-1276070360.646567-1717403779</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">true</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
@@ -208,7 +216,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString">/usr/bin/make</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">/home/jonas/Documents/Studium/Vorlesungen/SS10/Padi/Project/OpenCompetition</value>
+   <value key="abstractProcess.workingDirectory" type="QString">/host/Documents/Studium/Vorlesungen/SS10/Padi/Project/OpenCompetition</value>
    <value key="cleanConfig" type="bool">true</value>
    <valuelist key="makeargs" type="QVariantList">
     <value type="QString">clean</value>
