@@ -68,7 +68,6 @@ bool Competition::saveToFile(const QString &filename)
     QDomDocument compXMLDoc("competition");
     QDomAttr versionAttr = compXMLDoc.createAttribute("version");
     versionAttr.setValue("1.0");
-    compXMLDoc.appendChild(versionAttr);
     compXMLDoc.appendChild(toDomElement(&compXMLDoc));
 
     if (outputFile.open(QFile::WriteOnly | QFile::Text))
@@ -81,12 +80,12 @@ bool Competition::saveToFile(const QString &filename)
     }
 }
 
-bool Competition::loadFromFile(const QString &filename)
+bool Competition::loadFromFile(const QString &filename,QString* errorMsg,int* errorLine,int* errorColumn )
 {
     QFile inputFile(filename);
 
     QDomDocument compXMLDoc;
-    if (compXMLDoc.setContent(&inputFile))
+    if (compXMLDoc.setContent(&inputFile,errorMsg,errorLine,errorColumn))
     {
         QDomNamedNodeMap attrMap = compXMLDoc.elementsByTagName("competitiondata").item(0).attributes();
         m_name = attrMap.namedItem("name").nodeValue();

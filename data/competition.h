@@ -68,12 +68,17 @@ public slots:
 
     /*!
       This function saves the competition as XML-Data
+      @param filename The filename.
       */
     bool saveToFile(const QString& filename);
     /*!
       This function loades the competition from an XML-file
+      @param filename The filename of the XML-file
+      @param errorMsg Where to put the error message in case of an error.
+      @param errorLine Where to put the line number of the error.
+      @param errorColumn Where to put the column of the error.
       */
-    bool loadFromFile(const QString& filename);
+    bool loadFromFile(const QString& filename, QString* errorMsg = 0,int* errorLine = 0,int* errorColumn = 0);
     /*!
       Set the name of the competition.
         @param name Name of the Competition.
