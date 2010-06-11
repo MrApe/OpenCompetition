@@ -54,14 +54,26 @@ void MainWindow::openCompetition()
 
 void MainWindow::openCompetitionFromFile(const QString &filename)
 {
-    QMessageBox::information(this,"Opening File",filename);
+    if (!m_competition->loadFromFile(filename))
+    {
+        QMessageBox info(this);
+        info.setText(tr("Open Error."));
+        info.setInformativeText(tr("Opening competition file failed."));
+        info.setStandardButtons(QMessageBox::Ok);
+        info.setDefaultButton(QMessageBox::Ok);
+        info.setIcon(QMessageBox::Information);
+        QString lineNum;
+        QString colNum;
+        info.setDetailedText(errorMsg + lineNum.setNum(line) + colNum.setNum(column));
+        info.exec();
+    }
 }
 
 void MainWindow::closeCompetition()
 {
     QMessageBox msgBox;
-    msgBox.setText("Der aktuelle Wettkampf wird geschlossen.");
-    msgBox.setInformativeText("Sollen die Änderungen gespeichert werden?");
+    msgBox.setText(tr("The current competition will be closed."));
+    msgBox.setInformativeText(tr("Save changes?"));
     msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
     msgBox.setDefaultButton(QMessageBox::Save);
     int ret = msgBox.exec();
