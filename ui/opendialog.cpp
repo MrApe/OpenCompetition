@@ -147,18 +147,19 @@ void OpenDialog::setShownCompetition(smallCompT competition)
     ui->isRLTBox->setChecked(competition.isRLT);
     ui->description->setText(competition.description);
 
-//      The following Selection detection is buggy (infinitive loop with SelectionChanged Signal)
-    //      TODO: Repair!
-//    unsigned int index = 0;
-//    bool contains = false;
-//    for (; index < m_recentComp.size() && !contains;index++)
-//    {
-//        contains =  m_recentComp.at(index) == competition;
-//    }
-//    if (contains && !ui->historyWidget->itemAt(index+1,0)->isSelected())
-//    {
-//        ui->historyWidget->itemAt(index+1,0)->setSelected(true);
-//    }
+    //Check if shown competition is selected in the history widget
+    unsigned int index = 0;
+    bool contains = false;
+    while (!contains && index<m_recentComp.size())
+    {
+        contains = m_recentComp.at(index).filename == competition.filename;
+        index++;
+    }
+    //otherwise select it
+    if (contains && !ui->historyWidget->topLevelItem(index-1)->isSelected())
+    {
+        ui->historyWidget->topLevelItem(index-1)->setSelected(true);
+    }
 
     emit openFileChanged(competition.filename);
 }

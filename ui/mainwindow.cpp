@@ -56,6 +56,9 @@ void MainWindow::openCompetitionFromFile(const QString &filename)
 {
     if (!m_competition->loadFromFile(filename))
     {
+        QString errorMsg;
+        int line = 0;
+        int column = 0;
         QMessageBox info(this);
         info.setText(tr("Open Error."));
         info.setInformativeText(tr("Opening competition file failed."));
