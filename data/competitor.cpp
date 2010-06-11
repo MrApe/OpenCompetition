@@ -9,6 +9,18 @@ Competitor::Competitor(const QString& name,
 {
 }
 
+bool Competitor::operator ==(const Competitor& other) const
+{
+    return (m_name == other.getName() &&
+            m_birth == other.getBirth() &&
+            m_gender == other.getGender());
+}
+
+bool Competitor::operator !=(const Competitor& other) const
+{
+    return !(*this==other);
+}
+
 QDomElement Competitor::toDomElement(QDomDocument *parentDocument)
 {
     QDomElement competitor = parentDocument->createElement("competitor");

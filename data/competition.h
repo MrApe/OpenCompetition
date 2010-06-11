@@ -40,6 +40,13 @@ public:
     Competition();
 
     /*!
+      This method checks if this competition contains the given group in its startlist.
+      @param group The group to be found.
+      @return True if the group is contained. False otherwise.
+      */
+    bool contains(const Group& group) const;
+
+    /*!
       This method creates a QDomDocument and returnes it as an xml-Structure.
       @return The Competition as QDomDocument.
       */
@@ -121,6 +128,12 @@ public slots:
     */
     inline void setDescription(const QString& description){
         m_description = description;}
+    /*!
+      This function adds the given groups to the competition.
+      Groups are interpretet as starter and can be individuals.
+      @param groups Groups to be added.
+      */
+    void addGroups(std::vector<Group>& groups, QString* logMessage = 0);
 
 
 private:

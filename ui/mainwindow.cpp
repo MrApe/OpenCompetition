@@ -14,6 +14,7 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     m_settings(settings)
 {   
     ui->setupUi(this);
+    connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
 }
 
 MainWindow::~MainWindow()
@@ -34,9 +35,14 @@ void MainWindow::changeEvent(QEvent *e)
     }
 }
 
+void MainWindow::updateWindow()
+{
+    setWindowTitle(m_competition!=NULL?tr("OpenCompetition - ")+m_fileName.section('/',-1):("OpenCompetition"));
+}
+
 void MainWindow::on_Btn_import_clicked()
 {
-    importModule* importWindow = new importModule();
+    importModule* importWindow = new importModule(m_competition);
     importWindow->show();
 }
 
@@ -44,10 +50,8 @@ void MainWindow::openCompetition()
 {
     closeCompetition();
 
-    while (m_competition==NULL || m_fileName == ""){
-        OpenDialog openDiag(m_settings,this);
-        m_fileName = openDiag.exec();
-    }
+    OpenDialog openDiag(m_settings,this);
+    m_fileName = openDiag.getSelectedFile();
 
     openCompetitionFromFile(m_fileName);
 }
@@ -69,6 +73,8 @@ void MainWindow::openCompetitionFromFile(const QString &filename)
         QString colNum;
         info.setDetailedText(errorMsg + lineNum.setNum(line) + colNum.setNum(column));
         info.exec();
+    } else {
+
     }
 }
 

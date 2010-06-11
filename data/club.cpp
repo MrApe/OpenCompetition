@@ -5,6 +5,16 @@ Club::Club(const QString &name):
 {
 }
 
+bool Club::operator ==(const Club& other) const
+{
+    return m_name==other.getName();
+}
+
+bool Club::operator !=(const Club& other) const
+{
+    return m_name!=other.getName();
+}
+
 QDomElement Club::toDomElement(QDomDocument *parentDocument)
 {
     QDomElement clubElement = parentDocument->createElement("club");

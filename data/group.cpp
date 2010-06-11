@@ -13,6 +13,16 @@ QString Group::categorieToString(categorieType categorie)
     }
 }
 
+Group::categorieType Group::categorieFromString(const QString &catAsString)
+{
+    if (catAsString == QObject::tr("IM")) return INDIVIDUAL_MEN;
+    if (catAsString == QObject::tr("IW")) return INDIVIDUAL_WOMEN;
+    if (catAsString == QObject::tr("Mixed")) return MIXED_PAIR;
+    if (catAsString == QObject::tr("Pair/Trio")) return PAIR_TRIO;
+    if (catAsString == QObject::tr("Group")) return GROUP;
+    return GROUP;
+}
+
 Group::Group(const std::vector<Competitor>& competitors,
              const categorieType categorie,
              const Club& cl):
@@ -20,15 +30,71 @@ Group::Group(const std::vector<Competitor>& competitors,
         m_categorie(categorie),
         m_club(cl)
 {
+}
 
+Group::Group(const Group &other):
+        m_competitors(),
+        m_categorie(other.getType()),
+        m_club(other.getClub().getName())
+{
+    for (unsigned int i = 0; i < other.getCompetitors().size(); i++)
+    {
+        m_competitors.push_back(Competitor(other.getCompetitors().at(i).getName(),
+                                           other.getCompetitors().at(i).getBirth(),
+                                           other.getCompetitors().at(i).getGender()));
+    }
+}
+
+bool Group::operator ==(const Group& other) const
+{
+    for (unsigned int i = 0; i<m_competitors.size(); i++)
+    {
+        if (m_competitors.at(i) != other.getCompetitors().at(i))
+        {
+            return false;
+        }
+    }
+    if (m_club != other.getClub()) return false;
+    if (m_categorie != other.getType()) return false;
+
+    return true;
+}
+
+bool Group::operator!=(const Group& other) const
+{
+    return !(*this==other);
+}
+
+bool Group::contains(const Competitor &competitor)
+{
+    for (std::vector<Competitor>::iterator i = m_competitors.begin(); i != m_competitors.end(); i++)
+    {
+        if ((*i)==competitor) return true;
+    }
+    return false;
+}
+
+QString Group::toString()
+{
+    QString output;
+    output.append(QObject::tr("Club: ")+m_club.getName());
+    output.append(QObject::tr("Categorie: ")+Group::categorieToString(m_categorie));
+    output.append(QObject::tr("Starter: "));
+    for (unsigned int i = 0; i<m_competitors.size(); i++)
+    {
+       output.append(m_competitors.at(i).getName());
+    }
+    return output;
 }
 
 void Group::addCompetitor(Competitor comp) throw (ToManyCompetitorsException){
     if (m_competitors.size() == 6) {
         throw new ToManyCompetitorsException();
     } else {
+        if (!contains(comp)){
             m_competitors.push_back(comp);
         }
+    }
 }
 
 Group::categorieType Group::guessType(){

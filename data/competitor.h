@@ -16,6 +16,9 @@ public:
                const unsigned int birth,
                genderType gender);
 
+    bool operator ==(const Competitor& other) const;
+    bool operator !=(const Competitor& other) const;
+
     /*!
       This method creates a DomElement out of this object and returns it to the caller.
       @return The current object as DomElement.

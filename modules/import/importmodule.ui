@@ -147,20 +147,25 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QScrollArea" name="scrollArea">
-            <property name="widgetResizable">
+           <widget class="QPlainTextEdit" name="logArea">
+            <property name="autoFillBackground">
              <bool>true</bool>
             </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>336</width>
-               <height>191</height>
-              </rect>
-             </property>
-            </widget>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::NoTextInteraction</set>
+            </property>
+            <property name="backgroundVisible">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
          </layout>
@@ -376,9 +381,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>next</sender>
+   <signal>clicked()</signal>
+   <receiver>importModule</receiver>
+   <slot>importFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>352</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>nextPage()</slot>
   <slot>selectFiles()</slot>
+  <slot>importFiles()</slot>
  </slots>
 </ui>

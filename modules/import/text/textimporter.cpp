@@ -37,11 +37,30 @@ std::vector<Group> TextImporter::parseText(QString text){
 
     int clubBase = announcement.indexOf("Verein:");
     int clubEnd = announcement.indexOf(QChar::LineSeparator,clubBase);
-    Club c(text.mid(clubBase+7,clubEnd));
+    Club c(announcement.mid(clubBase+7,clubEnd).simplified());
 
-    std::cout << c.getName().toStdString() << std::endl;
+    int catBase = announcement.indexOf("Kategorie:");
+    int catEnd = announcement.indexOf(QChar::LineSeparator,catEnd);
+    Group::categorieType cat = Group::categorieFromString(announcement.mid(catBase+10,catEnd).simplified());
 
-    //foundGroups.push_back(Group(std::vector<Group>(),Group::INDIVIDUAL_MEN,c));
+    int startBase = announcement.indexOf("Starter:");
+    startBase = announcement.indexOf("*",startBase);
+
+    std::vector<Competitor> competitors;
+    int startEnd = -1;
+    while (startBase != -1)
+    {
+        startBase+=1;
+        startEnd = announcement.indexOf(QChar::LineSeparator,startBase);
+        QString starter = announcement.mid(startBase,startEnd);
+        Competitor comp(starter.section(",",0,0),
+                        starter.section(",",2,2).toUInt(),
+                        starter.section(",",1,1).contains("m")?Competitor::MALE:Competitor::FEMALE);
+        competitors.push_back(comp);
+        startBase = announcement.indexOf("*",startEnd);
+    }
+
+    foundGroups.push_back(Group(competitors,cat,c));
 
     return foundGroups;
 }

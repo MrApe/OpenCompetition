@@ -3,12 +3,14 @@
 #include <QFileDialog>
 #include "text/textimporter.h"
 
-importModule::importModule(QWidget *parent) :
+importModule::importModule(Competition* importTarget, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::importModule),
-    m_pluginProvider()
+    m_pluginProvider(),
+    m_importTarget(importTarget)
 {
     ui->setupUi(this);
+    connect(this,SIGNAL(log(QString)),this,SLOT(writeToLog(QString)));
     TextImporter* textimporter = new TextImporter("txt");
     m_pluginProvider.addPlugin(textimporter);
 }
@@ -31,13 +33,25 @@ void importModule::changeEvent(QEvent *e)
 }
 
 void importModule::importFiles(){
+    ui->stackedWidget->setCurrentIndex(ui->stackedWidget->currentIndex()+1);
+
     std::vector<Group> foundGroups;
     for (int i = 0; i < ui->meldungenListe->count();i++ )
     {
         QString current = ui->meldungenListe->itemAt(i,0)->text();
-        foundGroups = m_pluginProvider.getPluginFor(current.section('.',1,2))->importFile(current);
+        emit log(tr("Processing File: ")+current);
+        foundGroups = m_pluginProvider.getPluginFor(current.section('.',-1))->importFile(current);
+        emit log(tr("Found %n group(s)","",foundGroups.size()));
+        QString logMessage;
+        m_importTarget->addGroups(foundGroups,&logMessage);
+        emit log(logMessage);
     }
-    ui->stackedWidget->setCurrentIndex(ui->stackedWidget->currentIndex()+1);
+
+}
+
+void importModule::writeToLog(const QString &message)
+{
+    ui->logArea->appendPlainText(message);
 }
 
 void importModule::selectFiles(){
@@ -45,7 +59,7 @@ void importModule::selectFiles(){
     QFileDialog dialog(this);
     dialog.setWindowTitle(tr("Select Registration"));
     dialog.setFileMode(QFileDialog::ExistingFiles);
-    dialog.setNameFilter("Registration *.doc *.pdf *.txt");
+    dialog.setNameFilter(tr("Registration *.doc *.pdf *.txt"));
     if (dialog.exec())
         fileNames = dialog.selectedFiles();
 

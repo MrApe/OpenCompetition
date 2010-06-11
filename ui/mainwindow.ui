@@ -297,7 +297,7 @@
    <sender>action_ffnen_Dialog</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
-   <slot>openFromFile()</slot>
+   <slot>openCompetition()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -313,6 +313,6 @@
  <slots>
   <slot>saveToFile()</slot>
   <slot>saveToFileAs()</slot>
-  <slot>openFromFile()</slot>
+  <slot>openCompetition()</slot>
  </slots>
 </ui>

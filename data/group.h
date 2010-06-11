@@ -19,10 +19,18 @@ public:
     };
 
     static QString categorieToString(const categorieType categorie);
+    static categorieType categorieFromString(const QString& catAsString);
 
     Group(const std::vector<Competitor>& competitors,
           const categorieType categorie,
           const Club& cl);
+
+    Group(const Group& other);
+
+    bool operator ==(const Group& other) const;
+    bool operator!=(const Group& other) const;
+
+    QString toString();
 
     /*!
       This method adds a competitor to the group. It throws an exception is the group is full.
@@ -41,6 +49,12 @@ public:
       @return The current object as DomElement.
       */
     virtual QDomElement toDomElement(QDomDocument* parentDocument);
+    /*!
+      This method checks if the group contains the given competitior.
+      @param competitor Competitor to find.
+      @return True is the competitor is part of the group. False otherwise.
+      */
+    bool contains(const Competitor& competitor);
 
 
     /*

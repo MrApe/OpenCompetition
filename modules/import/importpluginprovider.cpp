@@ -21,7 +21,7 @@ AbstractImporter* ImportPluginProvider::getPluginFor(const QString& fileExt) {
     AbstractImporter* ret = NULL;
 
     unsigned int i = 0;
-    while (ret!=NULL && i<m_plugins.size())
+    while (ret==NULL && i<m_plugins.size())
     {
         ret = (m_plugins.at(i)->getFilter() == fileExt) ? (m_plugins.at(i)) : NULL;
         i++;

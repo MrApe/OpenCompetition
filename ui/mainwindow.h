@@ -31,6 +31,10 @@ private slots:
     void saveToFile();
     void saveToFileAs();
     void closeCompetition();
+    void updateWindow();
+
+signals:
+    void competitionChanged();
 };
 
 #endif // MAINWINDOW_H

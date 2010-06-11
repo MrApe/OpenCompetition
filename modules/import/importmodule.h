@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "abstractimporter.h"
 #include "importpluginprovider.h"
+#include "data/competition.h"
 
 namespace Ui {
     class importModule;
@@ -12,7 +13,7 @@ namespace Ui {
 class importModule : public QWidget {
     Q_OBJECT
 public:
-    importModule(QWidget *parent = 0);
+    importModule(Competition* importTarget, QWidget *parent = 0);
     ~importModule();
 
 protected:
@@ -21,13 +22,18 @@ protected:
 private:
     Ui::importModule *ui;
     ImportPluginProvider m_pluginProvider;
+    Competition* m_importTarget;
 
 public slots:
     void importFiles();
     void selectFiles();
+    void writeToLog(const QString& message);
 
 private slots:
     void on_remove_clicked();
+
+signals:
+    void log(const QString& message);
 };
 
 

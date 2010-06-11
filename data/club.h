@@ -9,6 +9,9 @@ class Club : public AbstractXMLElement
 public:
     Club(const QString& name);
 
+    bool operator ==(const Club& other) const;
+    bool operator!=(const Club& other) const;
+
     /*!
      * Inline getter and setter
      */

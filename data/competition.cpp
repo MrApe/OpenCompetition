@@ -34,6 +34,16 @@ Competition::Competition(const QString &name,
     QMessageBox::critical(NULL,tr("Open error!"),tr("Competition could not be opened due to the following error: "),QMessageBox::Ok,QMessageBox::Ok);
 }
 
+bool Competition::contains(const Group &group) const
+{
+    for (unsigned int i = 0; i < m_starter.size();i++)
+    {
+        if (group == m_starter.at(i)) return true;
+    }
+
+    return false;
+}
+
 QDomElement Competition::toDomElement(QDomDocument* parentDocument)
 {
 
@@ -97,5 +107,16 @@ bool Competition::loadFromFile(const QString &filename,QString* errorMsg,int* er
     }
     return false;
 
+}
+
+void Competition::addGroups(std::vector<Group>& groups, QString* logMessage)
+{
+    std::vector<Group>::iterator it;
+    for (it = groups.begin(); it!=groups.end(); it++)
+    {
+        Group newGroup(*it);
+        if (logMessage!=0) logMessage->append(newGroup.toString());
+        if (!contains(newGroup)) m_starter.push_back(newGroup);
+    }
 }
 
