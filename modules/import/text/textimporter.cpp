@@ -18,8 +18,7 @@ const std::vector<Group> TextImporter::importFile(const QString &fileName) throw
     }
     else
     {
-        QByteArray fileContent = file.readAll();
-        std::vector<Group> foundInCurrent = parseText(QString(fileContent));
+        std::vector<Group> foundInCurrent = parseText(file);
         for (uint i = 0; i < foundInCurrent.size(); i++)
         {
             foundGroups.push_back(foundInCurrent.at(i));
@@ -29,38 +28,57 @@ const std::vector<Group> TextImporter::importFile(const QString &fileName) throw
     return foundGroups;
 }
 
-std::vector<Group> TextImporter::parseText(QString text){
-    std::vector<Group> foundGroups;
+std::vector<Group> TextImporter::parseText(QFile& file){
+    QString line;
+    std::vector<Group> gr;
+    gr.clear();
 
-    int annBase = text.indexOf("Verbindliche Meldung");
-    QString announcement = text.remove(0,annBase);
-
-    int clubBase = announcement.indexOf("Verein:");
-    int clubEnd = announcement.indexOf(QChar::LineSeparator,clubBase);
-    Club c(announcement.mid(clubBase+7,clubEnd).simplified());
-
-    int catBase = announcement.indexOf("Kategorie:");
-    int catEnd = announcement.indexOf(QChar::LineSeparator,catEnd);
-    Group::categorieType cat = Group::categorieFromString(announcement.mid(catBase+10,catEnd).simplified());
-
-    int startBase = announcement.indexOf("Starter:");
-    startBase = announcement.indexOf("*",startBase);
-
-    std::vector<Competitor> competitors;
-    int startEnd = -1;
-    while (startBase != -1)
-    {
-        startBase+=1;
-        startEnd = announcement.indexOf(QChar::LineSeparator,startBase);
-        QString starter = announcement.mid(startBase,startEnd);
-        Competitor comp(starter.section(",",0,0),
-                        starter.section(",",2,2).toUInt(),
-                        starter.section(",",1,1).contains("m")?Competitor::MALE:Competitor::FEMALE);
-        competitors.push_back(comp);
-        startBase = announcement.indexOf("*",startEnd);
+    //skip preämbel
+    while (!line.contains("Verbindliche Meldung")){
+        line = file.readLine();
     }
 
-    foundGroups.push_back(Group(competitors,cat,c));
+    //find club
+    while (!line.contains("Verein:")  && !file.atEnd()){
+        line = file.readLine();
+    }
+    QString name = line.remove(0,line.indexOf("Verein:")+7).simplified();
+    Club c(name);
 
-    return foundGroups;
+    //find categorie
+    while (!line.contains("Kategorie:") && !file.atEnd()){
+        line = file.readLine();
+    }
+
+    while (line.contains("Kategorie:") && !file.atEnd()) {
+        QString catString = line.remove(0,line.indexOf("Kategorie:")+10).simplified();
+        Group::categorieType cat = Group::categorieFromString(catString);
+
+        //find starter
+        while (!line.contains("Starter:")  && !file.atEnd()){
+            line = file.readLine();
+        }
+        line = file.readLine();
+
+        std::vector<Competitor> competitors;
+        QString starter;
+        while (line.contains("*") &&
+               !file.atEnd() &&
+               !line.contains("Kategorie:")) {
+
+            starter = line.remove(0,line.indexOf("*")+2);
+            Competitor comp(starter.section(",",0,0),
+                            starter.section(",",2,2).toUInt(),
+                            starter.section(",",1,1).contains("m")?Competitor::MALE:Competitor::FEMALE);
+            competitors.push_back(comp);
+
+            line = file.readLine();
+        }
+
+        gr.push_back(Group(competitors,cat,c));
+    }
+
+
+
+    return gr;
 }

@@ -79,6 +79,7 @@
    <valuelist key="abstractProcess.Environment" type="QVariantList">
     <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-Dp3qDXsyqJ,guid=9ec75027c2cbf53ae7ac19794c10a150</value>
     <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
+    <value type="QString">DESKTOP_AUTOSTART_ID=10ceb328ee3ae30b127615828835256900000013310000</value>
     <value type="QString">DESKTOP_SESSION=gnome</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">GDMSESSION=gnome</value>
@@ -127,6 +128,7 @@
    <valuelist key="abstractProcess.Environment" type="QVariantList">
     <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-Dp3qDXsyqJ,guid=9ec75027c2cbf53ae7ac19794c10a150</value>
     <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
+    <value type="QString">DESKTOP_AUTOSTART_ID=10ceb328ee3ae30b127615828835256900000013310000</value>
     <value type="QString">DESKTOP_SESSION=gnome</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">GDMSESSION=gnome</value>
