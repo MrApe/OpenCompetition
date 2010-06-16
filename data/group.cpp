@@ -23,6 +23,14 @@ Group::categorieType Group::categorieFromString(const QString &catAsString)
     return GROUP;
 }
 
+Group::Group():
+        m_competitors(),
+        m_categorie(),
+        m_club(QObject::tr("Not Set"))
+{
+
+}
+
 Group::Group(const std::vector<Competitor>& competitors,
              const categorieType categorie,
              const Club& cl):

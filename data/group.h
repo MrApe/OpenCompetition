@@ -21,6 +21,8 @@ public:
     static QString categorieToString(const categorieType categorie);
     static categorieType categorieFromString(const QString& catAsString);
 
+    Group();
+
     Group(const std::vector<Competitor>& competitors,
           const categorieType categorie,
           const Club& cl);

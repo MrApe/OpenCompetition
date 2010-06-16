@@ -1,5 +1,6 @@
 #include "textimporter.h"
-#include "QFile"
+#include <QFile>
+#include <QVector>
 #include "data/club.h"
 #include "iostream"
 
@@ -18,8 +19,8 @@ const std::vector<Group> TextImporter::importFile(const QString &fileName) throw
     }
     else
     {
-        std::vector<Group> foundInCurrent = parseText(file);
-        for (uint i = 0; i < foundInCurrent.size(); i++)
+        QVector<Group> foundInCurrent = parseText(file);
+        for (int i = 0; i < foundInCurrent.size(); i++)
         {
             foundGroups.push_back(foundInCurrent.at(i));
         }
@@ -28,10 +29,9 @@ const std::vector<Group> TextImporter::importFile(const QString &fileName) throw
     return foundGroups;
 }
 
-std::vector<Group> TextImporter::parseText(QFile& file){
+QVector<Group> TextImporter::parseText(QFile& file){
     QString line;
-    std::vector<Group> gr;
-    gr.clear();
+    QVector<Group> groupList;
 
     //skip preämbel
     while (!line.contains("Verbindliche Meldung")){
@@ -75,10 +75,9 @@ std::vector<Group> TextImporter::parseText(QFile& file){
             line = file.readLine();
         }
 
-        gr.push_back(Group(competitors,cat,c));
+        Group found(competitors,cat,c);
+        groupList.append(found);
     }
 
-
-
-    return gr;
+    return groupList;
 }

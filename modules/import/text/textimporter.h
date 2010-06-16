@@ -4,6 +4,7 @@
 #include <QString>
 #include <QFile>
 #include <vector>
+#include <QVector>
 #include "modules/import/abstractimporter.h"
 
 class TextImporter : public AbstractImporter
@@ -14,7 +15,7 @@ public:
     virtual const std::vector<Group> importFile(const QString& fileName) throw (FileNotOpenedException);
 
 private:
-    std::vector<Group> parseText(QFile& file);
+    QVector<Group> parseText(QFile& file);
 };
 
 #endif // TEXTIMPORTER_H
