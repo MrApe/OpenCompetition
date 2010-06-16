@@ -50,9 +50,17 @@ QList<Group> TextImporter::parseText(QFile& file){
         line = file.readLine();
     }
 
+
     while (line.contains("Kategorie:") && !file.atEnd()) {
         QString catString = line.remove(0,line.indexOf("Kategorie:")+10).simplified();
         Group::categorieType cat = Group::categorieFromString(catString);
+
+        //find age group
+        while (!line.contains("Altersklasse:") && !file.atEnd()){
+            line = file.readLine();
+        }
+        QString ageString = line.remove(0,line.indexOf("Alterklasse:")+16).simplified();
+        Group::ageType age = Group::ageFromString(ageString);
 
         //find starter
         while (!line.contains("Starter:")  && !file.atEnd()){
@@ -75,7 +83,7 @@ QList<Group> TextImporter::parseText(QFile& file){
             line = file.readLine();
         }
 
-        Group found(competitors,cat,c);
+        Group found(competitors,age,cat,c);
         groupList.append(found);
     }
 

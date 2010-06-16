@@ -18,12 +18,23 @@ public:
         GROUP
     };
 
+    enum ageType{
+        NATIONAL_DEVELOPMENT,
+        AG_ONE,
+        AG_TWO,
+        SENIORS,
+        UNSET
+    };
+
     static QString categorieToString(const categorieType categorie);
+    static QString ageToString(const ageType age);
     static categorieType categorieFromString(const QString& catAsString);
+    static ageType ageFromString(const QString& ageAsString);
 
     Group();
 
     Group(const QList<Competitor>& competitors,
+          const ageType age,
           const categorieType categorie,
           const Club& cl);
 
@@ -65,6 +76,9 @@ public:
     inline void setCompetitors(const QList<Competitor>& competitors){
         m_competitors = competitors;
     }
+    inline void setAge(const ageType age){
+        m_age = age;
+    }
     inline void setType(const categorieType categorie){
         m_categorie = categorie;
     }
@@ -73,6 +87,9 @@ public:
     }
     inline const QList<Competitor>& getCompetitors() const {
         return m_competitors;
+    }
+    inline ageType getAge() const{
+        return m_age;
     }
     inline categorieType getType() const{
         return m_categorie;
@@ -84,6 +101,7 @@ public:
 
 private:
     QList<Competitor> m_competitors;
+    ageType m_age;
     categorieType m_categorie;
     Club m_club;
 

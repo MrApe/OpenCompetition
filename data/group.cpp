@@ -13,6 +13,17 @@ QString Group::categorieToString(categorieType categorie)
     }
 }
 
+QString Group::ageToString(ageType age)
+{
+    switch (age) {
+    case NATIONAL_DEVELOPMENT: return QObject::tr("National Development");
+    case AG_ONE: return QObject::tr("Age Group 1");
+    case AG_TWO: return QObject::tr("Age Group 2");
+    case SENIORS: return QObject::tr("Seniors");
+    default:return QObject::tr("unknown"); //should not be reached
+    }
+}
+
 Group::categorieType Group::categorieFromString(const QString &catAsString)
 {
     if (catAsString == QObject::tr("IM")) return INDIVIDUAL_MEN;
@@ -23,8 +34,18 @@ Group::categorieType Group::categorieFromString(const QString &catAsString)
     return GROUP;
 }
 
+Group::ageType Group::ageFromString(const QString &ageAsString)
+{
+    if (ageAsString == QObject::tr("National Development")) return NATIONAL_DEVELOPMENT;
+    if (ageAsString == QObject::tr("Age Group 1")) return AG_ONE;
+    if (ageAsString == QObject::tr("Age Group 2")) return AG_TWO;
+    if (ageAsString == QObject::tr("Seniors")) return SENIORS;
+    return UNSET;
+}
+
 Group::Group():
         m_competitors(),
+        m_age(),
         m_categorie(),
         m_club(QObject::tr("Not Set"))
 {
@@ -32,9 +53,11 @@ Group::Group():
 }
 
 Group::Group(const QList<Competitor>& competitors,
+             const ageType age,
              const categorieType categorie,
              const Club& cl):
         m_competitors(competitors),
+        m_age(age),
         m_categorie(categorie),
         m_club(cl)
 {
@@ -42,6 +65,7 @@ Group::Group(const QList<Competitor>& competitors,
 
 Group::Group(const Group &other):
         m_competitors(),
+        m_age(other.getAge()),
         m_categorie(other.getType()),
         m_club(other.getClub().getName())
 {
@@ -86,6 +110,7 @@ QString Group::toString()
 {
     QString output;
     output.append(QObject::tr("Club: ")+m_club.getName()+"\n");
+    output.append(QObject::tr("Age Group: ")+Group::ageToString(m_age)+"\n");
     output.append(QObject::tr("Categorie: ")+Group::categorieToString(m_categorie)+"\n");
     output.append(QObject::tr("Starter: ")+"\n");
     for (int i = 0; i<m_competitors.size(); i++)
@@ -120,6 +145,7 @@ Group::categorieType Group::guessType(){
 QDomElement Group::toDomElement(QDomDocument *parentDocument)
 {
     QDomElement groupElement = parentDocument->createElement("group");
+    groupElement.setAttribute("agegroup",ageToString(m_age));
     groupElement.setAttribute("categorie",categorieToString(m_categorie));
     groupElement.appendChild(m_club.toDomElement(parentDocument));
     QDomElement competitorsElement = parentDocument->createElement("competitors");

@@ -4,12 +4,12 @@
 <context>
     <name>Competition</name>
     <message>
-        <location filename="../data/competition.cpp" line="34"/>
+        <location filename="../data/competition.cpp" line="35"/>
         <source>Open error!</source>
         <translation>Fehler beim Öffnen!</translation>
     </message>
     <message>
-        <location filename="../data/competition.cpp" line="34"/>
+        <location filename="../data/competition.cpp" line="35"/>
         <source>Competition could not be opened due to the following error: </source>
         <translation>Der Wettkampf konnte nicht geöffnet werden. Fehler: </translation>
     </message>
@@ -112,12 +112,37 @@
         <translation>Speichern unter..</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="106"/>
+        <location filename="../ui/mainwindow.cpp" line="40"/>
+        <source>OpenCompetition - </source>
+        <translation>OpenCompetition - </translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="67"/>
+        <source>Open Error.</source>
+        <translation>Fehler beim Öffnen.</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="68"/>
+        <source>Opening competition file failed.</source>
+        <translation>Öffnen der Wettkampfdatei fehlgeschlagen.</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="84"/>
+        <source>The current competition will be closed.</source>
+        <translation>Aktuell geöffneter Wettkampf wird geschlossen.</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="85"/>
+        <source>Save changes?</source>
+        <translation>Änderungen speichern?</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="127"/>
         <source>Wettkampf speichern</source>
         <translation>Wettkampf speichern</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="108"/>
+        <location filename="../ui/mainwindow.cpp" line="129"/>
         <source>Wettkampf (*.cmp);; AllFiles (*)</source>
         <translation>Wettkampf (*.cmp;; Alle Dateien (*)</translation>
     </message>
@@ -238,32 +263,32 @@
         <translation>Beschreibung:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="193"/>
+        <location filename="../ui/opendialog.cpp" line="194"/>
         <source>Competition *.cmp</source>
         <translation>Wettkampf (*.cmp)</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="207"/>
+        <location filename="../ui/opendialog.cpp" line="208"/>
         <source>Specify the name of the competition.</source>
         <translation>Name des Wettkampfes angeben.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="210"/>
+        <location filename="../ui/opendialog.cpp" line="211"/>
         <source>Properties - </source>
         <translation>Eigenschaften - </translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="223"/>
+        <location filename="../ui/opendialog.cpp" line="224"/>
         <source>Open Competition.</source>
         <translation>Wettkampf öffnen.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="236"/>
+        <location filename="../ui/opendialog.cpp" line="237"/>
         <source>Open Error.</source>
         <translation>Fehler beim Öffnen.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="237"/>
+        <location filename="../ui/opendialog.cpp" line="238"/>
         <source>Opening competition file failed.</source>
         <translation>Öffnen der Wettkampfdatei fehlgeschlagen.</translation>
     </message>
@@ -272,23 +297,86 @@
     <name>QObject</name>
     <message>
         <location filename="../data/group.cpp" line="8"/>
+        <location filename="../data/group.cpp" line="30"/>
         <source>IW</source>
         <translation>Einzel Weiblich</translation>
     </message>
     <message>
         <location filename="../data/group.cpp" line="9"/>
+        <location filename="../data/group.cpp" line="31"/>
         <source>Mixed</source>
         <translation>Gemischtes Paar</translation>
     </message>
     <message>
         <location filename="../data/group.cpp" line="10"/>
+        <location filename="../data/group.cpp" line="32"/>
         <source>Pair/Trio</source>
         <translation>2er-3er Team</translation>
     </message>
     <message>
         <location filename="../data/group.cpp" line="11"/>
+        <location filename="../data/group.cpp" line="33"/>
         <source>Group</source>
         <translation>Gruppe</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="19"/>
+        <location filename="../data/group.cpp" line="39"/>
+        <source>National Development</source>
+        <translation>8-11</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="20"/>
+        <location filename="../data/group.cpp" line="40"/>
+        <source>Age Group 1</source>
+        <translation>12-14</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="21"/>
+        <location filename="../data/group.cpp" line="41"/>
+        <source>Age Group 2</source>
+        <translation>15-17</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="22"/>
+        <location filename="../data/group.cpp" line="42"/>
+        <source>Seniors</source>
+        <translation>18+</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="23"/>
+        <source>unknown</source>
+        <translation>unbekannt</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="29"/>
+        <source>IM</source>
+        <translation>Einzel Männlich</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="50"/>
+        <source>Not Set</source>
+        <translation>Nicht angegeben</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="112"/>
+        <source>Club: </source>
+        <translation>Verein: </translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="113"/>
+        <source>Age Group: </source>
+        <translation>Altersklasse: </translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="114"/>
+        <source>Categorie: </source>
+        <translation>Kategorie: </translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="115"/>
+        <source>Starter: </source>
+        <translation>Starter: </translation>
     </message>
     <message>
         <location filename="../data/judge.cpp" line="7"/>
@@ -439,54 +527,49 @@
     </message>
     <message>
         <location filename="../modules/import/importmodule.ui" line="120"/>
-        <location filename="../modules/import/importmodule.ui" line="187"/>
-        <location filename="../modules/import/importmodule.ui" line="310"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../modules/import/importmodule.ui" line="127"/>
-        <location filename="../modules/import/importmodule.ui" line="194"/>
         <source>Continue</source>
         <translation>Weiter</translation>
     </message>
     <message>
         <location filename="../modules/import/importmodule.ui" line="146"/>
+        <source>2. Import output</source>
+        <translation>2. Ausgabe</translation>
+    </message>
+    <message>
         <source>2. Import</source>
-        <translation>2. Importieren</translation>
+        <translation type="obsolete">2. Importieren</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.ui" line="213"/>
         <source>3. Finish</source>
-        <translation>3. Fertig</translation>
+        <translation type="obsolete">3. Fertig</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.ui" line="225"/>
         <source>The following clubs have been importet:</source>
-        <translation>Die folgenen Vereine wurden importiert:</translation>
+        <translation type="obsolete">Die folgenen Vereine wurden importiert:</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.ui" line="245"/>
         <source>Verein</source>
-        <translation>Vereine</translation>
+        <translation type="obsolete">Vereine</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.ui" line="256"/>
         <source>Newcomer</source>
-        <translation>Newcomer</translation>
+        <translation type="obsolete">Newcomer</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.ui" line="267"/>
         <source>Cup</source>
-        <translation>Cup</translation>
+        <translation type="obsolete">Cup</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.ui" line="278"/>
         <source>Masters</source>
-        <translation>Masters</translation>
+        <translation type="obsolete">Masters</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.ui" line="317"/>
+        <location filename="../modules/import/importmodule.ui" line="186"/>
         <source>Ready</source>
         <translation>Fertig</translation>
     </message>
@@ -499,9 +582,27 @@
         <translation type="obsolete">Meldung auswählen</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.cpp" line="46"/>
+        <location filename="../modules/import/importmodule.cpp" line="42"/>
+        <source>Processing File: </source>
+        <translation>Bearbeite Datei: </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../modules/import/importmodule.cpp" line="44"/>
+        <source>Found %n group(s)</source>
+        <translation>
+            <numerusform>%n Gruppe gefunden</numerusform>
+            <numerusform>%n Gruppen gefunden</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../modules/import/importmodule.cpp" line="60"/>
         <source>Select Registration</source>
         <translation>Meldung auswählen</translation>
+    </message>
+    <message>
+        <location filename="../modules/import/importmodule.cpp" line="62"/>
+        <source>Registration *.doc *.pdf *.txt</source>
+        <translation>Meldung *.doc *.pdf *.txt</translation>
     </message>
 </context>
 </TS>
