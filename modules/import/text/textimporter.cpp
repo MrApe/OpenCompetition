@@ -72,7 +72,8 @@ QList<Group> TextImporter::parseText(QFile& file){
         QString starter;
         while (line.contains("*") &&
                !file.atEnd() &&
-               !line.contains("Kategorie:")) {
+               !line.contains("Kategorie:") &&
+               !line.contains("Altersklasse:")) {
 
             starter = line.remove(0,line.indexOf("*")+2);
             Competitor comp(starter.section(",",0,0),
@@ -85,6 +86,13 @@ QList<Group> TextImporter::parseText(QFile& file){
 
         Group found(competitors,age,cat,c);
         groupList.append(found);
+
+        //look for more teams
+        while (!line.contains("Kategorie:") &&
+               !line.contains("Ende des Dokumentes") &&
+               !file.atEnd()){
+            line = file.readLine();
+        }
     }
 
     return groupList;
