@@ -143,14 +143,11 @@
           </font>
          </property>
          <property name="title">
-          <string>2. Import</string>
+          <string>2. Import output</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="QPlainTextEdit" name="logArea">
-            <property name="autoFillBackground">
-             <bool>true</bool>
-            </property>
             <property name="frameShape">
              <enum>QFrame::Box</enum>
             </property>
@@ -162,9 +159,6 @@
             </property>
             <property name="textInteractionFlags">
              <set>Qt::NoTextInteraction</set>
-            </property>
-            <property name="backgroundVisible">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -187,137 +181,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="cancel2">
-           <property name="text">
-            <string>Cancel</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="next2">
-           <property name="text">
-            <string>Continue</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="finalPage">
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <widget class="QGroupBox" name="groupBox_3">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>3. Finish</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="font">
-             <font>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>The following clubs have been importet:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableWidget" name="tableWidget">
-            <attribute name="horizontalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="horizontalHeaderDefaultSectionSize">
-             <number>85</number>
-            </attribute>
-            <attribute name="horizontalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="horizontalHeaderDefaultSectionSize">
-             <number>85</number>
-            </attribute>
-            <column>
-             <property name="text">
-              <string>Verein</string>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Newcomer</string>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Cup</string>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Masters</string>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-            </column>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="BtnBar3">
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="cancel3">
-           <property name="text">
-            <string>Cancel</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="ready">
            <property name="text">
             <string>Ready</string>
            </property>
@@ -394,6 +258,22 @@
     <hint type="destinationlabel">
      <x>320</x>
      <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>next2</sender>
+   <signal>clicked()</signal>
+   <receiver>importModule</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>335</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>387</x>
+     <y>293</y>
     </hint>
    </hints>
   </connection>

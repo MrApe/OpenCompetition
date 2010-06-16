@@ -1,10 +1,10 @@
 #include "judgespanel.h"
 
-JudgesPanel::JudgesPanel(std::vector<Judge> artisticJudges,
-                         std::vector<Judge> executionJudges,
-                         std::vector<Judge> difficultyJudges,
-                         std::vector<Judge> superiorJury,
-                         std::vector<Judge> lineJudges,
+JudgesPanel::JudgesPanel(QList<Judge> artisticJudges,
+                         QList<Judge> executionJudges,
+                         QList<Judge> difficultyJudges,
+                         QList<Judge> superiorJury,
+                         QList<Judge> lineJudges,
                          Judge chairJudge,
                          Judge assistantJudge):
     m_artisticJudges(artisticJudges),
@@ -22,7 +22,7 @@ QDomElement JudgesPanel::toDomElement(QDomDocument *parentDocument)
     QDomElement judgesPanelElement = parentDocument->createElement("judgespanel");
     QDomElement artisticJudgesElement = parentDocument->createElement("artisticjudges");
     judgesPanelElement.appendChild(artisticJudgesElement);
-    std::vector<Judge>::iterator i;
+    QList<Judge>::iterator i;
     for (i = m_artisticJudges.begin(); i != m_artisticJudges.end(); i++)
     {
         artisticJudgesElement.appendChild(i->toDomElement(parentDocument));

@@ -59,7 +59,7 @@ private:
     Ui::OpenDialog *ui;
     QString m_fileToOpen;
     QSettings* m_settings;
-    std::vector<smallCompT> m_recentComp;
+    QList<smallCompT> m_recentComp;
 
 
     /*!

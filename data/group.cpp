@@ -31,7 +31,7 @@ Group::Group():
 
 }
 
-Group::Group(const std::vector<Competitor>& competitors,
+Group::Group(const QList<Competitor>& competitors,
              const categorieType categorie,
              const Club& cl):
         m_competitors(competitors),
@@ -45,9 +45,9 @@ Group::Group(const Group &other):
         m_categorie(other.getType()),
         m_club(other.getClub().getName())
 {
-    for (unsigned int i = 0; i < other.getCompetitors().size(); i++)
+    for (int i = 0; i < other.getCompetitors().size(); i++)
     {
-        m_competitors.push_back(Competitor(other.getCompetitors().at(i).getName(),
+        m_competitors.append(Competitor(other.getCompetitors().at(i).getName(),
                                            other.getCompetitors().at(i).getBirth(),
                                            other.getCompetitors().at(i).getGender()));
     }
@@ -55,7 +55,7 @@ Group::Group(const Group &other):
 
 bool Group::operator ==(const Group& other) const
 {
-    for (unsigned int i = 0; i<m_competitors.size(); i++)
+    for (int i = 0; i<m_competitors.size(); i++)
     {
         if (m_competitors.at(i) != other.getCompetitors().at(i))
         {
@@ -75,7 +75,7 @@ bool Group::operator!=(const Group& other) const
 
 bool Group::contains(const Competitor &competitor)
 {
-    for (std::vector<Competitor>::iterator i = m_competitors.begin(); i != m_competitors.end(); i++)
+    for (QList<Competitor>::iterator i = m_competitors.begin(); i != m_competitors.end(); i++)
     {
         if ((*i)==competitor) return true;
     }
@@ -85,12 +85,12 @@ bool Group::contains(const Competitor &competitor)
 QString Group::toString()
 {
     QString output;
-    output.append(QObject::tr("Club: ")+m_club.getName());
-    output.append(QObject::tr("Categorie: ")+Group::categorieToString(m_categorie));
-    output.append(QObject::tr("Starter: "));
-    for (unsigned int i = 0; i<m_competitors.size(); i++)
+    output.append(QObject::tr("Club: ")+m_club.getName()+"\n");
+    output.append(QObject::tr("Categorie: ")+Group::categorieToString(m_categorie)+"\n");
+    output.append(QObject::tr("Starter: ")+"\n");
+    for (int i = 0; i<m_competitors.size(); i++)
     {
-       output.append(m_competitors.at(i).getName());
+       output.append(m_competitors.at(i).getName()+"\n");
     }
     return output;
 }
@@ -100,7 +100,7 @@ void Group::addCompetitor(Competitor comp) throw (ToManyCompetitorsException){
         throw new ToManyCompetitorsException();
     } else {
         if (!contains(comp)){
-            m_competitors.push_back(comp);
+            m_competitors.append(comp);
         }
     }
 }
@@ -125,7 +125,7 @@ QDomElement Group::toDomElement(QDomDocument *parentDocument)
     QDomElement competitorsElement = parentDocument->createElement("competitors");
         groupElement.appendChild(competitorsElement);
 
-        std::vector<Competitor>::iterator it;
+        QList<Competitor>::iterator it;
         for (it = m_competitors.begin();it != m_competitors.end();it++)
         {
             competitorsElement.appendChild(it->toDomElement(parentDocument));

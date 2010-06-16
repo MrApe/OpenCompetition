@@ -9,9 +9,9 @@ TextImporter::TextImporter(const QString& filter):
 {
 }
 
-const std::vector<Group> TextImporter::importFile(const QString &fileName) throw (FileNotOpenedException)
+const QList<Group> TextImporter::importFile(const QString &fileName) throw (FileNotOpenedException)
 {
-    std::vector<Group> foundGroups;
+    QList<Group> foundGroups;
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -19,19 +19,19 @@ const std::vector<Group> TextImporter::importFile(const QString &fileName) throw
     }
     else
     {
-        QVector<Group> foundInCurrent = parseText(file);
+        QList<Group> foundInCurrent = parseText(file);
         for (int i = 0; i < foundInCurrent.size(); i++)
         {
-            foundGroups.push_back(foundInCurrent.at(i));
+            foundGroups.append(foundInCurrent.at(i));
         }
     }
 
     return foundGroups;
 }
 
-QVector<Group> TextImporter::parseText(QFile& file){
+QList<Group> TextImporter::parseText(QFile& file){
     QString line;
-    QVector<Group> groupList;
+    QList<Group> groupList;
 
     //skip preämbel
     while (!line.contains("Verbindliche Meldung")){
@@ -60,7 +60,7 @@ QVector<Group> TextImporter::parseText(QFile& file){
         }
         line = file.readLine();
 
-        std::vector<Competitor> competitors;
+        QList<Competitor> competitors;
         QString starter;
         while (line.contains("*") &&
                !file.atEnd() &&
@@ -70,7 +70,7 @@ QVector<Group> TextImporter::parseText(QFile& file){
             Competitor comp(starter.section(",",0,0),
                             starter.section(",",2,2).toUInt(),
                             starter.section(",",1,1).contains("m")?Competitor::MALE:Competitor::FEMALE);
-            competitors.push_back(comp);
+            competitors.append(comp);
 
             line = file.readLine();
         }

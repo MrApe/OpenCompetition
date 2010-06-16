@@ -32,7 +32,7 @@ public:
                 bool isRLT,
                 const QString& description,
                 JudgesPanel* judgesPanel,
-                std::vector<Group> starter);
+                QList<Group> starter);
 
     /*!
       Empty Constructor.
@@ -62,7 +62,7 @@ public:
         return m_date;}
     inline const JudgesPanel* getJudgesPanel() const {
         return m_judgesPanel;}
-    inline const std::vector<Group>& getStarter() const {
+    inline const QList<Group>& getStarter() const {
         return m_starter;}
     inline bool isRLT() const {
         return m_isRLT;}
@@ -114,7 +114,7 @@ public slots:
       Set the groups and invividuals starting in this competition.
         @param starter Starter of this competition.
     */
-    inline void setStarter(std::vector<Group> starter){
+    inline void setStarter(QList<Group> starter){
         m_starter = starter;}
     /*!
       Set wether this competition is an RLT.
@@ -133,7 +133,7 @@ public slots:
       Groups are interpretet as starter and can be individuals.
       @param groups Groups to be added.
       */
-    void addGroups(std::vector<Group>& groups, QString* logMessage = 0);
+    void addGroups(QList<Group>& groups, QString* logMessage = 0);
 
 
 private:
@@ -143,7 +143,7 @@ private:
     bool m_isRLT;
     QString m_description;
     JudgesPanel* m_judgesPanel;
-    std::vector<Group> m_starter;
+    QList<Group> m_starter;
 };
 
 #endif // COMPETITION_H

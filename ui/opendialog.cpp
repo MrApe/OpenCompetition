@@ -77,20 +77,20 @@ void OpenDialog::changeEvent(QEvent *e)
 
 int OpenDialog::addToHistory(smallCompT& comp)
 {
-    std::vector<smallCompT>::iterator it;
-    std::vector<std::vector<smallCompT>::iterator> toDelete;
+    QList<smallCompT>::iterator it;
+    QList<QList<smallCompT>::iterator> toDelete;
     // delete competions already listed equal to this
     for (it = m_recentComp.begin(); it != m_recentComp.end();it++)
     {
 
-        if ((*it) == comp) toDelete.push_back(it);;
+        if ((*it) == comp) toDelete.append(it);;
     }
-    for (unsigned int i = 0; i<toDelete.size();i++)
+    for (int i = 0; i<toDelete.size();i++)
     {
         m_recentComp.erase(toDelete.at(i));
     }
     //add to history
-    m_recentComp.push_back(comp);
+    m_recentComp.append(comp);
 
     //cut history List
     if (m_recentComp.size() > 5)
@@ -118,7 +118,7 @@ int OpenDialog::addToHistory(Competition *comp,const QString& filename)
 void OpenDialog::updateHistoryWidget()
 {
     ui->historyWidget->clear();
-    for (unsigned int i = 0; i<m_recentComp.size(); i++)
+    for (int i = 0; i<m_recentComp.size(); i++)
     {
         ui->historyWidget->insertTopLevelItem(0,new QTreeWidgetItem(ui->historyWidget,QStringList(m_recentComp.at(i).name)));
     }
@@ -127,7 +127,7 @@ void OpenDialog::updateHistoryWidget()
 void OpenDialog::saveHistory()
 {
     QString base;
-    for (unsigned int i = 0; i < m_recentComp.size(); i++)
+    for (int i = 0; i < m_recentComp.size(); i++)
     {
         base = "recent/comp"+QString::number(i)+"/";
         m_settings->setValue(base+"filename",m_recentComp.at(i).filename);
@@ -148,7 +148,7 @@ void OpenDialog::setShownCompetition(smallCompT competition)
     ui->description->setText(competition.description);
 
     //Check if shown competition is selected in the history widget
-    unsigned int index = 0;
+    int index = 0;
     bool contains = false;
     while (!contains && index<m_recentComp.size())
     {

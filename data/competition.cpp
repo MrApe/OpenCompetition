@@ -13,6 +13,7 @@ Competition::Competition() :
         m_judgesPanel(NULL),
         m_starter()
 {
+    m_starter = QList<Group>();
 
 }
 
@@ -22,7 +23,7 @@ Competition::Competition(const QString &name,
                          bool isRLT,
                          const QString& description,
                          JudgesPanel* judgesPanel,
-                         std::vector<Group>starter) :
+                         QList<Group>starter) :
     m_name(name),
     m_date(date),
     m_time(time),
@@ -36,7 +37,8 @@ Competition::Competition(const QString &name,
 
 bool Competition::contains(const Group &group) const
 {
-    for (unsigned int i = 0; i < m_starter.size();i++)
+    if (m_starter.empty()) return false;
+    for (int i = 0; i < m_starter.size();i++)
     {
         if (group == m_starter.at(i)) return true;
     }
@@ -63,7 +65,7 @@ QDomElement Competition::toDomElement(QDomDocument* parentDocument)
 
     //Add competitors
     QDomElement starterElement = parentDocument->createElement("starterdata");
-    std::vector<Group>::iterator it;
+    QList<Group>::iterator it;
     for (it = m_starter.begin() ; it != m_starter.end();it++){
         starterElement.appendChild(it->toDomElement(parentDocument));
     }
@@ -109,14 +111,13 @@ bool Competition::loadFromFile(const QString &filename,QString* errorMsg,int* er
 
 }
 
-void Competition::addGroups(std::vector<Group>& groups, QString* logMessage)
+void Competition::addGroups(QList<Group>& groups, QString* logMessage)
 {
-    std::vector<Group>::iterator it;
-    for (it = groups.begin(); it!=groups.end(); it++)
+    for (int i = 0; i < groups.size(); i++)
     {
-        Group newGroup(*it);
+        Group newGroup(groups.at(i));
         if (logMessage!=0) logMessage->append(newGroup.toString());
-        if (!contains(newGroup)) m_starter.push_back(newGroup);
+        if (m_starter.contains(newGroup)) m_starter.append(newGroup);
     }
 }
 

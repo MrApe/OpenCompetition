@@ -13,7 +13,7 @@ public:
     AbstractImporter(const QString& filter);
     virtual ~AbstractImporter();
 
-    virtual const std::vector<Group> importFile(const QString& file) throw (FileNotOpenedException) = 0;
+    virtual const QList<Group> importFile(const QString& file) throw (FileNotOpenedException) = 0;
 
     /*!
      * Inline getter

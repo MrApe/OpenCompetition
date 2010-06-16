@@ -9,7 +9,7 @@
 MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    m_competition(NULL),
+    m_competition(new Competition()),
     m_fileName(openFileName),
     m_settings(settings)
 {   

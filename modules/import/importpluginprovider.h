@@ -14,7 +14,7 @@ public:
     AbstractImporter* getPluginFor(const QString& fielExt);
 
 private:
-    std::vector<AbstractImporter*> m_plugins;
+    QList<AbstractImporter*> m_plugins;
 
 };
 

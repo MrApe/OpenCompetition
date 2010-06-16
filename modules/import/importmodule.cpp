@@ -35,7 +35,7 @@ void importModule::changeEvent(QEvent *e)
 void importModule::importFiles(){
     ui->stackedWidget->setCurrentIndex(ui->stackedWidget->currentIndex()+1);
 
-    std::vector<Group> foundGroups;
+    QList<Group> foundGroups;
     for (int i = 0; i < ui->meldungenListe->count();i++ )
     {
         QString current = ui->meldungenListe->itemAt(i,0)->text();

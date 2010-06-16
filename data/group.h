@@ -23,7 +23,7 @@ public:
 
     Group();
 
-    Group(const std::vector<Competitor>& competitors,
+    Group(const QList<Competitor>& competitors,
           const categorieType categorie,
           const Club& cl);
 
@@ -62,7 +62,7 @@ public:
     /*
      * Inline getter and setter
      */
-    inline void setCompetitors(const std::vector<Competitor>& competitors){
+    inline void setCompetitors(const QList<Competitor>& competitors){
         m_competitors = competitors;
     }
     inline void setType(const categorieType categorie){
@@ -71,7 +71,7 @@ public:
     inline void setClub(const Club& cl){
         m_club = cl;
     }
-    inline const std::vector<Competitor>& getCompetitors() const {
+    inline const QList<Competitor>& getCompetitors() const {
         return m_competitors;
     }
     inline categorieType getType() const{
@@ -83,7 +83,7 @@ public:
 
 
 private:
-    std::vector<Competitor> m_competitors;
+    QList<Competitor> m_competitors;
     categorieType m_categorie;
     Club m_club;
 
