@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     modules/import/importpluginprovider.cpp \
     ui/opendialog.cpp \
     ui/mainwindow.cpp \
-    ui/newcompdialog.cpp
+    ui/newcompdialog.cpp \
+    modules/clublist/clublistwidget.cpp
 HEADERS += modules/import/importmodule.h \
     modules/import/abstractimporter.h \
     data/abstractperson.h \
@@ -39,9 +40,11 @@ HEADERS += modules/import/importmodule.h \
     ui/opendialog.h \
     ui/mainwindow.h \
     ui/newcompdialog.h \
-    data/abstractXMLElement.h
+    data/abstractXMLElement.h \
+    modules/clublist/clublistwidget.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \
-    ui/newcompdialog.ui
+    ui/newcompdialog.ui \
+    modules/clublist/clublistwidget.ui
 OTHER_FILES += lang/de_DE.ts
