@@ -2,6 +2,9 @@
 #define CLUBLISTWIDGET_H
 
 #include <QWidget>
+#include "data/competition.h"
+#include "data/club.h"
+#include "data/group.h"
 
 namespace Ui {
     class ClubListWidget;
@@ -10,7 +13,7 @@ namespace Ui {
 class ClubListWidget : public QWidget {
     Q_OBJECT
 public:
-    ClubListWidget(QWidget *parent = 0);
+    ClubListWidget(Competition* comp, QWidget *parent = 0);
     ~ClubListWidget();
 
 protected:
@@ -18,6 +21,10 @@ protected:
 
 private:
     Ui::ClubListWidget *ui;
+    Competition* m_competition;
+    QMap<Club,QVector<Group> > m_clublist;
+
+    void updateClubList();
 };
 
 #endif // CLUBLISTWIDGET_H

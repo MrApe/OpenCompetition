@@ -69,6 +69,9 @@ public:
     inline const QString& getDescription() const {
         return m_description;}
 
+signals:
+    void changed();
+
 
     //! Inline setter as slots
 public slots:
