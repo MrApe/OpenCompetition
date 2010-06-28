@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "data/competition.h"
 #include "qsettings.h"
+#include "modules/modulefactory.h"
 
 namespace Ui {
     class MainWindow;
@@ -25,6 +26,7 @@ private:
     QSettings* m_settings;
 
 private slots:
+    void on_Btn_gemVer_clicked();
     void on_Btn_import_clicked();
     void openCompetition();
     void openCompetitionFromFile(const QString& filename);

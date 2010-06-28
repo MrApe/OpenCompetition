@@ -11,6 +11,8 @@ public:
 
     bool operator ==(const Club& other) const;
     bool operator!=(const Club& other) const;
+    bool operator<(const Club& right) const;
+    bool operator>(const Club& right) const;
 
     /*!
      * Inline getter and setter

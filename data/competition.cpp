@@ -117,7 +117,7 @@ void Competition::addGroups(QList<Group>& groups, QString* logMessage)
     {
         Group newGroup(groups.at(i));
         if (logMessage!=0) logMessage->append(newGroup.toString());
-        if (m_starter.contains(newGroup)) m_starter.append(newGroup);
+        if (!m_starter.contains(newGroup)) m_starter.append(newGroup);
     }
 }
 

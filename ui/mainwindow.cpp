@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "modules/import/importmodule.h"
 #include "ui/opendialog.h"
+#include "modules/clublist/clublistwidget.h"
 #include <QMessageBox>
 #include <QFile>
 #include <QFileDialog>
@@ -14,8 +15,15 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     m_settings(settings)
 {   
     ui->setupUi(this);
+
+    ClubListWidget* clw = new ClubListWidget("clublist",m_competition);
+    connect(this,SIGNAL(competitionChanged()),clw,SLOT(updateWidget()));
+
+    ModuleFactory::getInstance().addModule(clw);
+
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
     emit competitionChanged();
+
 }
 
 MainWindow::~MainWindow()
@@ -112,14 +120,7 @@ void MainWindow::closeCompetition()
 void MainWindow::saveToFile()
 {
     if (m_fileName != "") {
-        QFile file(m_fileName);
-        if (!file.open(QIODevice::WriteOnly)) {
-            QMessageBox::warning(this, "Datei konnte nicht geöffnet werden.", file.errorString());
-                        return;
-        }
-        QDataStream out(&file);
-        out << m_competition;
-        file.close();
+        m_competition->saveToFile(m_fileName);
     } else {
         saveToFileAs();
     }
@@ -138,5 +139,14 @@ void MainWindow::saveToFileAs()
     if (newFileNames.size() > 0) {
         m_fileName==newFileNames.at(0);
         saveToFile();
+    }
+}
+
+void MainWindow::on_Btn_gemVer_clicked()
+{
+    AbstractModule* clw = ModuleFactory::getInstance().getModuleByName("clublist");
+    if (clw != NULL) {
+        emit competitionChanged();
+        clw->show();
     }
 }
