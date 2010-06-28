@@ -21,6 +21,7 @@ public:
 public slots:
     void updateWidget();
     void updateCompetition(Competition* comp);
+    void updateDescription();
 
 protected:
     void changeEvent(QEvent *e);

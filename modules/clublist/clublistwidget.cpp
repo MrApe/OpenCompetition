@@ -68,6 +68,38 @@ void ClubListWidget::updateClubList()
     ui->clubTable->setSortingEnabled(true);
 }
 
+void ClubListWidget::updateDescription()
+{
+    ui->teamTable->clearContents();
+    if (ui->clubTable->selectedItems().size() > 0)
+    {
+        QString club = ui->clubTable->selectedItems().at(0)->text();
+
+        for (int j = 0;j< m_clublist[club].size();j++)
+        {
+            ui->teamTable->insertRow(0);
+            QTableWidgetItem* type = new QTableWidgetItem(Group::categorieToString(m_clublist[club].at(j).getType()));
+            ui->teamTable->setItem(0,0,type);
+            QTableWidgetItem* age = new QTableWidgetItem(Group::ageToString(m_clublist[club].at(j).getAge()));
+            ui->teamTable->setItem(0,1,age);
+
+            QString comp;
+            for (int i = 0; i < m_clublist[club].at(j).getCompetitors().size();i++)
+            {
+               comp.append(m_clublist[club].at(j).getCompetitors().at(i).getName());
+               comp.append("(");
+               comp.append(QString::number(m_clublist[club].at(j).getCompetitors().at(i).getBirth()));
+               comp.append(")");
+               if (i < m_clublist[club].at(j).getCompetitors().size()-1){
+                   comp.append(", ");
+               }
+            }
+            QTableWidgetItem* starter = new QTableWidgetItem(comp);
+            ui->teamTable->setItem(0,2,starter);
+        }
+    }
+}
+
 void ClubListWidget::changeEvent(QEvent *e)
 {
     QWidget::changeEvent(e);
