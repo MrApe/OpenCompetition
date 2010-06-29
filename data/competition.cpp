@@ -84,16 +84,24 @@ void Competition::readFromDomElement(QDomElement &element)
         m_isRLT = element.attribute("isrlt","false")=="true";
         m_description = element.attribute("desc","");
 
-        //Read judges data
-        QDomNode judgeNode = element.firstChild();
-        if (!judgeNode.isNull())
+        QDomNode nextNode = element.firstChild();
+        while (!nextNode.isNull())
         {
-            QDomElement judgeElement = judgeNode.toElement();
-            if (!judgeElement.isNull()){
+            QDomElement nextElement = nextNode.toElement();
+            if (!nextElement.isNull()){
                 m_judgesPanel = new JudgesPanel();
-                m_judgesPanel->readFromDomElement(judgeElement);
+                m_judgesPanel->readFromDomElement(nextElement);
             }
-        }
+            if (!nextElement.isNull() &&
+                nextElement.tagName() == "starterdata")
+            {
+                Group gr;
+                gr.readFromDomElement(nextElement);
+                m_starter.append(gr);
+            }
+
+            nextNode = element.nextSibling();
+        }        
     }
 
 }

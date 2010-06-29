@@ -10,8 +10,19 @@ QString Judge::scoreTypeToString(const scoreType &score)
     case CHAIR: return QObject::tr("Chair");
     case SUPERIOR: return QObject::tr("Superior");
     case ASSISTANT: return QObject::tr("Assistant");
-    default: return ""; //should not be reached
+    default: return tr("NONE"); //should not be reached
     }
+}
+
+Judge::scoreType Judge::stringToScoreType(const QString &scoreString)
+{
+    if (scoreString == QObject::tr("Artistic")) return ARTISTIC;
+    if (scoreString == QObject::tr("Execution")) return EXECUTION;
+    if (scoreString == QObject::tr("Difficulty")) return DIFFICULTY;
+    if (scoreString == QObject::tr("Chair")) return CHAIR;
+    if (scoreString == QObject::tr("Superior")) return SUPERIOR;
+    if (scoreString == QObject::tr("Assistant")) return ASSISTANT;
+    return NONE;
 }
 
 QString Judge::brevetTypeToString(const brevetType &brevet)
@@ -25,6 +36,17 @@ QString Judge::brevetTypeToString(const brevetType &brevet)
     case FIG1: return QObject::tr("FIG1");
     default: return QObject::tr("NONE");
     }
+}
+
+Judge::brevetType Judge::stringToBrevetType(const QString &brevetString)
+{
+    if (brevetString == QObject::tr("LTV")) return LTV;
+    if (brevetString == QObject::tr("DTB")) return DTB;
+    if (brevetString == QObject::tr("FIG4")) return FIG4;
+    if (brevetString == QObject::tr("FIG3")) return FIG3;
+    if (brevetString == QObject::tr("FIG2")) return FIG2;
+    if (brevetString == QObject::tr("FIG1")) return FIG1;
+    return NONE;
 }
 
 Judge::Judge(const QString &name,
@@ -44,4 +66,14 @@ QDomElement Judge::toDomElement(QDomDocument *parentDocument)
     judgeElement.setAttribute("brevet", brevetTypeToString(m_brevet));
 
     return judgeElement;
+}
+
+void Judge::readFromDomElement(QDomElement &element)
+{
+    if (element.tagName() == "judge")
+    {
+        m_name = element.attribute("name","");
+        m_score = element.attribute("score","NONE");
+        m_brevet = element.attribute("brevet","NONE");
+    }
 }

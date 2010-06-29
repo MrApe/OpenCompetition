@@ -25,6 +25,11 @@ public:
       */
     virtual QDomElement toDomElement(QDomDocument* parentDocument);
 
+    /*!
+     This method reads starter data from an xml element.
+     */
+    virtual void readFromDomElement(QDomElement &element);
+
     /*
      * Inline getter and setter
      */

@@ -159,3 +159,26 @@ QDomElement Group::toDomElement(QDomDocument *parentDocument)
 
     return groupElement;
 }
+
+void Group::readFromDomElement(QDomElement &element)
+{
+    if (element.tagName() == "group")
+    {
+        m_age = ageFromString(element.attribute("agegroup",QObject::tr("unknown")));
+        m_categorie = categorieFromString(element.attribute("categorie",""));
+
+        QDomNode starterNode = element.firstChild();
+        while (!starterNode.isNull())
+        {
+            QDomElement starterElement = starterNode.toElement();
+            if (!starterElement.isNull())
+            {
+                Competitor starter(tr("UNNAMED"),0,Competitor::MALE);
+                starter.readFromDomElement(starterElement);
+                m_competitors.append(starter);
+            }
+
+            starterNode = element.nextSibling();
+        }
+    }
+}

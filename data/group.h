@@ -63,6 +63,10 @@ public:
       */
     virtual QDomElement toDomElement(QDomDocument* parentDocument);
     /*!
+      This method reads data into the group out of an xml element.
+      */
+    virtual void readFromDomElement(QDomElement &element);
+    /*!
       This method checks if the group contains the given competitior.
       @param competitor Competitor to find.
       @return True is the competitor is part of the group. False otherwise.

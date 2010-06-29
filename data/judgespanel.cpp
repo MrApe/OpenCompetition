@@ -101,21 +101,48 @@ void JudgesPanel::readFromDomElement(QDomElement &element)
             if (!e.isNull())
             {
                 if (e.tagName() == "artisticjudges")
-                {
-                    QDomNode aJudgeNode = e.firstChild();
-                    while (!aJudgeNode.isNull())
-                    {
-                        QDomElement aJudgeElement = aJudgeNode.toElement();
-                        if (!aJudgeElement.isNull())
-                        {
-                            Judge aJudge("Noname",Judge::ARTISTIC,Judge::LTV);
-                            aJudge.readFromDomElement(aJudgeElement);
-
-                        }
-                    }
-
-                }
+                    extractJudgeFromXML(e,m_artisticJudges);
+                if (e.tagName() == "executionjudges")
+                    extractJudgeFromXML(e,m_executionJudges);
+                if (e.tagName() == "difficultyjudges")
+                    extractJudgeFromXML(e,m_difficultyJudges);
+                if (e.tagName() == "superiorjury")
+                    extractJudgeFromXML(e,m_superiorJury);
+                if (e.tagName() == "linejudges")
+                    extractJudgeFromXML(e,m_lineJudges);
+                if (e.tagName() == "chairjudge")
+                    extractJudgeFromXML(e,m_chairJudge);
+                if (e.tagName() == "assistantjudge")
+                    extractJudgeFromXML(e,m_assistantJudge);
             }
+        }
+    }
+}
+
+void JudgesPanel::extractJudgeFromXML(QDomElement& element, QList<Judge> &target)
+{
+    QDomNode aJudgeNode = element.firstChild();
+    while (!aJudgeNode.isNull())
+    {
+        QDomElement aJudgeElement = aJudgeNode.toElement();
+        if (!aJudgeElement.isNull())
+        {
+            Judge aJudge("Noname",Judge::ARTISTIC,Judge::LTV);
+            aJudge.readFromDomElement(aJudgeElement);
+            target.append(aJudge);
+        }
+    }
+}
+
+void JudgesPanel::extractJudgeFromXML(QDomElement& element, Judge &target)
+{
+    QDomNode aJudgeNode = element.firstChild();
+    if (!aJudgeNode.isNull())
+    {
+        QDomElement aJudgeElement = aJudgeNode.toElement();
+        if (!aJudgeElement.isNull())
+        {
+            target.readFromDomElement(aJudgeElement);
         }
     }
 }

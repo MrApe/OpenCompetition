@@ -8,6 +8,7 @@ class Judge : public AbstractPerson, public AbstractXMLElement
 {
 public:
     enum scoreType{
+        NONE,
         ARTISTIC,
         EXECUTION,
         DIFFICULTY,
@@ -17,10 +18,16 @@ public:
     };
     
     /*!
-      Returns the given score type to a string representation.
+      Returns the given score type as a string representation.
       @return String representation of the score type.
       */
     static QString scoreTypeToString(const scoreType& score);
+
+    /*!
+      Returns the given score type from string representation.
+      @return score type.
+      */
+    static scoreType stringToScoreType(const QString& scoreString);
     
     enum brevetType{
         NONE,
@@ -33,10 +40,16 @@ public:
     };
     
     /*!
-      Returns the given brevet type to a string representation.
+      Returns the given brevet type as string representation.
       @return String representation of the brevet type.
       */
     static QString brevetTypeToString(const brevetType& brevet);
+
+    /*!
+      Returns the given score type from string representation.
+      @return score type.
+      */
+    static brevetType stringToBrevetType(const QString& brevetString);
 
     Judge(const QString& name,
           scoreType score,
@@ -47,6 +60,11 @@ public:
       @return The current object as DomElement.
       */
     virtual QDomElement toDomElement(QDomDocument* parentDocument);
+
+    /*!
+      This method reads the judge data from an xml-element.
+      */
+    virtual void readFromDomElement(QDomElement &element);
 
     /*
      * Inline getter and setter

@@ -30,3 +30,13 @@ QDomElement Competitor::toDomElement(QDomDocument *parentDocument)
 
     return competitor;
 }
+
+void Competitor::readFromDomElement(QDomElement &element)
+{
+    if (element.tagName() == "competitor")
+    {
+        m_name = element.attribute("name","");
+        m_score = element.attribute("birth","").toInt();
+        m_brevet = element.attribute("gender","male")=="male"?MALE:FEMALE;
+    }
+}

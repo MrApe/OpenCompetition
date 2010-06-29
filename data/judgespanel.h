@@ -85,6 +85,9 @@ private:
     QList<Judge> m_lineJudges;
     Judge m_chairJudge;
     Judge m_assistantJudge;
+
+    void extractJudgeFromXML(QDomElement& element, QList<Judge>& target);
+    void extractJudgeFromXML(QDomElement& element, Judge& target);
 };
 
 #endif // JUDGESPANEL_H
