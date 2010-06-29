@@ -1,11 +1,14 @@
+#include <QMessageBox>
+#include <QFile>
+#include <QFileDialog>
+#include <QDockWidget>
+#include <QTextEdit>
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "modules/import/importmodule.h"
 #include "ui/opendialog.h"
 #include "modules/clublist/clublistwidget.h"
-#include <QMessageBox>
-#include <QFile>
-#include <QFileDialog>
+#include "ui/propertieswidget.h"
 
 MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget *parent) :
     QMainWindow(parent),
@@ -22,8 +25,15 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     ModuleFactory::getInstance().addModule(clw);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
-    emit competitionChanged();
 
+    openCompetitionFromFile(m_fileName);
+
+    QDockWidget* propDock = new QDockWidget(tr("Properties"),this);
+    PropertiesWidget* prop = new PropertiesWidget(m_competition,propDock);
+    propDock->setWidget(prop);
+    addDockWidget(Qt::RightDockWidgetArea,propDock);
+
+    connect(this,SIGNAL(competitionChanged()),prop,SLOT(updateProperties()));
 }
 
 MainWindow::~MainWindow()
@@ -53,7 +63,7 @@ void MainWindow::on_Btn_import_clicked()
 {
     importModule* importWindow = new importModule(m_competition);
     importWindow->show();
-    emit competitionChanged();
+    connect(importWindow,SIGNAL(importReady()),this,SIGNAL(competitionChanged()));
 }
 
 void MainWindow::openCompetition()

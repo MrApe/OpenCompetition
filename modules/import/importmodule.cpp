@@ -11,6 +11,8 @@ importModule::importModule(Competition* importTarget, QWidget *parent) :
 {
     ui->setupUi(this);
     connect(this,SIGNAL(log(QString)),this,SLOT(writeToLog(QString)));
+    connect(ui->ready,SIGNAL(clicked()),this,SIGNAL(importReady()));
+
     setWindowModality(Qt::ApplicationModal);
     TextImporter* textimporter = new TextImporter("txt");
     m_pluginProvider.addPlugin(textimporter);

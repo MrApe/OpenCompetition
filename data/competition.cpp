@@ -82,6 +82,14 @@ bool Competition::saveToFile(const QString &filename)
     versionAttr.setValue("1.0");
     compXMLDoc.appendChild(toDomElement(&compXMLDoc));
 
+    QString Debug = compXMLDoc.toString(2);
+    QMessageBox msgBox;
+    msgBox.setText(tr("SaveFile."));
+    msgBox.setInformativeText("The Competition will now be saved as XML-Document.");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDetailedText(Debug);
+    msgBox.exec();
+
     if (outputFile.open(QFile::WriteOnly | QFile::Text))
     {
         QTextStream outputStream(&outputFile);
@@ -99,12 +107,16 @@ bool Competition::loadFromFile(const QString &filename,QString* errorMsg,int* er
     QDomDocument compXMLDoc;
     if (compXMLDoc.setContent(&inputFile,errorMsg,errorLine,errorColumn))
     {
+        //Load base data
         QDomNamedNodeMap attrMap = compXMLDoc.elementsByTagName("competitiondata").item(0).attributes();
         m_name = attrMap.namedItem("name").nodeValue();
         m_date = QDate::fromString(attrMap.namedItem("date").nodeValue(),"dd.MM.yyyy");
         m_time = QTime::fromString(attrMap.namedItem("time").nodeValue(),"hh:mm");
         m_isRLT = attrMap.namedItem("isrlt").nodeValue()=="true";
         m_description = attrMap.namedItem("desc").nodeValue();
+
+        //load
+
         return true;
     }
     return false;

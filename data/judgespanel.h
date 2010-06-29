@@ -66,6 +66,7 @@ public:
     inline const Judge& getAssistantJudge() const {
         return m_assistantJudge;
     }
+    int size() const;
 
 
 

@@ -34,6 +34,7 @@ private slots:
 
 signals:
     void log(const QString& message);
+    void importReady();
 };
 
 

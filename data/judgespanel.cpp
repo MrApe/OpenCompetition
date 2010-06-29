@@ -17,6 +17,17 @@ JudgesPanel::JudgesPanel(QList<Judge> artisticJudges,
 {
 }
 
+int JudgesPanel::size() const
+{
+    int s = m_artisticJudges.size();
+    s += m_executionJudges.size();
+    s += m_difficultyJudges.size();
+    s += m_superiorJury.size();
+    s += m_lineJudges.size();
+    s += 2; //chair + Assistant
+    return s;
+}
+
 QDomElement JudgesPanel::toDomElement(QDomDocument *parentDocument)
 {
     QDomElement judgesPanelElement = parentDocument->createElement("judgespanel");

@@ -181,7 +181,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="next2">
+          <widget class="QPushButton" name="ready">
            <property name="text">
             <string>Ready</string>
            </property>
@@ -262,7 +262,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>next2</sender>
+   <sender>ready</sender>
    <signal>clicked()</signal>
    <receiver>importModule</receiver>
    <slot>close()</slot>
@@ -282,5 +282,6 @@
   <slot>nextPage()</slot>
   <slot>selectFiles()</slot>
   <slot>importFiles()</slot>
+  <slot>importReady()</slot>
  </slots>
 </ui>
