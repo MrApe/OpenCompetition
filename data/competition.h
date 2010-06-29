@@ -52,6 +52,11 @@ public:
       */
     virtual QDomElement toDomElement(QDomDocument* parentDocument);
 
+    /*!
+      This method reads a DomElement.
+      */
+    virtual void readFromDomElement(QDomElement &element);
+
 
     //! Inline getter
     inline const QString& getName() const {

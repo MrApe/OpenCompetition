@@ -69,8 +69,33 @@ QDomElement Competition::toDomElement(QDomDocument* parentDocument)
     for (it = m_starter.begin() ; it != m_starter.end();it++){
         starterElement.appendChild(it->toDomElement(parentDocument));
     }
+    competitionElement.appendChild(starterElement);
 
     return competitionElement;
+}
+
+void Competition::readFromDomElement(QDomElement &element)
+{
+    if (element.tagName() == "competitiondata")
+    {
+        m_name = element.attribute("name","");
+        m_date = QDate::fromString(element.attribute("date",""),"dd.MM.yyyy");
+        m_time = QTime::fromString(element.attribute("time",""),"hh:mm");
+        m_isRLT = element.attribute("isrlt","false")=="true";
+        m_description = element.attribute("desc","");
+
+        //Read judges data
+        QDomNode judgeNode = element.firstChild();
+        if (!judgeNode.isNull())
+        {
+            QDomElement judgeElement = judgeNode.toElement();
+            if (!judgeElement.isNull()){
+                m_judgesPanel = new JudgesPanel();
+                m_judgesPanel->readFromDomElement(judgeElement);
+            }
+        }
+    }
+
 }
 
 bool Competition::saveToFile(const QString &filename)
@@ -80,15 +105,8 @@ bool Competition::saveToFile(const QString &filename)
     QDomDocument compXMLDoc("competition");
     QDomAttr versionAttr = compXMLDoc.createAttribute("version");
     versionAttr.setValue("1.0");
-    compXMLDoc.appendChild(toDomElement(&compXMLDoc));
-
-    QString Debug = compXMLDoc.toString(2);
-    QMessageBox msgBox;
-    msgBox.setText(tr("SaveFile."));
-    msgBox.setInformativeText("The Competition will now be saved as XML-Document.");
-    msgBox.setStandardButtons(QMessageBox::Ok);
-    msgBox.setDetailedText(Debug);
-    msgBox.exec();
+    QDomElement compElement = toDomElement(&compXMLDoc);
+    compXMLDoc.appendChild(compElement);
 
     if (outputFile.open(QFile::WriteOnly | QFile::Text))
     {
@@ -96,6 +114,11 @@ bool Competition::saveToFile(const QString &filename)
         compXMLDoc.save(outputStream,3);
         return true;
     } else {
+        QMessageBox msgBox;
+        msgBox.setText(tr("Save Error."));
+        msgBox.setInformativeText(tr("Open file failed."));
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
         return false;
     }
 }
@@ -107,15 +130,9 @@ bool Competition::loadFromFile(const QString &filename,QString* errorMsg,int* er
     QDomDocument compXMLDoc;
     if (compXMLDoc.setContent(&inputFile,errorMsg,errorLine,errorColumn))
     {
+        QDomElement root = compXMLDoc.documentElement();
         //Load base data
-        QDomNamedNodeMap attrMap = compXMLDoc.elementsByTagName("competitiondata").item(0).attributes();
-        m_name = attrMap.namedItem("name").nodeValue();
-        m_date = QDate::fromString(attrMap.namedItem("date").nodeValue(),"dd.MM.yyyy");
-        m_time = QTime::fromString(attrMap.namedItem("time").nodeValue(),"hh:mm");
-        m_isRLT = attrMap.namedItem("isrlt").nodeValue()=="true";
-        m_description = attrMap.namedItem("desc").nodeValue();
-
-        //load
+        readFromDomElement(root);
 
         return true;
     }

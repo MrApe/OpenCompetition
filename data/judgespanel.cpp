@@ -1,5 +1,17 @@
 #include "judgespanel.h"
 
+JudgesPanel::JudgesPanel():
+        m_artisticJudges(),
+        m_executionJudges(),
+        m_difficultyJudges(),
+        m_superiorJury(),
+        m_lineJudges(),
+        m_chairJudge(),
+        m_assistantJudge()
+{
+
+}
+
 JudgesPanel::JudgesPanel(QList<Judge> artisticJudges,
                          QList<Judge> executionJudges,
                          QList<Judge> difficultyJudges,
@@ -78,3 +90,32 @@ QDomElement JudgesPanel::toDomElement(QDomDocument *parentDocument)
     return judgesPanelElement;
 }
 
+void JudgesPanel::readFromDomElement(QDomElement &element)
+{
+    if (element.tagName() == "judgespanel")
+    {
+        QDomNode nextNode = element.firstChild();
+        while (!nextNode.isNull())
+        {
+            QDomElement e = nextNode.toElement();
+            if (!e.isNull())
+            {
+                if (e.tagName() == "artisticjudges")
+                {
+                    QDomNode aJudgeNode = e.firstChild();
+                    while (!aJudgeNode.isNull())
+                    {
+                        QDomElement aJudgeElement = aJudgeNode.toElement();
+                        if (!aJudgeElement.isNull())
+                        {
+                            Judge aJudge("Noname",Judge::ARTISTIC,Judge::LTV);
+                            aJudge.readFromDomElement(aJudgeElement);
+
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
