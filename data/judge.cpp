@@ -10,7 +10,7 @@ QString Judge::scoreTypeToString(const scoreType &score)
     case CHAIR: return QObject::tr("Chair");
     case SUPERIOR: return QObject::tr("Superior");
     case ASSISTANT: return QObject::tr("Assistant");
-    default: return tr("NONE"); //should not be reached
+    default: return QObject::tr("NONE"); //should not be reached
     }
 }
 
@@ -34,7 +34,7 @@ QString Judge::brevetTypeToString(const brevetType &brevet)
     case FIG3: return QObject::tr("FIG3");
     case FIG2: return QObject::tr("FIG2");
     case FIG1: return QObject::tr("FIG1");
-    default: return QObject::tr("NONE");
+    default: return QObject::tr("NO");
     }
 }
 
@@ -46,7 +46,7 @@ Judge::brevetType Judge::stringToBrevetType(const QString &brevetString)
     if (brevetString == QObject::tr("FIG3")) return FIG3;
     if (brevetString == QObject::tr("FIG2")) return FIG2;
     if (brevetString == QObject::tr("FIG1")) return FIG1;
-    return NONE;
+    return NO;
 }
 
 Judge::Judge(const QString &name,
@@ -55,6 +55,13 @@ Judge::Judge(const QString &name,
     AbstractPerson(name),
     m_score(score),
     m_brevet(brevet)
+{
+}
+
+Judge::Judge():
+        AbstractPerson(QObject::tr("UNNAMED")),
+        m_score(NONE),
+        m_brevet(NO)
 {
 }
 
@@ -73,7 +80,7 @@ void Judge::readFromDomElement(QDomElement &element)
     if (element.tagName() == "judge")
     {
         m_name = element.attribute("name","");
-        m_score = element.attribute("score","NONE");
-        m_brevet = element.attribute("brevet","NONE");
+        m_score = stringToScoreType(element.attribute("score","NONE"));
+        m_brevet = stringToBrevetType(element.attribute("brevet","NONE"));
     }
 }

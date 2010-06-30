@@ -28,6 +28,11 @@ public:
       */
     virtual QDomElement toDomElement(QDomDocument* parentDocument);
 
+    /*!
+      This method reades Club data from an xml element.
+      */
+    virtual void readFromDomElement(QDomElement &element);
+
 
 private:
     QString m_name;

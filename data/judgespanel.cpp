@@ -1,4 +1,5 @@
 #include "judgespanel.h"
+#include <QObject>
 
 JudgesPanel::JudgesPanel():
         m_artisticJudges(),
@@ -6,8 +7,8 @@ JudgesPanel::JudgesPanel():
         m_difficultyJudges(),
         m_superiorJury(),
         m_lineJudges(),
-        m_chairJudge(),
-        m_assistantJudge()
+        m_chairJudges(),
+        m_assistantJudges()
 {
 
 }
@@ -17,15 +18,15 @@ JudgesPanel::JudgesPanel(QList<Judge> artisticJudges,
                          QList<Judge> difficultyJudges,
                          QList<Judge> superiorJury,
                          QList<Judge> lineJudges,
-                         Judge chairJudge,
-                         Judge assistantJudge):
+                         QList<Judge> chairJudges,
+                         QList<Judge> assistantJudges):
     m_artisticJudges(artisticJudges),
     m_executionJudges(executionJudges),
     m_difficultyJudges(difficultyJudges),
     m_superiorJury(superiorJury),
     m_lineJudges(lineJudges),
-    m_chairJudge(chairJudge),
-    m_assistantJudge(assistantJudge)
+    m_chairJudges(chairJudges),
+    m_assistantJudges(assistantJudges)
 {
 }
 
@@ -79,13 +80,20 @@ QDomElement JudgesPanel::toDomElement(QDomDocument *parentDocument)
         lineJudgesElement.appendChild(i->toDomElement(parentDocument));
     }
 
-    QDomElement chairJudgeElement = parentDocument->createElement("chairjudge");
-    judgesPanelElement.appendChild(chairJudgeElement);
-    chairJudgeElement.appendChild(m_chairJudge.toDomElement(parentDocument));
+    QDomElement chairJudgesElement = parentDocument->createElement("chairjudges");
+    judgesPanelElement.appendChild(chairJudgesElement);
+    for (i = m_chairJudges.begin(); i!= m_chairJudges.end(); i++)
+    {
+        chairJudgesElement.appendChild(i->toDomElement(parentDocument));
+    }
 
-    QDomElement assistantJudgeElement = parentDocument->createElement("assistantjudge");
-    judgesPanelElement.appendChild(assistantJudgeElement);
-    assistantJudgeElement.appendChild(m_assistantJudge.toDomElement(parentDocument));
+
+    QDomElement assistantJudgesElement = parentDocument->createElement("assistantjudges");
+    judgesPanelElement.appendChild(assistantJudgesElement);
+    for (i = m_assistantJudges.begin(); i!= m_assistantJudges.end(); i++)
+    {
+        assistantJudgesElement.appendChild(i->toDomElement(parentDocument));
+    }
 
     return judgesPanelElement;
 }
@@ -110,10 +118,10 @@ void JudgesPanel::readFromDomElement(QDomElement &element)
                     extractJudgeFromXML(e,m_superiorJury);
                 if (e.tagName() == "linejudges")
                     extractJudgeFromXML(e,m_lineJudges);
-                if (e.tagName() == "chairjudge")
-                    extractJudgeFromXML(e,m_chairJudge);
-                if (e.tagName() == "assistantjudge")
-                    extractJudgeFromXML(e,m_assistantJudge);
+                if (e.tagName() == "chairjudges")
+                    extractJudgeFromXML(e,m_chairJudges);
+                if (e.tagName() == "assistantjudges")
+                    extractJudgeFromXML(e,m_assistantJudges);
             }
         }
     }
@@ -127,22 +135,9 @@ void JudgesPanel::extractJudgeFromXML(QDomElement& element, QList<Judge> &target
         QDomElement aJudgeElement = aJudgeNode.toElement();
         if (!aJudgeElement.isNull())
         {
-            Judge aJudge("Noname",Judge::ARTISTIC,Judge::LTV);
+            Judge aJudge(QObject::tr("UNKNOWN"),Judge::ARTISTIC,Judge::LTV);
             aJudge.readFromDomElement(aJudgeElement);
-            target.append(aJudge);
-        }
-    }
-}
-
-void JudgesPanel::extractJudgeFromXML(QDomElement& element, Judge &target)
-{
-    QDomNode aJudgeNode = element.firstChild();
-    if (!aJudgeNode.isNull())
-    {
-        QDomElement aJudgeElement = aJudgeNode.toElement();
-        if (!aJudgeElement.isNull())
-        {
-            target.readFromDomElement(aJudgeElement);
+            if (aJudge.getName() != QObject::tr("UNKNOWN")) target.append(aJudge);
         }
     }
 }

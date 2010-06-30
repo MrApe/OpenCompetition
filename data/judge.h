@@ -30,7 +30,7 @@ public:
     static scoreType stringToScoreType(const QString& scoreString);
     
     enum brevetType{
-        NONE,
+        NO,
         LTV,
         DTB,
         FIG4,
@@ -54,6 +54,8 @@ public:
     Judge(const QString& name,
           scoreType score,
           brevetType brevet);
+
+    Judge();
 
     /*!
       This method creates a DomElement out of this object and returns it to the caller.

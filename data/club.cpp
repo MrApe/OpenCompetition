@@ -33,3 +33,11 @@ QDomElement Club::toDomElement(QDomDocument *parentDocument)
 
     return clubElement;
 }
+
+void Club::readFromDomElement(QDomElement &element)
+{
+    if (element.tagName() == "club")
+    {
+        m_name = element.attribute("name","");
+    }
+}

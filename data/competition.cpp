@@ -59,9 +59,11 @@ QDomElement Competition::toDomElement(QDomDocument* parentDocument)
     competitionElement.setAttribute("desc",m_description);
 
     // Add judges panel
+    QDomElement judgesElement = parentDocument->createElement("judgesdata");
     if (m_judgesPanel) {
-        competitionElement.appendChild(m_judgesPanel->toDomElement(parentDocument));
+        judgesElement.appendChild(m_judgesPanel->toDomElement(parentDocument));
     }
+    competitionElement.appendChild(judgesElement);
 
     //Add competitors
     QDomElement starterElement = parentDocument->createElement("starterdata");
@@ -88,16 +90,30 @@ void Competition::readFromDomElement(QDomElement &element)
         while (!nextNode.isNull())
         {
             QDomElement nextElement = nextNode.toElement();
-            if (!nextElement.isNull()){
+            QString nextElementName;
+            if (!nextElement.isNull())
+                nextElementName = nextElement.tagName();
+            if (nextElementName == "judgesdata")
+            {
                 m_judgesPanel = new JudgesPanel();
                 m_judgesPanel->readFromDomElement(nextElement);
             }
-            if (!nextElement.isNull() &&
-                nextElement.tagName() == "starterdata")
+
+            if (nextElementName == "starterdata")
             {
-                Group gr;
-                gr.readFromDomElement(nextElement);
-                m_starter.append(gr);
+                QDomNode groupNode = nextElement.firstChild();
+                while (!groupNode.isNull())
+                {
+                    QDomElement groupElement = groupNode.toElement();
+                    if (!groupElement.isNull())
+                    {
+                        Group gr;
+                        gr.readFromDomElement(groupElement);
+                        m_starter.append(gr);
+                    }
+
+                    groupNode = groupNode.nextSibling();
+                }
             }
 
             nextNode = element.nextSibling();

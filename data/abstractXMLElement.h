@@ -16,7 +16,7 @@ public:
     /*!
       This method reades a DomElement.
       */
-    virtual void readFromDomElement(QDomNode& element) = 0;
+    virtual void readFromDomElement(QDomElement& element) = 0;
 
 };
 

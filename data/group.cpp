@@ -148,14 +148,14 @@ QDomElement Group::toDomElement(QDomDocument *parentDocument)
     groupElement.setAttribute("agegroup",ageToString(m_age));
     groupElement.setAttribute("categorie",categorieToString(m_categorie));
     groupElement.appendChild(m_club.toDomElement(parentDocument));
-    QDomElement competitorsElement = parentDocument->createElement("competitors");
-        groupElement.appendChild(competitorsElement);
 
-        QList<Competitor>::iterator it;
-        for (it = m_competitors.begin();it != m_competitors.end();it++)
-        {
-            competitorsElement.appendChild(it->toDomElement(parentDocument));
-        }
+    QDomElement competitorsElement = parentDocument->createElement("competitors");
+    groupElement.appendChild(competitorsElement);
+    QList<Competitor>::iterator it;
+    for (it = m_competitors.begin();it != m_competitors.end();it++)
+    {
+        competitorsElement.appendChild(it->toDomElement(parentDocument));
+    }
 
     return groupElement;
 }
@@ -167,18 +167,38 @@ void Group::readFromDomElement(QDomElement &element)
         m_age = ageFromString(element.attribute("agegroup",QObject::tr("unknown")));
         m_categorie = categorieFromString(element.attribute("categorie",""));
 
-        QDomNode starterNode = element.firstChild();
-        while (!starterNode.isNull())
+        QDomNode nextNode = element.firstChild();
+        while (!nextNode.isNull())
         {
-            QDomElement starterElement = starterNode.toElement();
-            if (!starterElement.isNull())
+            QDomElement nextElement = nextNode.toElement();
+            if (!nextElement.isNull() &&
+                nextElement.tagName() == "group")
             {
-                Competitor starter(tr("UNNAMED"),0,Competitor::MALE);
-                starter.readFromDomElement(starterElement);
-                m_competitors.append(starter);
+                Group gr;
+                gr.readFromDomElement(nextElement);
             }
 
-            starterNode = element.nextSibling();
+            if (!nextElement.isNull() &&
+                nextElement.tagName() == "competitors")
+            {
+                QDomNode starterNode = nextElement.firstChild();
+                while (!starterNode.isNull())
+                {
+                    QDomElement starterElement = starterNode.toElement();
+                    if (!starterElement.isNull())
+                    {
+                        Competitor starter(QObject::tr("UNNAMED"),0,Competitor::MALE);
+                        starter.readFromDomElement(starterElement);
+                        m_competitors.append(starter);
+                    }
+
+                    starterNode = element.nextSibling();
+                }
+            }
+
+            nextNode = element.nextSibling();
         }
+
+
     }
 }

@@ -14,8 +14,8 @@ public:
                 QList<Judge> difficultyJudges,
                 QList<Judge> superiorJury,
                 QList<Judge> lineJudges,
-                Judge chairJudge,
-                Judge assistantJudge);
+                QList<Judge> chairJudges,
+                QList<Judge> assistantJudges);
 
     /*!
       This method creates a DomElement out of this object and returns it to the caller.
@@ -46,11 +46,11 @@ public:
     inline void setLineJudges(QList<Judge> lineJudges) {
         m_lineJudges = lineJudges;
     }
-    inline void setChairJudge(Judge chairJudge){
-        m_chairJudge = chairJudge;
+    inline void setChairJudge(QList<Judge> chairJudges){
+        m_chairJudges = chairJudges;
     }
-    inline void setAssistantJudge(Judge assistantJudge){
-        m_assistantJudge = assistantJudge;
+    inline void setAssistantJudge(QList<Judge> assistantJudges){
+        m_assistantJudges = assistantJudges;
     }
     inline const QList<Judge>& getArtisticJudges() const {
         return m_artisticJudges;
@@ -67,11 +67,11 @@ public:
     inline const QList<Judge>& getLineJudges() const {
         return m_lineJudges;
     }
-    inline const Judge& getChairJudge() const {
-        return m_chairJudge;
+    inline const QList<Judge>& getChairJudges() const {
+        return m_chairJudges;
     }
-    inline const Judge& getAssistantJudge() const {
-        return m_assistantJudge;
+    inline const QList<Judge>& getAssistantJudges() const {
+        return m_assistantJudges;
     }
     int size() const;
 
@@ -83,11 +83,10 @@ private:
     QList<Judge> m_difficultyJudges;
     QList<Judge> m_superiorJury;
     QList<Judge> m_lineJudges;
-    Judge m_chairJudge;
-    Judge m_assistantJudge;
+    QList<Judge> m_chairJudges;
+    QList<Judge> m_assistantJudges;
 
     void extractJudgeFromXML(QDomElement& element, QList<Judge>& target);
-    void extractJudgeFromXML(QDomElement& element, Judge& target);
 };
 
 #endif // JUDGESPANEL_H
