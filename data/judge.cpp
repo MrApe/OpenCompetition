@@ -59,7 +59,7 @@ Judge::Judge(const QString &name,
 }
 
 Judge::Judge():
-        AbstractPerson(QObject::tr("UNNAMED")),
+        AbstractPerson(QObject::tr("NO_NAME")),
         m_score(NONE),
         m_brevet(NO)
 {

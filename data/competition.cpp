@@ -116,7 +116,7 @@ void Competition::readFromDomElement(QDomElement &element)
                 }
             }
 
-            nextNode = element.nextSibling();
+            nextNode = nextNode.nextSibling();
         }        
     }
 

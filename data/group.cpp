@@ -47,7 +47,7 @@ Group::Group():
         m_competitors(),
         m_age(),
         m_categorie(),
-        m_club(QObject::tr("Not Set"))
+        m_club(QObject::tr("NOT_GIVEN"))
 {
 
 }
@@ -172,10 +172,9 @@ void Group::readFromDomElement(QDomElement &element)
         {
             QDomElement nextElement = nextNode.toElement();
             if (!nextElement.isNull() &&
-                nextElement.tagName() == "group")
+                nextElement.tagName() == "club")
             {
-                Group gr;
-                gr.readFromDomElement(nextElement);
+                m_club.readFromDomElement(nextElement);
             }
 
             if (!nextElement.isNull() &&
@@ -187,16 +186,16 @@ void Group::readFromDomElement(QDomElement &element)
                     QDomElement starterElement = starterNode.toElement();
                     if (!starterElement.isNull())
                     {
-                        Competitor starter(QObject::tr("UNNAMED"),0,Competitor::MALE);
+                        Competitor starter(QObject::tr("NO_NAME"),0,Competitor::MALE);
                         starter.readFromDomElement(starterElement);
                         m_competitors.append(starter);
                     }
 
-                    starterNode = element.nextSibling();
+                    starterNode = starterNode.nextSibling();
                 }
             }
 
-            nextNode = element.nextSibling();
+            nextNode = nextNode.nextSibling();
         }
 
 
