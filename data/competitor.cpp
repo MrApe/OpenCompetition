@@ -41,7 +41,7 @@ QDomElement Competitor::toDomElement(QDomDocument *parentDocument)
     QDomElement competitor = parentDocument->createElement("competitor");
     competitor.setAttribute("name",m_name);
     competitor.setAttribute("birth",m_birth);
-    competitor.setAttribute("gender",m_gender?"male":"female");
+    competitor.setAttribute("gender",m_gender==MALE?"male":"female");
 
     return competitor;
 }
