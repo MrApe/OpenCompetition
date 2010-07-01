@@ -3,6 +3,7 @@
 #include <QFileDialog>
 #include <QDockWidget>
 #include <QTextEdit>
+#include <QCloseEvent>
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "modules/import/importmodule.h"
@@ -100,7 +101,16 @@ void MainWindow::openCompetitionFromFile(const QString &filename)
     }
 }
 
-void MainWindow::closeCompetition()
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (closeCompetition()) {
+        event->accept();
+    } else {
+        event->ignore();
+    }
+}
+
+bool MainWindow::closeCompetition()
 {
     QMessageBox msgBox;
     msgBox.setText(tr("The current competition will be closed."));
@@ -114,16 +124,16 @@ void MainWindow::closeCompetition()
             delete m_competition;
             m_competition = NULL;
             m_fileName = "";
-            return;
+            return true;
     case QMessageBox::Discard :
             delete m_competition;
             m_competition = NULL;
             m_fileName = "";
-            return;
+            return true;
     case QMessageBox::Cancel :
-            return;
+            return false;
     default:
-            return;
+            return false;
     }
 }
 

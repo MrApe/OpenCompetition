@@ -314,5 +314,6 @@
   <slot>saveToFile()</slot>
   <slot>saveToFileAs()</slot>
   <slot>openCompetition()</slot>
+  <slot>closeCompetition()</slot>
  </slots>
 </ui>

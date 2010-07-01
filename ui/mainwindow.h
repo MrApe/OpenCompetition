@@ -18,6 +18,7 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
+    virtual void closeEvent(QCloseEvent *);
 
 private:
     Ui::MainWindow *ui;
@@ -32,7 +33,7 @@ private slots:
     void openCompetitionFromFile(const QString& filename);
     void saveToFile();
     void saveToFileAs();
-    void closeCompetition();
+    bool closeCompetition();
     void updateWindow();
 
 signals:
