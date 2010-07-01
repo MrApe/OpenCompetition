@@ -70,10 +70,11 @@ void ClubListWidget::updateClubList()
 
 void ClubListWidget::updateDescription()
 {
-    ui->teamTable->clearContents();
+    for (;ui->teamTable->rowCount()>0;ui->teamTable->removeRow(0));
     if (ui->clubTable->selectedItems().size() > 0)
     {
         QString club = ui->clubTable->selectedItems().at(0)->text();
+        ui->name->setText(club);
 
         for (int j = 0;j< m_clublist[club].size();j++)
         {
