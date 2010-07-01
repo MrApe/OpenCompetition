@@ -2,6 +2,59 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="de_DE">
 <context>
+    <name>ClubListWidget</name>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="63"/>
+        <source>Club</source>
+        <translation>Verein</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="68"/>
+        <source>Teams</source>
+        <translation>Starter</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="105"/>
+        <source>Name:</source>
+        <translation>Name:</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="20"/>
+        <source>ClubList</source>
+        <translation>Liste der Vereine</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="32"/>
+        <source>Clubs</source>
+        <translation>Vereine</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="91"/>
+        <source>Properties</source>
+        <translation>Eigenschaften</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="137"/>
+        <source>Registered starter:</source>
+        <translation>Gemeldete Starter:</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="169"/>
+        <source>Team</source>
+        <translation>Starter</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="174"/>
+        <source>AgeGroup</source>
+        <translation>Altersklasse</translation>
+    </message>
+    <message>
+        <location filename="../modules/clublist/clublistwidget.ui" line="179"/>
+        <source>Competitors</source>
+        <translation>Wettkämpfer</translation>
+    </message>
+</context>
+<context>
     <name>Competition</name>
     <message>
         <location filename="../data/competition.cpp" line="35"/>
@@ -12,6 +65,16 @@
         <location filename="../data/competition.cpp" line="35"/>
         <source>Competition could not be opened due to the following error: </source>
         <translation>Der Wettkampf konnte nicht geöffnet werden. Fehler: </translation>
+    </message>
+    <message>
+        <location filename="../data/competition.cpp" line="142"/>
+        <source>Save Error.</source>
+        <translation>Fehler beim speichern.</translation>
+    </message>
+    <message>
+        <location filename="../data/competition.cpp" line="143"/>
+        <source>Open file failed.</source>
+        <translation>Öffnen der Datei fehlgeschlagen.</translation>
     </message>
 </context>
 <context>
@@ -112,37 +175,46 @@
         <translation>Speichern unter..</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="40"/>
+        <location filename="../ui/mainwindow.cpp" line="32"/>
+        <source>Properties</source>
+        <translation>Eigenschaften</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="60"/>
         <source>OpenCompetition - </source>
         <translation>OpenCompetition - </translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="67"/>
+        <location filename="../ui/mainwindow.cpp" line="90"/>
         <source>Open Error.</source>
         <translation>Fehler beim Öffnen.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="68"/>
+        <location filename="../ui/mainwindow.cpp" line="91"/>
         <source>Opening competition file failed.</source>
         <translation>Öffnen der Wettkampfdatei fehlgeschlagen.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="84"/>
+        <location filename="../ui/mainwindow.cpp" line="116"/>
         <source>The current competition will be closed.</source>
         <translation>Aktuell geöffneter Wettkampf wird geschlossen.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="85"/>
+        <location filename="../ui/mainwindow.cpp" line="117"/>
         <source>Save changes?</source>
         <translation>Änderungen speichern?</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="127"/>
-        <source>Wettkampf speichern</source>
+        <location filename="../ui/mainwindow.cpp" line="152"/>
+        <source>save competition</source>
         <translation>Wettkampf speichern</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="129"/>
+        <source>Wettkampf speichern</source>
+        <translation type="obsolete">Wettkampf speichern</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="154"/>
         <source>Wettkampf (*.cmp);; AllFiles (*)</source>
         <translation>Wettkampf (*.cmp;; Alle Dateien (*)</translation>
     </message>
@@ -223,74 +295,142 @@
         <translation>Verlauf</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="149"/>
+        <location filename="../ui/opendialog.ui" line="156"/>
+        <source>+</source>
+        <translation>+</translation>
+    </message>
+    <message>
+        <location filename="../ui/opendialog.ui" line="167"/>
+        <source>X</source>
+        <translation>X</translation>
+    </message>
+    <message>
+        <location filename="../ui/opendialog.ui" line="188"/>
         <source>Open existing file...</source>
         <translation>Existierende Datei öffnen...</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="177"/>
+        <location filename="../ui/opendialog.ui" line="216"/>
         <source>Open..</source>
         <translation>Öffnen..</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="195"/>
+        <location filename="../ui/opendialog.ui" line="234"/>
         <source>Description</source>
         <translation>Beschreibung</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="218"/>
+        <location filename="../ui/opendialog.ui" line="257"/>
         <source>Name:</source>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="248"/>
+        <location filename="../ui/opendialog.ui" line="287"/>
         <source>Date:</source>
         <translation>Datum:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="278"/>
+        <location filename="../ui/opendialog.ui" line="317"/>
         <source>Time:</source>
         <translation>Zeit:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="303"/>
+        <location filename="../ui/opendialog.ui" line="342"/>
         <source>Ranking competition</source>
         <translation>Ranglistenturnier</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="324"/>
+        <location filename="../ui/opendialog.ui" line="363"/>
         <source>Detailed description:</source>
         <translation>Beschreibung:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="194"/>
+        <location filename="../ui/opendialog.cpp" line="195"/>
         <source>Competition *.cmp</source>
         <translation>Wettkampf (*.cmp)</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="208"/>
+        <location filename="../ui/opendialog.cpp" line="209"/>
         <source>Specify the name of the competition.</source>
         <translation>Name des Wettkampfes angeben.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="211"/>
+        <location filename="../ui/opendialog.cpp" line="212"/>
         <source>Properties - </source>
         <translation>Eigenschaften - </translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="224"/>
+        <location filename="../ui/opendialog.cpp" line="225"/>
         <source>Open Competition.</source>
         <translation>Wettkampf öffnen.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="237"/>
+        <location filename="../ui/opendialog.cpp" line="238"/>
         <source>Open Error.</source>
         <translation>Fehler beim Öffnen.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="238"/>
+        <location filename="../ui/opendialog.cpp" line="239"/>
         <source>Opening competition file failed.</source>
         <translation>Öffnen der Wettkampfdatei fehlgeschlagen.</translation>
+    </message>
+</context>
+<context>
+    <name>PropertiesWidget</name>
+    <message>
+        <location filename="../ui/propertieswidget.ui" line="26"/>
+        <source>Form</source>
+        <translation>Liste der Vereine</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.ui" line="51"/>
+        <source>Property</source>
+        <translation>Eigenschaft</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.ui" line="56"/>
+        <source>Value</source>
+        <translation>Wert</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.cpp" line="32"/>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.cpp" line="33"/>
+        <source>Date</source>
+        <translation>Datum</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.cpp" line="34"/>
+        <source>Time</source>
+        <translation>Zeit</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.cpp" line="35"/>
+        <source>Ranking?</source>
+        <translation>RLT?</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.cpp" line="36"/>
+        <source>Description</source>
+        <translation>Beschreibung</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.cpp" line="37"/>
+        <source>Competitors</source>
+        <translation>Wettkämpfer</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.cpp" line="96"/>
+        <source>yes</source>
+        <translation>ja</translation>
+    </message>
+    <message>
+        <location filename="../ui/propertieswidget.cpp" line="96"/>
+        <source>no</source>
+        <translation>nein</translation>
     </message>
 </context>
 <context>
@@ -345,6 +485,7 @@
     </message>
     <message>
         <location filename="../data/group.cpp" line="23"/>
+        <location filename="../data/group.cpp" line="167"/>
         <source>unknown</source>
         <translation>unbekannt</translation>
     </message>
@@ -355,8 +496,18 @@
     </message>
     <message>
         <location filename="../data/group.cpp" line="50"/>
+        <source>NOT_GIVEN</source>
+        <translation>NICHT_ANGEGEBEN</translation>
+    </message>
+    <message>
+        <location filename="../data/group.cpp" line="189"/>
+        <location filename="../data/judge.cpp" line="62"/>
+        <source>NO_NAME</source>
+        <translation>KEIN_NAME</translation>
+    </message>
+    <message>
         <source>Not Set</source>
-        <translation>Nicht angegeben</translation>
+        <translation type="obsolete">Nicht angegeben</translation>
     </message>
     <message>
         <location filename="../data/group.cpp" line="112"/>
@@ -380,68 +531,85 @@
     </message>
     <message>
         <location filename="../data/judge.cpp" line="7"/>
+        <location filename="../data/judge.cpp" line="19"/>
         <source>Artistic</source>
         <translation>Artistik</translation>
     </message>
     <message>
         <location filename="../data/judge.cpp" line="8"/>
+        <location filename="../data/judge.cpp" line="20"/>
         <source>Execution</source>
         <translation>Ausführung</translation>
     </message>
     <message>
         <location filename="../data/judge.cpp" line="9"/>
+        <location filename="../data/judge.cpp" line="21"/>
         <source>Difficulty</source>
         <translation>Schwierigkeit</translation>
     </message>
     <message>
         <location filename="../data/judge.cpp" line="10"/>
+        <location filename="../data/judge.cpp" line="22"/>
         <source>Chair</source>
         <translation>Oberkampfrichter</translation>
     </message>
     <message>
         <location filename="../data/judge.cpp" line="11"/>
+        <location filename="../data/judge.cpp" line="23"/>
         <source>Superior</source>
         <translation>Superior Jury</translation>
     </message>
     <message>
         <location filename="../data/judge.cpp" line="12"/>
+        <location filename="../data/judge.cpp" line="24"/>
         <source>Assistant</source>
         <translation>OK Assistent</translation>
     </message>
     <message>
-        <location filename="../data/judge.cpp" line="20"/>
+        <location filename="../data/judge.cpp" line="31"/>
+        <location filename="../data/judge.cpp" line="43"/>
         <source>LTV</source>
         <translation>LTV</translation>
     </message>
     <message>
-        <location filename="../data/judge.cpp" line="21"/>
+        <location filename="../data/judge.cpp" line="32"/>
+        <location filename="../data/judge.cpp" line="44"/>
         <source>DTB</source>
         <translation>DTB</translation>
     </message>
     <message>
-        <location filename="../data/judge.cpp" line="22"/>
+        <location filename="../data/judge.cpp" line="33"/>
+        <location filename="../data/judge.cpp" line="45"/>
         <source>FIG4</source>
         <translation>FIG4</translation>
     </message>
     <message>
-        <location filename="../data/judge.cpp" line="23"/>
+        <location filename="../data/judge.cpp" line="34"/>
+        <location filename="../data/judge.cpp" line="46"/>
         <source>FIG3</source>
         <translation>FIG3</translation>
     </message>
     <message>
-        <location filename="../data/judge.cpp" line="24"/>
+        <location filename="../data/judge.cpp" line="35"/>
+        <location filename="../data/judge.cpp" line="47"/>
         <source>FIG2</source>
         <translation>FIG2</translation>
     </message>
     <message>
-        <location filename="../data/judge.cpp" line="25"/>
+        <location filename="../data/judge.cpp" line="36"/>
+        <location filename="../data/judge.cpp" line="48"/>
         <source>FIG1</source>
         <translation>FIG1</translation>
     </message>
     <message>
-        <location filename="../data/judge.cpp" line="26"/>
+        <location filename="../data/judge.cpp" line="37"/>
+        <source>NO</source>
+        <translation>KEINES</translation>
+    </message>
+    <message>
+        <location filename="../data/judge.cpp" line="13"/>
         <source>NONE</source>
-        <translation>Kein Brevet</translation>
+        <translation>KEINE</translation>
     </message>
     <message>
         <location filename="../data/tomanycompetitorsexception.cpp" line="11"/>
@@ -452,6 +620,12 @@
         <location filename="../modules/import/filenotopenedexception.cpp" line="12"/>
         <source>Opening file failed. It may not exist or is in use by another program.</source>
         <translation>Öffnen der Datei fehlgeschlagen. Die datei ist möglicherweise nicht vorhanden oder wird von einem anderen Programm benutzt.</translation>
+    </message>
+    <message>
+        <location filename="../data/judgespanel.cpp" line="138"/>
+        <location filename="../data/judgespanel.cpp" line="140"/>
+        <source>UNKNOWN</source>
+        <translation>UNBEKANNT</translation>
     </message>
 </context>
 <context>
@@ -582,12 +756,12 @@
         <translation type="obsolete">Meldung auswählen</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.cpp" line="42"/>
+        <location filename="../modules/import/importmodule.cpp" line="45"/>
         <source>Processing File: </source>
         <translation>Bearbeite Datei: </translation>
     </message>
     <message numerus="yes">
-        <location filename="../modules/import/importmodule.cpp" line="44"/>
+        <location filename="../modules/import/importmodule.cpp" line="47"/>
         <source>Found %n group(s)</source>
         <translation>
             <numerusform>%n Gruppe gefunden</numerusform>
@@ -595,12 +769,12 @@
         </translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.cpp" line="60"/>
+        <location filename="../modules/import/importmodule.cpp" line="63"/>
         <source>Select Registration</source>
         <translation>Meldung auswählen</translation>
     </message>
     <message>
-        <location filename="../modules/import/importmodule.cpp" line="62"/>
+        <location filename="../modules/import/importmodule.cpp" line="65"/>
         <source>Registration *.doc *.pdf *.txt</source>
         <translation>Meldung *.doc *.pdf *.txt</translation>
     </message>

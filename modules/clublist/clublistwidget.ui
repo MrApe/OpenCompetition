@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>ClubList</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -29,7 +29,7 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string>Vereine</string>
+      <string>Clubs</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
@@ -88,7 +88,7 @@
       </size>
      </property>
      <property name="title">
-      <string>Eigenschaften</string>
+      <string>Properties</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -134,7 +134,7 @@
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>gemeldete Teams:</string>
+         <string>Registered starter:</string>
         </property>
        </widget>
       </item>
