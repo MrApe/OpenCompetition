@@ -9,6 +9,7 @@
 #include "modules/import/importmodule.h"
 #include "ui/opendialog.h"
 #include "modules/clublist/clublistwidget.h"
+#include "modules/competitorlist/competitorlistwidget.h"
 #include "ui/propertieswidget.h"
 
 MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget *parent) :
@@ -20,10 +21,12 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
 {   
     ui->setupUi(this);
 
-    ClubListWidget* clw = new ClubListWidget("clublist",m_competition);
-    connect(this,SIGNAL(competitionChanged()),clw,SLOT(updateWidget()));
+    ClubListWidget* clubLW = new ClubListWidget("clublist",m_competition);
+    connect(this,SIGNAL(competitionChanged()),clubLW,SLOT(updateWidget()));
+    ModuleFactory::getInstance().addModule(clubLW);
 
-    ModuleFactory::getInstance().addModule(clw);
+    CompetitorListWidget* compLW = new CompetitorListWidget("competitorlist",m_competition);
+    ModuleFactory::getInstance().addModule(compLW);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
 
@@ -162,11 +165,21 @@ void MainWindow::saveToFileAs()
     }
 }
 
+void MainWindow::showModule(const QString &name)
+{
+    AbstractModule* module = ModuleFactory::getInstance().getModuleByName(name);
+    if (module != NULL) {
+        emit competitionChanged();
+        module->show();
+    }
+}
+
 void MainWindow::on_Btn_gemVer_clicked()
 {
-    AbstractModule* clw = ModuleFactory::getInstance().getModuleByName("clublist");
-    if (clw != NULL) {
-        emit competitionChanged();
-        clw->show();
-    }
+    showModule("clublist");
+}
+
+void MainWindow::on_Btn_startfeld_clicked()
+{
+    showModule("competitorlist");
 }

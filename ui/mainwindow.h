@@ -27,6 +27,7 @@ private:
     QSettings* m_settings;
 
 private slots:
+    void on_Btn_startfeld_clicked();
     void on_Btn_gemVer_clicked();
     void on_Btn_import_clicked();
     void openCompetition();
@@ -35,6 +36,7 @@ private slots:
     void saveToFileAs();
     bool closeCompetition();
     void updateWindow();
+    void showModule(const QString& name);
 
 signals:
     void competitionChanged();
