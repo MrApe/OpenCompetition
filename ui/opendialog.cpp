@@ -183,7 +183,19 @@ void OpenDialog::on_historyWidget_itemSelectionChanged()
     if (selectedItems.size() > 0) {
         int selectedIndex = ui->historyWidget->indexOfTopLevelItem(selectedItems.at(0));
         emit competitionChanged(m_recentComp.at(selectedIndex));
+    } else {
+
     }
+}
+
+void OpenDialog::clearWidget()
+{
+    ui->name->setText("");
+    ui->date->setText("");
+    ui->time->setText("");
+    ui->isRLTBox->setChecked(false);
+    ui->description->setText("");
+    emit openFileChanged("");
 }
 
 QString OpenDialog::getFilenameFromDialog(const QString& title, QFileDialog::FileMode fileMode)
@@ -259,7 +271,10 @@ void OpenDialog::on_remove_clicked()
             m_recentComp.removeAt(index);
             updateHistoryWidget();
             saveHistory();
-            ui->historyWidget->itemAt(0,0)->setSelected(true);
+            if (ui->historyWidget->itemAt(0,0) != NULL)
+            {
+                ui->historyWidget->itemAt(0,0)->setSelected(true);
+            }
         }
     }
 }

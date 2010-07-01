@@ -16,6 +16,9 @@ public:
                const unsigned int birth,
                genderType gender);
 
+    Competitor(const Competitor& other);
+
+    Competitor& operator=(const Competitor& other);
     bool operator ==(const Competitor& other) const;
     bool operator !=(const Competitor& other) const;
 
@@ -40,12 +43,12 @@ public:
         m_birth = birth;}
     inline genderType getGender() const {
         return m_gender;}
-    inline unsigned int getBirth() const{
+    inline int getBirth() const{
         return m_birth;}
 
 
 private:
-    unsigned int m_birth;
+    int m_birth;
     genderType m_gender;
 
 };

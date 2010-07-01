@@ -65,7 +65,7 @@ public:
         return m_time;}
     inline const QDate& getDate() const {
         return m_date;}
-    inline const JudgesPanel* getJudgesPanel() const {
+    inline JudgesPanel* getJudgesPanel() const {
         return m_judgesPanel;}
     inline const QList<Group>& getStarter() const {
         return m_starter;}

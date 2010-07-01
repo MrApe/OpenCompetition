@@ -23,7 +23,10 @@ ClubListWidget::~ClubListWidget()
 void ClubListWidget::updateCompetition(Competition *comp)
 {
     m_competition = comp;
-    updateClubList();
+    if (comp != NULL)
+    {
+        updateClubList();
+    }
 }
 
 void ClubListWidget::updateWidget()

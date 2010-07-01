@@ -117,7 +117,7 @@ private slots:
     void on_remove_clicked();
     void on_openBtn_clicked();
     void on_createNewBtn_clicked();
-
+    void clearWidget();
 
 signals:
     void competitionChanged(Competition* competition, const QString& filename);

@@ -22,6 +22,12 @@
       </property>
       <item>
        <widget class="QGroupBox" name="MeldBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>4</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>170</width>
@@ -46,18 +52,12 @@
            <property name="text">
             <string>Import..</string>
            </property>
-           <property name="checkable">
-            <bool>false</bool>
-           </property>
           </widget>
          </item>
          <item>
           <widget class="QCommandLinkButton" name="Btn_gemVer">
            <property name="text">
             <string>Registered clubs</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -66,18 +66,12 @@
            <property name="text">
             <string>Competitors</string>
            </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
           <widget class="QCommandLinkButton" name="Btn_Kampfrichter">
            <property name="text">
             <string>Judges</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -86,6 +80,12 @@
       </item>
       <item>
        <widget class="QGroupBox" name="WettBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>3</verstretch>
+         </sizepolicy>
+        </property>
         <property name="title">
          <string>Competition</string>
         </property>
@@ -101,18 +101,12 @@
            <property name="text">
             <string>Starting list</string>
            </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
           <widget class="QCommandLinkButton" name="Btn_Wertungen">
            <property name="text">
             <string>Score input</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -121,9 +115,6 @@
            <property name="text">
             <string>Beamer output</string>
            </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
         </layout>
@@ -131,6 +122,12 @@
       </item>
       <item>
        <widget class="QGroupBox" name="ErgBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>3</verstretch>
+         </sizepolicy>
+        </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
@@ -152,9 +149,6 @@
            <property name="text">
             <string>Certificates</string>
            </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
@@ -162,18 +156,12 @@
            <property name="text">
             <string>Result list</string>
            </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
           <widget class="QCommandLinkButton" name="Btn_Rangliste">
            <property name="text">
             <string>Ranking points</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
            </property>
           </widget>
          </item>

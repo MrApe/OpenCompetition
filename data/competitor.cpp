@@ -9,6 +9,21 @@ Competitor::Competitor(const QString& name,
 {
 }
 
+Competitor::Competitor(const Competitor &other):
+        AbstractPerson(other.getName()),
+        m_birth(other.getBirth()),
+        m_gender(other.getGender())
+{
+}
+
+Competitor& Competitor::operator =(const Competitor& other)
+{
+    setName(other.getName());
+    m_birth = other.getBirth();
+    m_gender = other.getGender();
+    return *this;
+}
+
 bool Competitor::operator ==(const Competitor& other) const
 {
     return (m_name == other.getName() &&

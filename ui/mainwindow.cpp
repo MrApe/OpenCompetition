@@ -26,6 +26,7 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     ModuleFactory::getInstance().addModule(clubLW);
 
     CompetitorListWidget* compLW = new CompetitorListWidget("competitorlist",m_competition);
+    connect(this,SIGNAL(competitionChanged()),compLW,SLOT(updateWidget()));
     ModuleFactory::getInstance().addModule(compLW);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
