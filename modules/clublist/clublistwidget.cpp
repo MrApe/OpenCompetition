@@ -50,8 +50,8 @@ void ClubListWidget::updateClubList()
         ui->clubTable->insertRow(0);
 
         QString club = i.key().getName();
-        QTableWidgetItem* newClub = new QTableWidgetItem(club);
-        ui->clubTable->setItem(0,0,newClub);
+        QTableWidgetItem* clubItem = new QTableWidgetItem(club);
+        ui->clubTable->setItem(0,0,clubItem);
 
         QString groups;
         for (QList<Group>::iterator j = m_clublist[club].begin();j!=m_clublist[club].end();j++)
@@ -62,8 +62,8 @@ void ClubListWidget::updateClubList()
             groups.append(Group::ageToString((*j).getAge()));
             groups.append(") ");
         }
-        QTableWidgetItem* newStarter = new QTableWidgetItem(groups);
-        ui->clubTable->setItem(0,1,newStarter);
+        QTableWidgetItem* starterItem = new QTableWidgetItem(groups);
+        ui->clubTable->setItem(0,1,starterItem);
     }
     ui->clubTable->setSortingEnabled(true);
 }

@@ -391,5 +391,21 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>historyWidget</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>OpenDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>
