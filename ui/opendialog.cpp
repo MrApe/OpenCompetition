@@ -126,7 +126,8 @@ void OpenDialog::updateHistoryWidget()
 
 void OpenDialog::saveHistory()
 {
-    QString base;
+    QString base = "recent";
+    m_settings->remove(base);
     for (int i = 0; i < m_recentComp.size(); i++)
     {
         base = "recent/comp"+QString::number(i)+"/";
@@ -243,6 +244,22 @@ void OpenDialog::on_openBtn_clicked()
             QString colNum;
             info.setDetailedText(errorMsg + lineNum.setNum(line) + colNum.setNum(column));
             info.exec();
+        }
+    }
+}
+
+void OpenDialog::on_remove_clicked()
+{
+    if (ui->historyWidget->selectedItems().size() > 0)
+    {
+        QTreeWidgetItem* selected = ui->historyWidget->selectedItems().at(0);
+        int index = ui->historyWidget->indexOfTopLevelItem(selected);
+        if (index != -1)
+        {
+            m_recentComp.removeAt(index);
+            updateHistoryWidget();
+            saveHistory();
+            ui->historyWidget->itemAt(0,0)->setSelected(true);
         }
     }
 }

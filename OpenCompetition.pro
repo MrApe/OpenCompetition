@@ -54,3 +54,4 @@ FORMS += modules/import/importmodule.ui \
     modules/clublist/clublistwidget.ui \
     ui/propertieswidget.ui
 OTHER_FILES += lang/de_DE.ts
+RESOURCES += ressources.qrc

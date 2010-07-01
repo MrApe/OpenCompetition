@@ -112,7 +112,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 bool MainWindow::closeCompetition()
 {
-    QMessageBox msgBox;
+    QMessageBox msgBox(this);
     msgBox.setText(tr("The current competition will be closed."));
     msgBox.setInformativeText(tr("Save changes?"));
     msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
@@ -149,7 +149,7 @@ void MainWindow::saveToFile()
 void MainWindow::saveToFileAs()
 {
     QFileDialog saveFileDiag(this,
-                             tr("Wettkampf speichern"),
+                             tr("save competition"),
                              "",
                              tr("Wettkampf (*.cmp);; AllFiles (*)"));
     saveFileDiag.setFileMode(QFileDialog::AnyFile);

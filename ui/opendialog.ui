@@ -135,6 +135,45 @@
             </column>
            </widget>
           </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QToolButton" name="open">
+              <property name="text">
+               <string>+</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../ressources.qrc">
+                <normaloff>:/ui/icons/images/icons/up_folder_64.png</normaloff>:/ui/icons/images/icons/up_folder_64.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="remove">
+              <property name="text">
+               <string>X</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../ressources.qrc">
+                <normaloff>:/ui/icons/images/icons/delete_x_64.png</normaloff>:/ui/icons/images/icons/delete_x_64.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
          </layout>
         </item>
         <item>
@@ -357,7 +396,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../ressources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
@@ -404,6 +445,22 @@
     <hint type="destinationlabel">
      <x>8</x>
      <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>open</sender>
+   <signal>clicked()</signal>
+   <receiver>openBtn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>289</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>254</x>
+     <y>280</y>
     </hint>
    </hints>
   </connection>

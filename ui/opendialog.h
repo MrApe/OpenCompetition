@@ -114,6 +114,7 @@ public slots:
     void setOpenFileName(const QString& filename);
 
 private slots:
+    void on_remove_clicked();
     void on_openBtn_clicked();
     void on_createNewBtn_clicked();
 
