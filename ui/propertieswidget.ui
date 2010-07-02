@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../ressources.qrc">
+    <normaloff>:/ui/icons/images/icons/properties_doc_64.png</normaloff>:/ui/icons/images/icons/properties_doc_64.png</iconset>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
    <property name="spacing">
     <number>0</number>
@@ -50,16 +54,26 @@
       <property name="text">
        <string>Property</string>
       </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/ui/icons/images/icons/properties_doc_64.png</normaloff>:/ui/icons/images/icons/properties_doc_64.png</iconset>
+      </property>
      </column>
      <column>
       <property name="text">
        <string>Value</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/ui/icons/images/icons/new_document_64_h.png</normaloff>:/ui/icons/images/icons/new_document_64_h.png</iconset>
       </property>
      </column>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -22,6 +22,10 @@
   <property name="windowTitle">
    <string>Open competition</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../ressources.qrc">
+    <normaloff>:/ui/icons/images/icons/up_folder_64.png</normaloff>:/ui/icons/images/icons/up_folder_64.png</iconset>
+  </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
@@ -81,6 +85,11 @@
             </property>
             <property name="text">
              <string>Open new file dialog...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../ressources.qrc">
+              <normaloff>:/ui/icons/images/icons/new_document_64.png</normaloff>
+              <normalon>:/ui/icons/images/icons/new_document_64_h.png</normalon>:/ui/icons/images/icons/new_document_64.png</iconset>
             </property>
            </widget>
           </item>
@@ -157,7 +166,8 @@
               </property>
               <property name="icon">
                <iconset resource="../ressources.qrc">
-                <normaloff>:/ui/icons/images/icons/up_folder_64.png</normaloff>:/ui/icons/images/icons/up_folder_64.png</iconset>
+                <normaloff>:/ui/icons/images/icons/up_folder_64.png</normaloff>
+                <normalon>:/ui/icons/images/icons/copy_to_folder_64_h.png</normalon>:/ui/icons/images/icons/up_folder_64.png</iconset>
               </property>
              </widget>
             </item>
@@ -214,6 +224,11 @@
            <widget class="QPushButton" name="openBtn">
             <property name="text">
              <string>Open..</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../ressources.qrc">
+              <normaloff>:/ui/icons/images/icons/up_folder_64.png</normaloff>
+              <normalon>:/ui/icons/images/icons/copy_to_folder_64_h.png</normalon>:/ui/icons/images/icons/up_folder_64.png</iconset>
             </property>
            </widget>
           </item>
