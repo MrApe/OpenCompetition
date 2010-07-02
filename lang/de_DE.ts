@@ -2,6 +2,51 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="de_DE">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../ui/aboutdialog.ui" line="14"/>
+        <source>About..</source>
+        <translation>Über..</translation>
+    </message>
+    <message>
+        <location filename="../ui/aboutdialog.ui" line="65"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;table border=&quot;0&quot; style=&quot;-qt-table-type: root; margin-top:4px; margin-bottom:4px; margin-left:4px; margin-right:4px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;border: none;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Open Competition v0.5&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;by Jonas Schwartze&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The program was designed and programmed by Jonas Schwartze (jonasschwartze@googlemail.com).&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;It is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;table border=&quot;0&quot; style=&quot;-qt-table-type: root; margin-top:4px; margin-bottom:4px; margin-left:4px; margin-right:4px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;border: none;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Open Competition v0.5&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;von Jonas Schwartze&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Dieses Programm wurde entworfen und programmiert von Jonas Schwartze (jonasschwartze@googlemail.com).&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Keine Gewährleistung jeglicher Art, einschließlich der Garantie über DESIGN, die Marktfähigkeit und EIGNUNG FÜR EINEN BESTIMMTEN ZWECK.
+&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ui/aboutdialog.ui" line="85"/>
+        <source>Show Image Licence</source>
+        <translation>Bild/Icon Lizenz anzeigen</translation>
+    </message>
+</context>
+<context>
     <name>ClubListWidget</name>
     <message>
         <location filename="../modules/clublist/clublistwidget.ui" line="63"/>
@@ -78,6 +123,90 @@
     </message>
 </context>
 <context>
+    <name>CompetitorListWidget</name>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation>Liste der Vereine</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="26"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="203"/>
+        <source>Competitors</source>
+        <translation>Wettkämpfer</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="57"/>
+        <source>Competitor</source>
+        <translation>Wettkämpfer</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="62"/>
+        <source>Birth</source>
+        <translation>Geburtsjahr</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="67"/>
+        <source>Gender</source>
+        <translation>Geschlecht</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="90"/>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="104"/>
+        <source>Name:</source>
+        <translation>Name:</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="114"/>
+        <source>Birth:</source>
+        <translation>Geburtsjahr:</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="124"/>
+        <source>Gender:</source>
+        <translation>Geschlecht:</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="132"/>
+        <source>male</source>
+        <translation>männlich</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="137"/>
+        <source>female</source>
+        <translation>weiblich</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="145"/>
+        <source>Club:</source>
+        <translation>Verein:</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="152"/>
+        <source>NO_CLUB</source>
+        <translation>KEIN_VEREIN</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="161"/>
+        <source>Part of Teams:</source>
+        <translation>Mitglied in den Teams:</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="193"/>
+        <source>Team</source>
+        <translation>Team</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="198"/>
+        <source>AgeGroup</source>
+        <translation>Altersklasse</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
@@ -85,127 +214,161 @@
         <translation>OpenCompetition</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="35"/>
+        <location filename="../ui/mainwindow.ui" line="45"/>
         <source>Registration</source>
         <translation>Meldungen</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="47"/>
+        <location filename="../ui/mainwindow.ui" line="57"/>
         <source>Import..</source>
         <translation>Importieren..</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="57"/>
+        <location filename="../ui/mainwindow.ui" line="64"/>
         <source>Registered clubs</source>
         <translation>Gemeldete Vereine</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="67"/>
+        <location filename="../ui/mainwindow.ui" line="71"/>
         <source>Competitors</source>
         <translation>Wettkämpfer</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="77"/>
+        <location filename="../ui/mainwindow.ui" line="78"/>
         <source>Judges</source>
         <translation>Kampfrichter</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="90"/>
+        <location filename="../ui/mainwindow.ui" line="94"/>
         <source>Competition</source>
         <translation>Wettkampf</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="102"/>
+        <location filename="../ui/mainwindow.ui" line="106"/>
         <source>Starting list</source>
         <translation>Startliste</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="112"/>
+        <location filename="../ui/mainwindow.ui" line="113"/>
         <source>Score input</source>
         <translation>Wertungseingabe</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="122"/>
+        <location filename="../ui/mainwindow.ui" line="120"/>
         <source>Beamer output</source>
         <translation>Beamer Ausgabe</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="138"/>
+        <location filename="../ui/mainwindow.ui" line="139"/>
         <source>Results</source>
         <translation>Ergebnisse</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="153"/>
+        <location filename="../ui/mainwindow.ui" line="154"/>
         <source>Certificates</source>
         <translation>Urkunden</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="163"/>
+        <location filename="../ui/mainwindow.ui" line="161"/>
         <source>Result list</source>
         <translation>Ergebnisliste</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="173"/>
+        <location filename="../ui/mainwindow.ui" line="168"/>
         <source>Ranking points</source>
         <translation>Ranglistenpunkte</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="201"/>
-        <source>File</source>
-        <translation>Datei</translation>
+        <location filename="../ui/mainwindow.ui" line="193"/>
+        <source>&amp;File</source>
+        <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="214"/>
+        <location filename="../ui/mainwindow.ui" line="203"/>
+        <source>&amp;Hilfe</source>
+        <translation>&amp;Hilfe</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="265"/>
+        <source>Ctrl+Shift+S</source>
+        <translation>Ctrl+Shift+S</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="273"/>
+        <source>&amp;about</source>
+        <translation>ü&amp;ber</translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="obsolete">Datei</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="217"/>
         <source>Close</source>
         <translation>Beenden</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="219"/>
+        <location filename="../ui/mainwindow.ui" line="220"/>
+        <source>Ctrl+Q</source>
+        <translation>Ctrl+Q</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="232"/>
         <source>Open..</source>
         <translation>Öffnen..</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="224"/>
+        <location filename="../ui/mainwindow.ui" line="235"/>
+        <source>Ctrl+O</source>
+        <translation>Ctrl+O</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="247"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="229"/>
+        <location filename="../ui/mainwindow.ui" line="250"/>
+        <source>Ctrl+S</source>
+        <translation>Ctrl+S</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="262"/>
         <source>Save as..</source>
         <translation>Speichern unter..</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="32"/>
+        <location filename="../ui/mainwindow.cpp" line="37"/>
         <source>Properties</source>
         <translation>Eigenschaften</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="60"/>
+        <location filename="../ui/mainwindow.cpp" line="65"/>
         <source>OpenCompetition - </source>
         <translation>OpenCompetition - </translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="90"/>
+        <location filename="../ui/mainwindow.cpp" line="95"/>
         <source>Open Error.</source>
         <translation>Fehler beim Öffnen.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="91"/>
+        <location filename="../ui/mainwindow.cpp" line="96"/>
         <source>Opening competition file failed.</source>
         <translation>Öffnen der Wettkampfdatei fehlgeschlagen.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="116"/>
+        <location filename="../ui/mainwindow.cpp" line="121"/>
         <source>The current competition will be closed.</source>
         <translation>Aktuell geöffneter Wettkampf wird geschlossen.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="117"/>
+        <location filename="../ui/mainwindow.cpp" line="122"/>
         <source>Save changes?</source>
         <translation>Änderungen speichern?</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="152"/>
+        <location filename="../ui/mainwindow.cpp" line="157"/>
         <source>save competition</source>
         <translation>Wettkampf speichern</translation>
     </message>
@@ -214,7 +377,7 @@
         <translation type="obsolete">Wettkampf speichern</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="154"/>
+        <location filename="../ui/mainwindow.cpp" line="159"/>
         <source>Wettkampf (*.cmp);; AllFiles (*)</source>
         <translation>Wettkampf (*.cmp;; Alle Dateien (*)</translation>
     </message>
@@ -227,37 +390,37 @@
         <translation>Neuen Wettkampf erstellen</translation>
     </message>
     <message>
-        <location filename="../ui/newcompdialog.ui" line="22"/>
+        <location filename="../ui/newcompdialog.ui" line="26"/>
         <source>Name:</source>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../ui/newcompdialog.ui" line="39"/>
+        <location filename="../ui/newcompdialog.ui" line="43"/>
         <source>Date:</source>
         <translation>Datum:</translation>
     </message>
     <message>
-        <location filename="../ui/newcompdialog.ui" line="59"/>
+        <location filename="../ui/newcompdialog.ui" line="63"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyyy</translation>
     </message>
     <message>
-        <location filename="../ui/newcompdialog.ui" line="69"/>
+        <location filename="../ui/newcompdialog.ui" line="73"/>
         <source>Time:</source>
         <translation>Zeit:</translation>
     </message>
     <message>
-        <location filename="../ui/newcompdialog.ui" line="82"/>
+        <location filename="../ui/newcompdialog.ui" line="86"/>
         <source>HH:mm</source>
         <translation>HH:mm</translation>
     </message>
     <message>
-        <location filename="../ui/newcompdialog.ui" line="98"/>
+        <location filename="../ui/newcompdialog.ui" line="102"/>
         <source>This competition counts for the national ranking</source>
         <translation>Dieser Wettkampf ist ein Ranglistenturnier</translation>
     </message>
     <message>
-        <location filename="../ui/newcompdialog.ui" line="107"/>
+        <location filename="../ui/newcompdialog.ui" line="111"/>
         <source>Description:</source>
         <translation>Beschreibung:</translation>
     </message>
@@ -270,107 +433,107 @@
         <translation>Wettkampf öffnen</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="43"/>
+        <location filename="../ui/opendialog.ui" line="47"/>
         <source>File</source>
         <translation>Datei</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="52"/>
+        <location filename="../ui/opendialog.ui" line="56"/>
         <source>Create new file...</source>
         <translation>Neue Datei erstellen...</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="83"/>
+        <location filename="../ui/opendialog.ui" line="87"/>
         <source>Open new file dialog...</source>
         <translation>Dialog für neue Datei öffnen...</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="92"/>
+        <location filename="../ui/opendialog.ui" line="101"/>
         <source>Load recent file...</source>
         <translation>Kürzlich verwendet...</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="133"/>
+        <location filename="../ui/opendialog.ui" line="142"/>
         <source>History</source>
         <translation>Verlauf</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="156"/>
+        <location filename="../ui/opendialog.ui" line="165"/>
         <source>+</source>
         <translation>+</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="167"/>
+        <location filename="../ui/opendialog.ui" line="177"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="188"/>
+        <location filename="../ui/opendialog.ui" line="198"/>
         <source>Open existing file...</source>
         <translation>Existierende Datei öffnen...</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="216"/>
+        <location filename="../ui/opendialog.ui" line="226"/>
         <source>Open..</source>
         <translation>Öffnen..</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="234"/>
+        <location filename="../ui/opendialog.ui" line="249"/>
         <source>Description</source>
         <translation>Beschreibung</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="257"/>
+        <location filename="../ui/opendialog.ui" line="272"/>
         <source>Name:</source>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="287"/>
+        <location filename="../ui/opendialog.ui" line="302"/>
         <source>Date:</source>
         <translation>Datum:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="317"/>
+        <location filename="../ui/opendialog.ui" line="332"/>
         <source>Time:</source>
         <translation>Zeit:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="342"/>
+        <location filename="../ui/opendialog.ui" line="357"/>
         <source>Ranking competition</source>
         <translation>Ranglistenturnier</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.ui" line="363"/>
+        <location filename="../ui/opendialog.ui" line="378"/>
         <source>Detailed description:</source>
         <translation>Beschreibung:</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="195"/>
+        <location filename="../ui/opendialog.cpp" line="207"/>
         <source>Competition *.cmp</source>
         <translation>Wettkampf (*.cmp)</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="209"/>
+        <location filename="../ui/opendialog.cpp" line="221"/>
         <source>Specify the name of the competition.</source>
         <translation>Name des Wettkampfes angeben.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="212"/>
+        <location filename="../ui/opendialog.cpp" line="224"/>
         <source>Properties - </source>
         <translation>Eigenschaften - </translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="225"/>
+        <location filename="../ui/opendialog.cpp" line="237"/>
         <source>Open Competition.</source>
         <translation>Wettkampf öffnen.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="238"/>
+        <location filename="../ui/opendialog.cpp" line="250"/>
         <source>Open Error.</source>
         <translation>Fehler beim Öffnen.</translation>
     </message>
     <message>
-        <location filename="../ui/opendialog.cpp" line="239"/>
+        <location filename="../ui/opendialog.cpp" line="251"/>
         <source>Opening competition file failed.</source>
         <translation>Öffnen der Wettkampfdatei fehlgeschlagen.</translation>
     </message>
@@ -383,12 +546,12 @@
         <translation>Liste der Vereine</translation>
     </message>
     <message>
-        <location filename="../ui/propertieswidget.ui" line="51"/>
+        <location filename="../ui/propertieswidget.ui" line="55"/>
         <source>Property</source>
         <translation>Eigenschaft</translation>
     </message>
     <message>
-        <location filename="../ui/propertieswidget.ui" line="56"/>
+        <location filename="../ui/propertieswidget.ui" line="64"/>
         <source>Value</source>
         <translation>Wert</translation>
     </message>
@@ -626,6 +789,16 @@
         <location filename="../data/judgespanel.cpp" line="140"/>
         <source>UNKNOWN</source>
         <translation>UNBEKANNT</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.cpp" line="77"/>
+        <source>male</source>
+        <translation>männlich</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.cpp" line="77"/>
+        <source>female</source>
+        <translation>weiblich</translation>
     </message>
 </context>
 <context>
