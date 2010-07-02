@@ -6,6 +6,7 @@ CompetitorListWidget::CompetitorListWidget(const QString &name,Competition* comp
     ui(new Ui::CompetitorListWidget),
     m_competition(comp),
     m_shownCompetitor(NULL),
+    m_groupsOfShownCompetitor(),
     m_competitors()
 {
     ui->setupUi(this);
@@ -89,6 +90,7 @@ void CompetitorListWidget::updateProperties()
     if (ui->competitorTable->selectedItems().size() > 0)
     {
         //prepare variables
+        m_groupsOfShownCompetitor.clear();
         QString name, birth, gender;
         int selectedRow;
         selectedRow = ui->competitorTable->selectedItems().at(0)->row();
@@ -97,18 +99,19 @@ void CompetitorListWidget::updateProperties()
         gender = ui->competitorTable->item(selectedRow,2)->text();
 
         //find competitor
-        bool found = false;
         int groupsSize =  m_competition->getStarter().size();
-        for (int group = 0; group < groupsSize && !found; group++)
+        for (int group = 0; group < groupsSize; group++)
         {
             int starterSize = m_competition->getStarter().at(group).getCompetitors().size();
-            for (int starter = 0; starter < starterSize && ! found; starter++)
+            for (int starter = 0; starter < starterSize; starter++)
             {
                 if (m_competition->getStarter().at(group).getCompetitors().at(starter).getName() == name&&
                     m_competition->getStarter().at(group).getCompetitors().at(starter).getBirth() == birth.toInt() &&
                     m_competition->getStarter().at(group).getCompetitors().at(starter).getGender() == (gender==QObject::tr("male")?Competitor::MALE:Competitor::FEMALE))
                 {
                     m_shownCompetitor = &(m_competition->getStarter().at(group).getCompetitors().at(starter));
+                    const Group* groupPtr = &(m_competition->getStarter().at(group));
+                    m_groupsOfShownCompetitor.append(groupPtr);
                 }
             }
 
@@ -118,6 +121,33 @@ void CompetitorListWidget::updateProperties()
         ui->birth->setValue(birth.toInt());
         ui->gender->setCurrentIndex(ui->gender->findText(gender));
         ui->club->setText(m_shownCompetitor->getClub().toString());
+
+        ui->teamTable->setRowCount(m_groupsOfShownCompetitor.size());
+        for (int row = 0; row < m_groupsOfShownCompetitor.size(); row++)
+        {
+            QTableWidgetItem* item;
+            QString groupType = Group::categorieToString(m_groupsOfShownCompetitor.at(row)->getType());
+            item = new QTableWidgetItem(groupType);
+            ui->teamTable->setItem(row,0,item);
+
+            QString ageGroup = Group::ageToString(m_groupsOfShownCompetitor.at(row)->getAge());
+            item = new QTableWidgetItem(ageGroup);
+            ui->teamTable->setItem(row,1,item);
+
+            QString comp;
+            for (int starter = 0; starter < m_groupsOfShownCompetitor.at(row)->getCompetitors().size();starter++)
+            {
+               comp.append(m_groupsOfShownCompetitor.at(row)->getCompetitors().at(starter).getName());
+               comp.append("(");
+               comp.append(QString::number(m_groupsOfShownCompetitor.at(row)->getCompetitors().at(starter).getBirth()));
+               comp.append(")");
+               if (starter < m_groupsOfShownCompetitor.at(row)->getCompetitors().size()-1){
+                   comp.append(", ");
+               }
+            }
+            item = new QTableWidgetItem(comp);
+            ui->teamTable->setItem(0,2,item);
+        }
     }
 
 

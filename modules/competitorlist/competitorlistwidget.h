@@ -26,6 +26,7 @@ private:
     Ui::CompetitorListWidget *ui;
     Competition* m_competition;
     const Competitor* m_shownCompetitor;
+    QList<const Group *> m_groupsOfShownCompetitor;
     QList<Competitor> m_competitors;
 
     void updateCompetitorList();
