@@ -78,7 +78,8 @@ QList<Group> TextImporter::parseText(QFile& file){
             starter = line.remove(0,line.indexOf("*")+2);
             Competitor comp(starter.section(",",0,0),
                             starter.section(",",2,2).toUInt(),
-                            starter.section(",",1,1).contains("m")?Competitor::MALE:Competitor::FEMALE);
+                            starter.section(",",1,1).contains("m")?Competitor::MALE:Competitor::FEMALE,
+                            c);
             competitors.append(comp);
 
             line = file.readLine();

@@ -73,7 +73,8 @@ Group::Group(const Group &other):
     {
         m_competitors.append(Competitor(other.getCompetitors().at(i).getName(),
                                            other.getCompetitors().at(i).getBirth(),
-                                           other.getCompetitors().at(i).getGender()));
+                                           other.getCompetitors().at(i).getGender(),
+                                           other.getCompetitors().at(i).getClub()));
     }
 }
 
@@ -186,7 +187,7 @@ void Group::readFromDomElement(QDomElement &element)
                     QDomElement starterElement = starterNode.toElement();
                     if (!starterElement.isNull())
                     {
-                        Competitor starter(QObject::tr("NO_NAME"),0,Competitor::MALE);
+                        Competitor starter(QObject::tr("NO_NAME"),0,Competitor::MALE,Club(QObject::tr("NOT_GIVEN")));
                         starter.readFromDomElement(starterElement);
                         m_competitors.append(starter);
                     }

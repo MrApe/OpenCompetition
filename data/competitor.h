@@ -2,6 +2,7 @@
 #define COMPETITOR_H
 
 #include "abstractperson.h"
+#include "data/club.h"
 #include "abstractXMLElement.h"
 
 class Competitor : public AbstractPerson, public AbstractXMLElement
@@ -14,7 +15,8 @@ public:
 
     Competitor(const QString& name,
                const unsigned int birth,
-               genderType gender);
+               genderType gender,
+               const Club& club);
 
     Competitor(const Competitor& other);
 
@@ -37,19 +39,23 @@ public:
      * Inline getter and setter
      */
     inline void setGender(const genderType& gender){
-        m_gender = gender;
-    }
+        m_gender = gender;}
     inline void setBirth(unsigned int const birth){
         m_birth = birth;}
+    inline void setClub(const Club& club){
+        m_club = club;}
     inline genderType getGender() const {
         return m_gender;}
     inline int getBirth() const{
         return m_birth;}
+    inline const Club& getClub() const{
+        return m_club;}
 
 
 private:
     int m_birth;
     genderType m_gender;
+    Club m_club;
 
 };
 
