@@ -1,0 +1,82 @@
+======================================================
+============  Meldung zu einem Wettkampf  ============
+======================================================
+Die Meldung der Teams erfolgt mit diesem Formular. 
+Bitte halten Sie sich beim ausfüllen exakt an die 
+Formate um eine fehlerfreie Bearbeitung zu gewähr-
+leisten.
+
+==== Richtlinien zum Ausfüllen
+======================================================
+
+  Verein: (Freitext, 1 Zeile)
+
+  Kategorie: (mögl. Werte: IM, IW, Mixed, Trio, Group)
+  Alterklasse: (mögl. Werte: 8-11, 12-14, 15-17, 18+)
+  Starter:     (jeder Starter in eigener Zeile:
+            * Vorname Name, Geschlecht, Geburtsjahr
+            * Vorname Name, Geschlecht, Geburtsjahr
+            * ...
+  
+
+==== Beispiel
+======================================================
+Im Folgenden ein Beispiel einer Meldung mit 2 Teams.
+
+---- Allgemeines
+------------------------------------------------------
+
+  Verein: XYZ 1898 Sportverein e.V.
+
+
+---- Meldung der Teams
+------------------------------------------------------
+
+  Kategorie:    IM
+  Altersklasse: 8-11
+  Starter:
+                * Max Mustermann, m, 2002
+
+  Kategorie:    Group
+  Altersklasse: 15-17
+  Starter:
+                * Gerd Gelenkig, m, 1995
+                * Tommy Trollig, m, 1996
+                * Erwin Engel, m, 1995
+                * Alfons Ängstlich, m, 1995
+                * Kurt Krümel, m, 1996
+                * Sigfried Sportlich, m, 1995
+
+==== Verbindliche Meldung
+======================================================
+
+---- Allgemeines
+------------------------------------------------------
+
+  Verein: Freie Turnerschaft Eisenach 
+
+
+---- Meldung der Teams
+------------------------------------------------------
+
+  Kategorie:    Trio
+  Altersklasse: 12-14
+  Starter:
+                * Max Mustermann, m, 1234
+                * Foo Bar, w, 1234
+                * Demo Demo, m, 1234
+
+  Kategorie:    Group
+  Altersklasse: 15-17
+  Starter:
+                * Gerd Gelenkig, m, 1995
+                * Tommy Trollig, m, 1996
+                * Erwin Engel, m, 1995
+                * Alfons Ängstlich, m, 1995
+                * Kurt Krümel, m, 1996
+                * Sigfried Sportlich, m, 1995
+
+======================================================
+==== Ende des Dokumentes
+                
+
