@@ -21,6 +21,8 @@ public:
         m_name = name;}
     inline const QString& getName() const {
         return m_name;}
+    inline QString toString() const {
+        return m_name;}
 
     /*!
       This method creates a DomElement out of this object and returns it to the caller.

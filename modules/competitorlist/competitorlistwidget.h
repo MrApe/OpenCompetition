@@ -25,6 +25,7 @@ protected:
 private:
     Ui::CompetitorListWidget *ui;
     Competition* m_competition;
+    const Competitor* m_shownCompetitor;
     QList<Competitor> m_competitors;
 
     void updateCompetitorList();

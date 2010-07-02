@@ -5,6 +5,7 @@ CompetitorListWidget::CompetitorListWidget(const QString &name,Competition* comp
     AbstractModule(name,parent),
     ui(new Ui::CompetitorListWidget),
     m_competition(comp),
+    m_shownCompetitor(NULL),
     m_competitors()
 {
     ui->setupUi(this);
@@ -87,12 +88,36 @@ void CompetitorListWidget::updateProperties()
 {
     if (ui->competitorTable->selectedItems().size() > 0)
     {
+        //prepare variables
+        QString name, birth, gender;
         int selectedRow;
         selectedRow = ui->competitorTable->selectedItems().at(0)->row();
-        ui->name->setText(ui->competitorTable->item(selectedRow,0)->text());
-        ui->birth->setValue(ui->competitorTable->item(selectedRow,1)->text().toInt());
-        QString genderString = ui->competitorTable->item(selectedRow,2)->text();
-        ui->gender->setCurrentIndex(ui->gender->findText(genderString));
+        name = ui->competitorTable->item(selectedRow,0)->text();
+        birth = ui->competitorTable->item(selectedRow,1)->text();
+        gender = ui->competitorTable->item(selectedRow,2)->text();
+
+        //find competitor
+        bool found = false;
+        int groupsSize =  m_competition->getStarter().size();
+        for (int group = 0; group < groupsSize && !found; group++)
+        {
+            int starterSize = m_competition->getStarter().at(group).getCompetitors().size();
+            for (int starter = 0; starter < starterSize && ! found; starter++)
+            {
+                if (m_competition->getStarter().at(group).getCompetitors().at(starter).getName() == name&&
+                    m_competition->getStarter().at(group).getCompetitors().at(starter).getBirth() == birth.toInt() &&
+                    m_competition->getStarter().at(group).getCompetitors().at(starter).getGender() == (gender==QObject::tr("male")?Competitor::MALE:Competitor::FEMALE))
+                {
+                    m_shownCompetitor = &(m_competition->getStarter().at(group).getCompetitors().at(starter));
+                }
+            }
+
+        }
+
+        ui->name->setText(name);
+        ui->birth->setValue(birth.toInt());
+        ui->gender->setCurrentIndex(ui->gender->findText(gender));
+        ui->club->setText(m_shownCompetitor->getClub().toString());
     }
 
 
