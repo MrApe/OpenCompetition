@@ -112,4 +112,7 @@
         <file>images/icons/views_64_h.png</file>
         <file>images/icons/Logo.png</file>
     </qresource>
+    <qresource prefix="/licences">
+        <file>images/ImageLicence.txt</file>
+    </qresource>
 </RCC>

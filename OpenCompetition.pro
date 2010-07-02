@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     modules/clublist/clublistwidget.cpp \
     modules/modulefactory.cpp \
     ui/propertieswidget.cpp \
-    modules/competitorlist/competitorlistwidget.cpp
+    modules/competitorlist/competitorlistwidget.cpp \
+    ui/aboutdialog.cpp
 HEADERS += modules/import/importmodule.h \
     modules/import/abstractimporter.h \
     data/abstractperson.h \
@@ -48,13 +49,15 @@ HEADERS += modules/import/importmodule.h \
     modules/modulefactory.h \
     modules/abstractmodule.h \
     ui/propertieswidget.h \
-    modules/competitorlist/competitorlistwidget.h
+    modules/competitorlist/competitorlistwidget.h \
+    ui/aboutdialog.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \
     ui/newcompdialog.ui \
     modules/clublist/clublistwidget.ui \
     ui/propertieswidget.ui \
-    modules/competitorlist/competitorlistwidget.ui
+    modules/competitorlist/competitorlistwidget.ui \
+    ui/aboutdialog.ui
 OTHER_FILES += lang/de_DE.ts
 RESOURCES += ressources.qrc

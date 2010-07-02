@@ -198,7 +198,14 @@
     <addaction name="separator"/>
     <addaction name="actionSchlie_en"/>
    </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>&amp;Hilfe</string>
+    </property>
+    <addaction name="action_about"/>
+   </widget>
    <addaction name="menuDatei"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionSchlie_en">
@@ -259,6 +266,11 @@
    </property>
    <property name="iconVisibleInMenu">
     <bool>true</bool>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="text">
+    <string>&amp;about</string>
    </property>
   </action>
  </widget>
@@ -343,11 +355,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>action_about</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showAboutWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>saveToFile()</slot>
   <slot>saveToFileAs()</slot>
   <slot>openCompetition()</slot>
   <slot>closeCompetition()</slot>
+  <slot>showAboutWindow()</slot>
  </slots>
 </ui>

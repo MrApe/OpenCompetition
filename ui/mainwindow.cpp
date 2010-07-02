@@ -11,6 +11,7 @@
 #include "modules/clublist/clublistwidget.h"
 #include "modules/competitorlist/competitorlistwidget.h"
 #include "ui/propertieswidget.h"
+#include "ui/aboutdialog.h"
 
 MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget *parent) :
     QMainWindow(parent),
@@ -183,4 +184,11 @@ void MainWindow::on_Btn_gemVer_clicked()
 void MainWindow::on_Btn_startfeld_clicked()
 {
     showModule("competitorlist");
+}
+
+void MainWindow::showAboutWindow()
+{
+    AboutDialog ad;
+    ad.setWindowModality(Qt::ApplicationModal);
+    ad.exec();
 }

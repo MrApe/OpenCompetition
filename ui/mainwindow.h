@@ -37,6 +37,7 @@ private slots:
     bool closeCompetition();
     void updateWindow();
     void showModule(const QString& name);
+    void showAboutWindow();
 
 signals:
     void competitionChanged();
