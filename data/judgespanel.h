@@ -52,25 +52,25 @@ public:
     inline void setAssistantJudge(QList<Judge> assistantJudges){
         m_assistantJudges = assistantJudges;
     }
-    inline const QList<Judge>& getArtisticJudges() const {
+    inline QList<Judge>& getArtisticJudges()  {
         return m_artisticJudges;
     }
-    inline const QList<Judge>& getExecutionJudges() const {
+    inline QList<Judge>& getExecutionJudges()  {
         return m_executionJudges;
     }
-    inline const QList<Judge>& getDifficultyJudges() const {
+    inline QList<Judge>& getDifficultyJudges()  {
         return m_difficultyJudges;
     }
-    inline const QList<Judge>& getSuperiorJury() const {
+    inline QList<Judge>& getSuperiorJury()  {
         return m_superiorJury;
     }
-    inline const QList<Judge>& getLineJudges() const {
+    inline QList<Judge>& getLineJudges()  {
         return m_lineJudges;
     }
-    inline const QList<Judge>& getChairJudges() const {
+    inline QList<Judge>& getChairJudges()  {
         return m_chairJudges;
     }
-    inline const QList<Judge>& getAssistantJudges() const {
+    inline QList<Judge>& getAssistantJudges()  {
         return m_assistantJudges;
     }
     int size() const;

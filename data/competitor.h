@@ -20,6 +20,7 @@ public:
 
     Competitor(const Competitor& other);
 
+    bool equals(const Competitor& other) const;
     Competitor& operator=(const Competitor& other);
     bool operator ==(const Competitor& other) const;
     bool operator !=(const Competitor& other) const;
@@ -48,8 +49,8 @@ public:
         return m_gender;}
     inline int getBirth() const{
         return m_birth;}
-    inline const Club& getClub() const{
-        return m_club;}
+    inline Club& getClub() const{
+        return const_cast<Club&>(m_club);}
 
 
 private:

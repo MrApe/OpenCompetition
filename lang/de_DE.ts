@@ -131,7 +131,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../modules/competitorlist/competitorlistwidget.ui" line="26"/>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="203"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="213"/>
         <source>Competitors</source>
         <translation>Wettkämpfer</translation>
     </message>
@@ -166,44 +166,54 @@ p, li { white-space: pre-wrap; }
         <translation>Geburtsjahr:</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="124"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="121"/>
+        <source>INVALID</source>
+        <translation>UNGÜLTIG</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="134"/>
         <source>Gender:</source>
         <translation>Geschlecht:</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="132"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="142"/>
         <source>male</source>
         <translation>männlich</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="137"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="147"/>
         <source>female</source>
         <translation>weiblich</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="145"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="155"/>
         <source>Club:</source>
         <translation>Verein:</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="152"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="162"/>
         <source>NO_CLUB</source>
         <translation>KEIN_VEREIN</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="161"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="171"/>
         <source>Part of Teams:</source>
         <translation>Mitglied in den Teams:</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="193"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="203"/>
         <source>Team</source>
         <translation>Team</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="198"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="208"/>
         <source>AgeGroup</source>
         <translation>Altersklasse</translation>
+    </message>
+    <message>
+        <location filename="../modules/competitorlist/competitorlistwidget.ui" line="236"/>
+        <source>X</source>
+        <translation>X</translation>
     </message>
 </context>
 <context>
@@ -648,7 +658,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../data/group.cpp" line="23"/>
-        <location filename="../data/group.cpp" line="167"/>
+        <location filename="../data/group.cpp" line="161"/>
         <source>unknown</source>
         <translation>unbekannt</translation>
     </message>
@@ -659,11 +669,12 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../data/group.cpp" line="50"/>
+        <location filename="../data/group.cpp" line="183"/>
         <source>NOT_GIVEN</source>
         <translation>NICHT_ANGEGEBEN</translation>
     </message>
     <message>
-        <location filename="../data/group.cpp" line="189"/>
+        <location filename="../data/group.cpp" line="183"/>
         <location filename="../data/judge.cpp" line="62"/>
         <source>NO_NAME</source>
         <translation>KEIN_NAME</translation>
@@ -673,22 +684,22 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Nicht angegeben</translation>
     </message>
     <message>
-        <location filename="../data/group.cpp" line="112"/>
+        <location filename="../data/group.cpp" line="106"/>
         <source>Club: </source>
         <translation>Verein: </translation>
     </message>
     <message>
-        <location filename="../data/group.cpp" line="113"/>
+        <location filename="../data/group.cpp" line="107"/>
         <source>Age Group: </source>
         <translation>Altersklasse: </translation>
     </message>
     <message>
-        <location filename="../data/group.cpp" line="114"/>
+        <location filename="../data/group.cpp" line="108"/>
         <source>Categorie: </source>
         <translation>Kategorie: </translation>
     </message>
     <message>
-        <location filename="../data/group.cpp" line="115"/>
+        <location filename="../data/group.cpp" line="109"/>
         <source>Starter: </source>
         <translation>Starter: </translation>
     </message>
@@ -791,12 +802,14 @@ p, li { white-space: pre-wrap; }
         <translation>UNBEKANNT</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.cpp" line="77"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.cpp" line="79"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.cpp" line="110"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.cpp" line="175"/>
         <source>male</source>
         <translation>männlich</translation>
     </message>
     <message>
-        <location filename="../modules/competitorlist/competitorlistwidget.cpp" line="77"/>
+        <location filename="../modules/competitorlist/competitorlistwidget.cpp" line="79"/>
         <source>female</source>
         <translation>weiblich</translation>
     </message>

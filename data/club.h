@@ -19,9 +19,9 @@ public:
      */
     inline void setName(const QString& name){
         m_name = name;}
-    inline const QString& getName() const {
-        return m_name;}
-    inline QString toString() const {
+    inline QString& getName() const {
+        return const_cast<QString&>(m_name);}
+    inline QString toString()  {
         return m_name;}
 
     /*!

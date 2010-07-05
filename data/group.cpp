@@ -1,4 +1,6 @@
 #include <QObject>
+#include <QMap>
+#include <QDate>
 #include "group.h"
 
 QString Group::categorieToString(categorieType categorie)
@@ -53,8 +55,8 @@ Group::Group():
 }
 
 Group::Group(const QList<Competitor>& competitors,
-             const ageType age,
-             const categorieType categorie,
+             ageType age,
+             categorieType categorie,
              const Club& cl):
         m_competitors(competitors),
         m_age(age),
@@ -64,18 +66,11 @@ Group::Group(const QList<Competitor>& competitors,
 }
 
 Group::Group(const Group &other):
-        m_competitors(),
+        m_competitors(other.getCompetitors()),
         m_age(other.getAge()),
         m_categorie(other.getType()),
         m_club(other.getClub().getName())
 {
-    for (int i = 0; i < other.getCompetitors().size(); i++)
-    {
-        m_competitors.append(Competitor(other.getCompetitors().at(i).getName(),
-                                           other.getCompetitors().at(i).getBirth(),
-                                           other.getCompetitors().at(i).getGender(),
-                                           other.getCompetitors().at(i).getClub()));
-    }
 }
 
 bool Group::operator ==(const Group& other) const
@@ -98,7 +93,7 @@ bool Group::operator!=(const Group& other) const
     return !(*this==other);
 }
 
-bool Group::contains(const Competitor &competitor)
+bool Group::contains(Competitor &competitor)
 {
     for (QList<Competitor>::iterator i = m_competitors.begin(); i != m_competitors.end(); i++)
     {
@@ -135,11 +130,55 @@ Group::categorieType Group::guessType(){
     unsigned int size = m_competitors.size();
 
     switch (size) {
-    case 1 : return m_competitors.at(1).getGender() == Competitor::MALE ? INDIVIDUAL_MEN : INDIVIDUAL_WOMEN;
-    case 2 : return (m_competitors.at(1).getGender() == Competitor::MALE ||
-                     m_competitors.at(2).getGender() == Competitor::MALE) ? MIXED_PAIR : PAIR_TRIO;
+    case 1 : return m_competitors.at(0).getGender() == Competitor::MALE ? INDIVIDUAL_MEN : INDIVIDUAL_WOMEN;
+    case 2 : return (m_competitors.at(0).getGender() == Competitor::MALE ||
+                     m_competitors.at(1).getGender() == Competitor::MALE) ? MIXED_PAIR : PAIR_TRIO;
     case 3 : return PAIR_TRIO;
     default : return GROUP;
+    }
+}
+
+Group::ageType Group::guessAge()
+{
+    switch (m_categorie)
+    {
+    case Group::INDIVIDUAL_MEN:case Group::INDIVIDUAL_WOMEN:
+                return m_age;
+    case Group::MIXED_PAIR:
+    case Group::PAIR_TRIO:
+                if(m_competitors.size() == 2){
+                    ageType first = guessAge(m_competitors.at(0).getBirth());
+                    ageType second = guessAge(m_competitors.at(1).getBirth());
+                    return first>second?first:second;
+                }
+   default:
+                QMap<ageType, int> occurence;
+                for (int i = 0; i < m_competitors.size(); i++)
+                {
+                    occurence[guessAge(m_competitors.at(i).getBirth())] += 1;
+                }
+                ageType ret = NATIONAL_DEVELOPMENT;
+                ret = occurence[ret] > occurence[AG_ONE]?ret:AG_ONE;
+                ret = occurence[ret] > occurence[AG_TWO]?ret:AG_TWO;
+                ret = occurence[ret] > occurence[SENIORS]?ret:SENIORS;
+                return ret;
+
+    }
+
+
+}
+
+Group::ageType Group::guessAge(int birth)
+{
+    int diff = QDate::currentDate().year() - birth;
+    if (diff < 11) {
+        return NATIONAL_DEVELOPMENT;
+    }
+    switch (diff)
+    {
+    case 12:case 13:case 14: return AG_ONE;
+    case 15:case 16:case 17: return AG_TWO;
+    default: return SENIORS;
     }
 }
 

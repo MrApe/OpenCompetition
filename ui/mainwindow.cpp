@@ -28,6 +28,7 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
 
     CompetitorListWidget* compLW = new CompetitorListWidget("competitorlist",m_competition);
     connect(this,SIGNAL(competitionChanged()),compLW,SLOT(updateWidget()));
+    connect(compLW,SIGNAL(competitionChanged()),this,SIGNAL(competitionChanged()));
     ModuleFactory::getInstance().addModule(compLW);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));

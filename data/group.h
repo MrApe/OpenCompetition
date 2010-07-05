@@ -34,8 +34,8 @@ public:
     Group();
 
     Group(const QList<Competitor>& competitors,
-          const ageType age,
-          const categorieType categorie,
+          ageType age,
+          categorieType categorie,
           const Club& cl);
 
     Group(const Group& other);
@@ -56,6 +56,17 @@ public:
       @return Type of the group.
       */
     categorieType guessType();
+    /*!
+      This method tries to determine the age group out of the groups member.
+      @return The age group of the group.
+      */
+    ageType guessAge();
+    /*!
+      This is an overloaded function for an indivudual with the given year of birth.
+      @param birth Year of birth.
+      @return The age group of the given year.
+      */
+    static ageType guessAge(int birth);
 
     /*!
       This method creates a DomElement out of this object and returns it to the caller.
@@ -71,7 +82,7 @@ public:
       @param competitor Competitor to find.
       @return True is the competitor is part of the group. False otherwise.
       */
-    bool contains(const Competitor& competitor);
+    bool contains(Competitor& competitor);
 
 
     /*
@@ -89,7 +100,10 @@ public:
     inline void setClub(const Club& cl){
         m_club = cl;
     }
-    inline const QList<Competitor>& getCompetitors() const {
+    inline const QList<Competitor>& getCompetitors() const{
+        return m_competitors;
+    }
+    inline QList<Competitor>& getCompetitors(){
         return m_competitors;
     }
     inline ageType getAge() const{
@@ -99,6 +113,9 @@ public:
         return m_categorie;
     }
     inline const Club& getClub() const{
+        return m_club;
+    }
+    inline Club& getClub() {
         return m_club;
     }
 

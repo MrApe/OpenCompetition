@@ -192,6 +192,12 @@
         </item>
         <item>
          <widget class="QTableWidget" name="teamTable">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
           </attribute>
@@ -215,6 +221,34 @@
           </column>
          </widget>
         </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButton">
+            <property name="text">
+             <string>X</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ressources.qrc">
+              <normaloff>:/ui/icons/images/icons/delete_x_64.png</normaloff>:/ui/icons/images/icons/delete_x_64.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
       </item>
      </layout>
@@ -222,7 +256,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../ressources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>competitorTable</sender>
@@ -235,13 +271,82 @@
      <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
+     <x>204</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>name</sender>
+   <signal>editingFinished()</signal>
+   <receiver>CompetitorListWidget</receiver>
+   <slot>changeCompetitorName()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>170</x>
+     <y>329</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>155</x>
      <y>289</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>birth</sender>
+   <signal>editingFinished()</signal>
+   <receiver>CompetitorListWidget</receiver>
+   <slot>changeCompetitorBirth()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>197</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>214</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gender</sender>
+   <signal>activated(QString)</signal>
+   <receiver>CompetitorListWidget</receiver>
+   <slot>changeCompetitorGender(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>446</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>481</x>
+     <y>286</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CompetitorListWidget</receiver>
+   <slot>removeCompetitorFromTeam()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>466</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>492</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>updateProperties()</slot>
+  <slot>changeCompetitorName()</slot>
+  <slot>removeCompetitorFromTeam()</slot>
+  <slot>changeCompetitorBirth()</slot>
+  <slot>changeCompetitorGender(QString)</slot>
+  <slot>removeCompetitor()</slot>
  </slots>
 </ui>

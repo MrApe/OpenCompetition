@@ -59,15 +59,17 @@ public:
 
 
     //! Inline getter
-    inline const QString& getName() const {
+    inline QString& getName()  {
         return m_name;}
-    inline const QTime& getTime() const {
+    inline QTime& getTime()  {
         return m_time;}
-    inline const QDate& getDate() const {
+    inline QDate& getDate()  {
         return m_date;}
-    inline JudgesPanel* getJudgesPanel() const {
+    inline JudgesPanel* getJudgesPanel()  {
         return m_judgesPanel;}
     inline const QList<Group>& getStarter() const {
+        return m_starter;}
+    inline QList<Group>& getStarter(){
         return m_starter;}
     inline bool isRLT() const {
         return m_isRLT;}
@@ -142,6 +144,12 @@ public slots:
       @param groups Groups to be added.
       */
     void addGroups(QList<Group>& groups, QString* logMessage = 0);
+    /*!
+      This function adds the given group to the competition.
+      Groups are interpretet as starter and can be individuals.
+      @param group Group to be added.
+      */
+    void addGroup(Group& group, QString* logMessage = 0);
 
 
 private:

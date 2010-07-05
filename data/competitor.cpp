@@ -28,6 +28,11 @@ Competitor& Competitor::operator =(const Competitor& other)
     return *this;
 }
 
+bool Competitor::equals(const Competitor &other) const
+{
+    return *this == other;
+}
+
 bool Competitor::operator ==(const Competitor& other) const
 {
     return (m_name == other.getName() &&

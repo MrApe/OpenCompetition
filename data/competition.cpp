@@ -174,3 +174,9 @@ void Competition::addGroups(QList<Group>& groups, QString* logMessage)
     }
 }
 
+void Competition::addGroup(Group &group, QString *logMessage)
+{
+    QList<Group> groups;
+    groups.append(group);
+    addGroups(groups,logMessage);
+}

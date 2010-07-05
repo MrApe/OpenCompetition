@@ -18,6 +18,11 @@ public slots:
     void updateWidget();
     void updateCompetition(Competition* comp);
     void updateProperties();
+    void changeCompetitorName();
+    void changeCompetitorBirth();
+    void changeCompetitorGender(const QString& genderString);
+    void removeCompetitorFromTeam();
+    void reomveCompetitor();
 
 protected:
     void changeEvent(QEvent *e);
@@ -25,11 +30,15 @@ protected:
 private:
     Ui::CompetitorListWidget *ui;
     Competition* m_competition;
-    const Competitor* m_shownCompetitor;
-    QList<const Group *> m_groupsOfShownCompetitor;
+    Competitor* m_shownCompetitor;
+    QList<Group *> m_groupsOfShownCompetitor;
     QList<Competitor> m_competitors;
 
     void updateCompetitorList();
+    void updateTeamList();
+
+signals:
+    void competitionChanged();
 };
 
 #endif // COMPETITORLISTWIDGET_H
