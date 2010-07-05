@@ -206,7 +206,11 @@ void CompetitorListWidget::removeCompetitorFromTeam()
         if (ret == QMessageBox::Yes)
         {
             QList<Competitor> list;
-            list.append((*m_shownCompetitor));
+            Competitor c(m_shownCompetitor->getName(),
+                         m_shownCompetitor->getBirth(),
+                         m_shownCompetitor->getGender(),
+                         m_shownCompetitor->getClub());
+            list.append(c);
             Group gr(list,
                      Group::guessAge(m_shownCompetitor->getBirth()),
                      m_shownCompetitor->getGender()==Competitor::MALE?
@@ -215,7 +219,7 @@ void CompetitorListWidget::removeCompetitorFromTeam()
             m_competition->addGroup(gr);
         }
         m_groupsOfShownCompetitor.removeAt(index);
-        //emit competitionChanged();
+        emit competitionChanged();
         if (ui->competitorTable->rowCount()>0)
         {
             ui->competitorTable->selectRow(0);
