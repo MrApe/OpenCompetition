@@ -84,6 +84,7 @@ void CompetitorListWidget::updateCompetitorList()
     }
     ui->competitorTable->sortByColumn(0);
     ui->competitorTable->setSortingEnabled(true);
+    if (ui->competitorTable->rowCount() > 0) ui->competitorTable->selectRow(0);
 }
 
 void CompetitorListWidget::updateProperties()
@@ -130,6 +131,7 @@ void CompetitorListWidget::updateProperties()
 void CompetitorListWidget::updateTeamList()
 {
     ui->teamTable->setRowCount(m_groupsOfShownCompetitor.size());
+    ui->teamTable->clearContents();
     for (int row = 0; row < m_groupsOfShownCompetitor.size(); row++)
     {
         QTableWidgetItem* item;
@@ -163,29 +165,46 @@ void CompetitorListWidget::updateTeamList()
 
 void CompetitorListWidget::changeCompetitorName()
 {
-    m_shownCompetitor->setName(ui->name->text());
-    int row = ui->competitorTable->selectedItems().at(0)->row();
-    ui->competitorTable->item(row,0)->setText(ui->name->text());
+    if (!ui->name->text().isEmpty() &&
+        ui->competitorTable->selectedItems().size()>0 &&
+        m_shownCompetitor != NULL)
+    {
+        m_shownCompetitor->setName(ui->name->text());
+        int row = ui->competitorTable->selectedItems().at(0)->row();
+        ui->competitorTable->item(row,0)->setText(ui->name->text());
+        emit competitionChanged();
+    }
 }
 
 void CompetitorListWidget::changeCompetitorBirth()
 {
     int birth = ui->birth->value();
-    if (birth > ui->birth->minimum())
+    if (birth > ui->birth->minimum()&&
+        ui->competitorTable->selectedItems().size()>0 &&
+        m_shownCompetitor != NULL)
     {
         m_shownCompetitor->setBirth(birth);
         int row = ui->competitorTable->selectedItems().at(0)->row();
         ui->competitorTable->item(row,1)->setText(QString::number(birth));
+        emit competitionChanged();
     }
 }
 
 void CompetitorListWidget::changeCompetitorGender(const QString &genderString)
 {
-    Competitor::genderType gen = genderString==QObject::tr("male")?
-                                 Competitor::MALE:Competitor::FEMALE;
-    m_shownCompetitor->setGender(gen);
-    int row = ui->competitorTable->selectedItems().at(0)->row();
-    ui->competitorTable->item(row,2)->setText(genderString);
+    if (ui->competitorTable->selectedItems().size()>0 &&
+        m_shownCompetitor != NULL)
+    {
+        Competitor::genderType gen = genderString==QObject::tr("male")?
+                                     Competitor::MALE:Competitor::FEMALE;
+        if (m_shownCompetitor->getGender() != gen)
+        {
+            m_shownCompetitor->setGender(gen);
+            int row = ui->competitorTable->selectedItems().at(0)->row();
+            ui->competitorTable->item(row,2)->setText(genderString);
+            emit competitionChanged();
+        }
+    }
 }
 
 void CompetitorListWidget::removeCompetitorFromTeam()
@@ -227,10 +246,6 @@ void CompetitorListWidget::removeCompetitorFromTeam()
     }
 }
 
-void CompetitorListWidget::reomveCompetitor()
-{
-
-}
 
 void CompetitorListWidget::changeEvent(QEvent *e)
 {

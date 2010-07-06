@@ -22,7 +22,6 @@ public slots:
     void changeCompetitorBirth();
     void changeCompetitorGender(const QString& genderString);
     void removeCompetitorFromTeam();
-    void reomveCompetitor();
 
 protected:
     void changeEvent(QEvent *e);
