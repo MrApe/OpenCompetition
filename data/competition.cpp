@@ -95,8 +95,16 @@ void Competition::readFromDomElement(QDomElement &element)
                 nextElementName = nextElement.tagName();
             if (nextElementName == "judgesdata")
             {
-                m_judgesPanel = new JudgesPanel();
-                m_judgesPanel->readFromDomElement(nextElement);
+                QDomNode judgeNode = nextElement.firstChild();
+                if (!judgeNode.isNull())
+                {
+                    QDomElement judgeElement = judgeNode.toElement();
+                    if (!judgeElement.isNull())
+                    {
+                        m_judgesPanel = new JudgesPanel();
+                        m_judgesPanel->readFromDomElement(judgeElement);
+                    }
+                }
             }
 
             if (nextElementName == "starterdata")

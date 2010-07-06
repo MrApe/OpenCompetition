@@ -1,17 +1,24 @@
-======================================================
-============  Meldung zu einem Wettkampf  ============
-======================================================
+====================================================================================
+===========================  Meldung zu einem Wettkampf  ===========================
+====================================================================================
 Die Meldung der Teams erfolgt mit diesem Formular. 
-Bitte halten Sie sich beim ausfüllen exakt an die 
-Formate um eine fehlerfreie Bearbeitung zu gewähr-
-leisten.
+Bitte halten Sie sich beim ausfüllen exakt an die Formate um eine fehlerfreie 
+Bearbeitung zu gewährleisten.
 
 ==== Richtlinien zum Ausfüllen
-======================================================
+====================================================================================
 
   Verein: (Freitext, 1 Zeile)
 
-  Kategorie: (mögl. Werte: IM, IW, Mixed, Trio, Group)
+  Kampfrichter: (jeder Kari in eigene Zeile:)
+            * Vorname Name, Brevet, (Pools)
+            * Vorname Name, Brevet, (Pools)
+            * ...
+            (mögl. Werte Brevet: KEIN, LTV, DTB, FIG1, FIG2, FIG3, FIG4)
+            (mögl. Werte Pool: A, B, S, OK)
+
+  Kategorie: (mögl. Werte: Einzel Männlich, Einzel Weiblich, Gemischtes Paar, 
+              2er-3er Team, Gruppe)
   Alterklasse: (mögl. Werte: 8-11, 12-14, 15-17, 18+)
   Starter:     (jeder Starter in eigener Zeile:
             * Vorname Name, Geschlecht, Geburtsjahr
@@ -20,17 +27,20 @@ leisten.
   
 
 ==== Beispiel
-======================================================
+====================================================================================
 Im Folgenden ein Beispiel einer Meldung mit 2 Teams.
 
 ---- Allgemeines
-------------------------------------------------------
+------------------------------------------------------------------------------------
 
   Verein: XYZ 1898 Sportverein e.V.
 
+  Kampfrichter: 
+                * Elena Exakt, FIG1, (A, B, S)
+                * Harry Hinguck, LTV, ()
 
 ---- Meldung der Teams
-------------------------------------------------------
+------------------------------------------------------------------------------------
 
   Kategorie:    IM
   Altersklasse: 8-11
@@ -48,25 +58,29 @@ Im Folgenden ein Beispiel einer Meldung mit 2 Teams.
                 * Sigfried Sportlich, m, 1995
 
 ==== Verbindliche Meldung
-======================================================
+====================================================================================
 
 ---- Allgemeines
-------------------------------------------------------
+------------------------------------------------------------------------------------
 
-  Verein: Freie Turnerschaft Eisenach 
+  Verein: Freie Turnerschaft Eisenach
+
+  Kampfrichter: 
+                * Elena Exakt, FIG1, (A, B, S)
+                * Harry Hinguck, LTV, ()
 
 
 ---- Meldung der Teams
-------------------------------------------------------
+------------------------------------------------------------------------------------
 
-  Kategorie:    Trio
+  Kategorie:    2er-3er Team
   Altersklasse: 12-14
   Starter:
                 * Max Mustermann, m, 1234
                 * Foo Bar, w, 1234
                 * Demo Demo, m, 1234
 
-  Kategorie:    Group
+  Kategorie:    Gruppe
   Altersklasse: 15-17
   Starter:
                 * Gerd Gelenkig, m, 1995
@@ -76,7 +90,7 @@ Im Folgenden ein Beispiel einer Meldung mit 2 Teams.
                 * Kurt Krümel, m, 1996
                 * Sigfried Sportlich, m, 1995
 
-======================================================
+====================================================================================
 ==== Ende des Dokumentes
                 
 

@@ -35,7 +35,8 @@ void PropertiesWidget::updateProperties()
     setProperty(tr("Ranking?"),m_competition->isRLT());
     setProperty(tr("Description"),m_competition->getDescription());
     setProperty(tr("Competitors"),m_competition->getStarter().size());
-    //setProperty(tr("Judges"),m_competition->getJudgesPanel()->size());
+    setProperty(tr("Judges assigned"),m_competition->getJudgesPanel()->size());
+    setProperty(tr("Judges pool"),m_competition->getJudgesPanel()->poolSize());
 }
 
 void PropertiesWidget::addProperty(QString key, QString value)

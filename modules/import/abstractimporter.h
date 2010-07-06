@@ -5,6 +5,7 @@
 #include "QString"
 #include "QStringList"
 #include "data/group.h"
+#include "data/competition.h"
 #include "filenotopenedexception.h"
 
 class AbstractImporter
@@ -13,7 +14,7 @@ public:
     AbstractImporter(const QString& filter);
     virtual ~AbstractImporter();
 
-    virtual const QList<Group> importFile(const QString& file) throw (FileNotOpenedException) = 0;
+    virtual void importFile(const QString& file,Competition* target, QString *log = 0) throw (FileNotOpenedException) = 0;
 
     /*!
      * Inline getter

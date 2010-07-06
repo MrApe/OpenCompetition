@@ -27,6 +27,7 @@ private:
     QSettings* m_settings;
 
 private slots:
+    void on_Btn_Kampfrichter_clicked();
     void on_Btn_startfeld_clicked();
     void on_Btn_gemVer_clicked();
     void on_Btn_import_clicked();

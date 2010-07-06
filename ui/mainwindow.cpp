@@ -10,6 +10,7 @@
 #include "ui/opendialog.h"
 #include "modules/clublist/clublistwidget.h"
 #include "modules/competitorlist/competitorlistwidget.h"
+#include "modules/judgespanel/judgespanelwidget.h"
 #include "ui/propertieswidget.h"
 #include "ui/aboutdialog.h"
 
@@ -30,6 +31,11 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     connect(this,SIGNAL(competitionChanged()),compLW,SLOT(updateWidget()));
     connect(compLW,SIGNAL(competitionChanged()),this,SIGNAL(competitionChanged()));
     ModuleFactory::getInstance().addModule(compLW);
+
+    JudgesPanelWidget* judgePW = new JudgesPanelWidget("judgespanel",m_competition);
+    connect(this,SIGNAL(competitionChanged()),judgePW,SLOT(updateWidget()));
+    connect(judgePW,SIGNAL(competitionChanged()),this,SIGNAL(competitionChanged()));
+    ModuleFactory::getInstance().addModule(judgePW);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
 
@@ -192,4 +198,9 @@ void MainWindow::showAboutWindow()
     AboutDialog ad;
     ad.setWindowModality(Qt::ApplicationModal);
     ad.exec();
+}
+
+void MainWindow::on_Btn_Kampfrichter_clicked()
+{
+    showModule("judgespanel");
 }

@@ -42,11 +42,9 @@ void importModule::importFiles(){
     for (int i = 0; i < ui->meldungenListe->count();i++ )
     {
         QString current = ui->meldungenListe->itemAt(i,0)->text();
-        emit log(tr("Processing File: ")+current);
-        foundGroups = m_pluginProvider.getPluginFor(current.section('.',-1))->importFile(current);
-        emit log(tr("Found %n group(s)","",foundGroups.size()));
         QString logMessage;
-        m_importTarget->addGroups(foundGroups,&logMessage);
+        emit log(tr("Processing File: ")+current);
+        m_pluginProvider.getPluginFor(current.section('.',-1))->importFile(current,m_importTarget,&logMessage);
         emit log(logMessage);
     }
 

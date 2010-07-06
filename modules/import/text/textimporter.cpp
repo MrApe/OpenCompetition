@@ -2,6 +2,7 @@
 #include <QFile>
 #include <QVector>
 #include "data/club.h"
+#include "data/judgespanel.h"
 #include "iostream"
 
 TextImporter::TextImporter(const QString& filter):
@@ -9,9 +10,8 @@ TextImporter::TextImporter(const QString& filter):
 {
 }
 
-const QList<Group> TextImporter::importFile(const QString &fileName) throw (FileNotOpenedException)
+void TextImporter::importFile(const QString &fileName, Competition *target, QString* logMessage) throw (FileNotOpenedException)
 {
-    QList<Group> foundGroups;
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -19,19 +19,12 @@ const QList<Group> TextImporter::importFile(const QString &fileName) throw (File
     }
     else
     {
-        QList<Group> foundInCurrent = parseText(file);
-        for (int i = 0; i < foundInCurrent.size(); i++)
-        {
-            foundGroups.append(foundInCurrent.at(i));
-        }
+        parseText(file,target,logMessage);
     }
-
-    return foundGroups;
 }
 
-QList<Group> TextImporter::parseText(QFile& file){
+void TextImporter::parseText(QFile& file,Competition* target, QString* logMessage){
     QString line;
-    QList<Group> groupList;
 
     //skip preämbel
     while (!line.contains("Verbindliche Meldung")){
@@ -44,6 +37,37 @@ QList<Group> TextImporter::parseText(QFile& file){
     }
     QString name = line.remove(0,line.indexOf("Verein:")+7).simplified();
     Club c(name);
+    if (!logMessage->isNull())  logMessage->append(QObject::tr("Found Club:")+c.toString());
+
+    //find judges
+    while (!line.contains("Kampfrichter:") && !file.atEnd()) {
+        line = file.readLine();
+    }
+    line = file.readLine();
+
+    QString judge;
+    while (line.contains("*") &&
+           !file.atEnd() &&
+           !line.contains("Kategorie:") &&
+           !line.contains("Altersklasse:") &&
+           !line.contains("Teams") &&
+           !line.contains("Starter")) {
+
+        judge = line.remove(0,line.indexOf("*")+2);
+        QString name = judge.section(",",0,0).simplified();
+        QString brevet = judge.section(",",1,1).simplified();
+        Judge j(name,Judge::stringToBrevetType(brevet));
+        QString pools = judge.mid(judge.indexOf("("),judge.indexOf(")"));
+        if (pools.contains("A")) j.addPool(Judge::ARTISTIC);
+        if (pools.contains("B")) j.addPool(Judge::EXECUTION);
+        if (pools.contains("S")) j.addPool(Judge::DIFFICULTY);
+
+        target->getJudgesPanel()->addJudge(j);
+
+        logMessage->append(QObject::tr("Found judge: ")+j.toString() +"\n");
+
+        line = file.readLine();
+    }
 
     //find categorie
     while (!line.contains("Kategorie:") && !file.atEnd()){
@@ -86,7 +110,8 @@ QList<Group> TextImporter::parseText(QFile& file){
         }
 
         Group found(competitors,age,cat,c);
-        groupList.append(found);
+        logMessage->append(QObject::tr("Found group: \n"));
+        target->addGroup(found,logMessage);
 
         //look for more teams
         while (!line.contains("Kategorie:") &&
@@ -96,5 +121,4 @@ QList<Group> TextImporter::parseText(QFile& file){
         }
     }
 
-    return groupList;
 }

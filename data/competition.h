@@ -59,22 +59,14 @@ public:
 
 
     //! Inline getter
-    inline QString& getName()  {
-        return m_name;}
-    inline QTime& getTime()  {
-        return m_time;}
-    inline QDate& getDate()  {
-        return m_date;}
-    inline JudgesPanel* getJudgesPanel()  {
-        return m_judgesPanel;}
-    inline const QList<Group>& getStarter() const {
-        return m_starter;}
-    inline QList<Group>& getStarter(){
-        return m_starter;}
-    inline bool isRLT() const {
-        return m_isRLT;}
-    inline const QString& getDescription() const {
-        return m_description;}
+    inline QString& getName(){return m_name;}
+    inline QTime& getTime()  {return m_time;}
+    inline QDate& getDate()  {return m_date;}
+    inline JudgesPanel* getJudgesPanel()  {return m_judgesPanel;}
+    inline const QList<Group>& getStarter() const {return m_starter;}
+    inline QList<Group>& getStarter(){return m_starter;}
+    inline bool isRLT() const {return m_isRLT;}
+    inline const QString& getDescription() const {return m_description;}
 
 signals:
     void changed();

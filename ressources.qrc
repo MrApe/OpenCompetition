@@ -111,6 +111,7 @@
         <file>images/icons/views_64_d.png</file>
         <file>images/icons/views_64_h.png</file>
         <file>images/icons/Logo.png</file>
+        <file>images/icons/Trash_256x256.png</file>
     </qresource>
     <qresource prefix="/licences">
         <file>images/ImageLicence.txt</file>

@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QFile>
+#include "data/competition.h"
 #include "modules/import/abstractimporter.h"
 
 class TextImporter : public AbstractImporter
@@ -10,10 +11,10 @@ class TextImporter : public AbstractImporter
 public:
     TextImporter(const QString& filter);
 
-    virtual const QList<Group> importFile(const QString& fileName) throw (FileNotOpenedException);
+    virtual void importFile(const QString& fileName, Competition* target, QString* logMessage=0) throw (FileNotOpenedException);
 
 private:
-    QList<Group> parseText(QFile& file);
+    void parseText(QFile& file, Competition* target,QString* logMessage);
 };
 
 #endif // TEXTIMPORTER_H

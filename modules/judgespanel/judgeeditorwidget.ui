@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JudgeEditorWidget</class>
+ <widget class="QWidget" name="JudgeEditorWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>234</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>change judge..</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/ui/icons/images/icons/Logo.png</normaloff>:/ui/icons/images/icons/Logo.png</iconset>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Name:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="name"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Brevet:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="brevet">
+     <item>
+      <property name="text">
+       <string>LTV</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>DTB</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>FIG1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>FIG2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>FIG3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>FIG4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>NO</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Pools</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QCheckBox" name="artistic">
+        <property name="text">
+         <string>Artistic</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="execution">
+        <property name="text">
+         <string>Execution</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="difficulty">
+        <property name="text">
+         <string>Difficulty</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="chair">
+        <property name="text">
+         <string>Chair</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>name</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>JudgeEditorWidget</receiver>
+   <slot>changeName(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>190</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>30</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>brevet</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>JudgeEditorWidget</receiver>
+   <slot>changeBrevet(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>artistic</sender>
+   <signal>clicked()</signal>
+   <receiver>JudgeEditorWidget</receiver>
+   <slot>updatePools()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>99</x>
+     <y>103</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>execution</sender>
+   <signal>clicked()</signal>
+   <receiver>JudgeEditorWidget</receiver>
+   <slot>updatePools()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>difficulty</sender>
+   <signal>clicked()</signal>
+   <receiver>JudgeEditorWidget</receiver>
+   <slot>updatePools()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>151</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chair</sender>
+   <signal>clicked()</signal>
+   <receiver>JudgeEditorWidget</receiver>
+   <slot>updatePools()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>171</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>changeName(QString)</slot>
+  <slot>changeBrevet(QString)</slot>
+  <slot>updatePools()</slot>
+ </slots>
+</ui>

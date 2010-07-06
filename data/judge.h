@@ -14,7 +14,8 @@ public:
         DIFFICULTY,
         CHAIR,
         SUPERIOR,
-        ASSISTANT
+        ASSISTANT,
+        LINE
     };
     
     /*!
@@ -51,11 +52,20 @@ public:
       */
     static brevetType stringToBrevetType(const QString& brevetString);
 
+    /*!
+      This mehod comverts the pools to string.
+      @param pool The pool.
+      @return Pool as QString.
+      */
+    static QString poolListToString(QList<scoreType> pool);
+
     Judge(const QString& name,
-          scoreType score,
           brevetType brevet);
 
     Judge();
+
+    bool operator ==(const Judge& other) const;
+    bool operator !=(const Judge& other) const;
 
     /*!
       This method creates a DomElement out of this object and returns it to the caller.
@@ -68,25 +78,37 @@ public:
       */
     virtual void readFromDomElement(QDomElement &element);
 
+    /*!
+      This method adds a pool for this judge.
+      @param pool The pool this judge belongs to.
+    */
+    void addPool(scoreType pool);
+
+    /*!
+      This method removes a pool from the judge.
+      @param pool The pool to remove.
+      */
+    void removePool(scoreType pool);
+
     /*
      * Inline getter and setter
      */
-    inline void setScore(scoreType score){
-        m_score = score;
-    }
-    inline void setBrevet(brevetType brevet){
-        m_brevet = brevet;
-    }
-    inline scoreType getScore() const {
-        return m_score;
-    }
-    inline brevetType getBrevet() const {
-        return m_brevet;
-    }
+    inline void setBrevet(brevetType brevet){m_brevet = brevet;}
+    inline brevetType getBrevet() const {return m_brevet;}
+    /*!
+      This method returns the pools this judge belongs to as a list.
+      @return The pools of this judge.
+      */
+    inline const QList<scoreType>& getPools() const{return m_pools;}
+
+    /*!
+      This method converts the judge to a string.
+      */
+    const QString toString();
 
 private:
-    scoreType m_score;
     brevetType m_brevet;
+    QList<scoreType> m_pools;
 
 };
 

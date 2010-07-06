@@ -27,7 +27,9 @@ SOURCES += main.cpp \
     modules/modulefactory.cpp \
     ui/propertieswidget.cpp \
     modules/competitorlist/competitorlistwidget.cpp \
-    ui/aboutdialog.cpp
+    ui/aboutdialog.cpp \
+    modules/judgespanel/judgespanelwidget.cpp \
+    modules/judgespanel/judgeeditorwidget.cpp
 HEADERS += modules/import/importmodule.h \
     modules/import/abstractimporter.h \
     data/abstractperson.h \
@@ -50,7 +52,9 @@ HEADERS += modules/import/importmodule.h \
     modules/abstractmodule.h \
     ui/propertieswidget.h \
     modules/competitorlist/competitorlistwidget.h \
-    ui/aboutdialog.h
+    ui/aboutdialog.h \
+    modules/judgespanel/judgespanelwidget.h \
+    modules/judgespanel/judgeeditorwidget.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \
@@ -58,6 +62,8 @@ FORMS += modules/import/importmodule.ui \
     modules/clublist/clublistwidget.ui \
     ui/propertieswidget.ui \
     modules/competitorlist/competitorlistwidget.ui \
-    ui/aboutdialog.ui
+    ui/aboutdialog.ui \
+    modules/judgespanel/judgespanelwidget.ui \
+    modules/judgespanel/judgeeditorwidget.ui
 OTHER_FILES += lang/de_DE.ts
 RESOURCES += ressources.qrc
