@@ -69,6 +69,7 @@ void ClubListWidget::updateClubList()
         ui->clubTable->setItem(0,1,starterItem);
     }
     ui->clubTable->setSortingEnabled(true);
+    if (ui->clubTable->rowCount() > 0) ui->clubTable->selectRow(0);
 }
 
 void ClubListWidget::updateDescription()
