@@ -1,6 +1,7 @@
 #ifndef JUDGESPANELWIDGET_H
 #define JUDGESPANELWIDGET_H
 
+#include <QWidget>
 #include <QMap>
 #include <QTableWidgetItem>
 #include <QDropEvent>

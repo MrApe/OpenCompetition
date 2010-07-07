@@ -1,17 +1,16 @@
 #ifndef ABSTRACTMODULE_H
 #define ABSTRACTMODULE_H
 
-#include <QWidget>
+#include <QMainWindow>
 #include <QString>
 
-class AbstractModule : public QWidget
+class AbstractModule : public QMainWindow
 {
 
-    Q_OBJECT
-
 public:
-    AbstractModule(const QString& name, QWidget* parent = 0):
-            QWidget(parent),m_name(name){};
+    AbstractModule(const QString& name,QWidget* parent):
+            QMainWindow(parent),
+            m_name(name){};
 
     inline const QString getName() const {
         return m_name;

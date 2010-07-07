@@ -1,6 +1,7 @@
 #ifndef CLUBLISTWIDGET_H
 #define CLUBLISTWIDGET_H
 
+#include <QWidget>
 #include <QMap>
 #include <QList>
 #include "modules/abstractmodule.h"

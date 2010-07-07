@@ -1,6 +1,7 @@
 #ifndef COMPETITORLISTWIDGET_H
 #define COMPETITORLISTWIDGET_H
 
+#include <QWidget>
 #include "modules/abstractmodule.h"
 #include "data/competition.h"
 

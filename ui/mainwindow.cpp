@@ -11,6 +11,7 @@
 #include "modules/clublist/clublistwidget.h"
 #include "modules/competitorlist/competitorlistwidget.h"
 #include "modules/judgespanel/judgespanelwidget.h"
+#include "modules/startlist/startlistwidget.h"
 #include "ui/propertieswidget.h"
 #include "ui/aboutdialog.h"
 
@@ -36,6 +37,9 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     connect(this,SIGNAL(competitionChanged()),judgePW,SLOT(updateWidget()));
     connect(judgePW,SIGNAL(competitionChanged()),this,SIGNAL(competitionChanged()));
     ModuleFactory::getInstance().addModule(judgePW);
+
+    StartListWidget* startLW = new StartListWidget("startlist",m_competition);
+    ModuleFactory::getInstance().addModule(startLW);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
 
@@ -203,4 +207,9 @@ void MainWindow::showAboutWindow()
 void MainWindow::on_Btn_Kampfrichter_clicked()
 {
     showModule("judgespanel");
+}
+
+void MainWindow::on_Btn_Startliste_clicked()
+{
+    showModule("startlist");
 }

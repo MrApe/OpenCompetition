@@ -102,6 +102,19 @@ bool Group::contains(Competitor &competitor)
     return false;
 }
 
+QString Group::hash() const
+{
+    QString hash;
+    hash.append(m_club.getName());
+    hash.append(Group::ageToString(m_age));
+    hash.append(Group::categorieToString(m_categorie));
+    for (int i = 0; i<m_competitors.size(); i++)
+    {
+       hash.append(m_competitors.at(i).getName());
+    }
+    return hash;
+}
+
 QString Group::toString()
 {
     QString output;

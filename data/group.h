@@ -84,6 +84,11 @@ public:
       */
     bool contains(Competitor& competitor);
 
+    /*!
+      This method creates a unique hash for this group.
+      */
+    QString hash() const;
+
 
     /*
      * Inline getter and setter
@@ -125,8 +130,6 @@ private:
     ageType m_age;
     categorieType m_categorie;
     Club m_club;
-
-
 };
 
 #endif // GROUP_H

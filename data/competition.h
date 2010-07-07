@@ -6,6 +6,7 @@
 #include <QString>
 #include <QDate>
 #include <QDomDocument>
+#include <QHash>
 #include "judgespanel.h"
 #include "group.h"
 #include "abstractXMLElement.h"
@@ -67,6 +68,10 @@ public:
     inline QList<Group>& getStarter(){return m_starter;}
     inline bool isRLT() const {return m_isRLT;}
     inline const QString& getDescription() const {return m_description;}
+    inline QList<Group*> getStartList() {return m_startList;}
+    inline const QTime& getTrainingTime() const { return m_trainingTime;}
+    inline const QTime& getCompetitionTime() const {return m_competitionTime;}
+    inline const QTime& getStarterOffset() const {return m_starterOffset;}
 
 signals:
     void changed();
@@ -143,6 +148,10 @@ public slots:
       */
     void addGroup(Group& group, QString* logMessage = 0);
 
+    inline void setTrainingTime(const QTime& time) {m_trainingTime = time;}
+    inline void setCompetitionTime(const QTime& time) {m_competitionTime = time;}
+    inline void setStarterOffset(const QTime& offset) {m_starterOffset = offset;}
+
 
 private:
     QString m_name;
@@ -152,6 +161,10 @@ private:
     QString m_description;
     JudgesPanel* m_judgesPanel;
     QList<Group> m_starter;
+    QList<Group*> m_startList;
+    QTime m_trainingTime;
+    QTime m_competitionTime;
+    QTime m_starterOffset;
 };
 
 #endif // COMPETITION_H

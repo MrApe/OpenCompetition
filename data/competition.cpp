@@ -11,7 +11,11 @@ Competition::Competition() :
         m_isRLT(false),
         m_description(),
         m_judgesPanel(NULL),
-        m_starter()
+        m_starter(),
+        m_startList(),
+        m_trainingTime(),
+        m_competitionTime(),
+        m_starterOffset(QTime(0,2,0,0))
 {
     m_starter = QList<Group>();
 
@@ -30,7 +34,11 @@ Competition::Competition(const QString &name,
     m_isRLT(isRLT),
     m_description(description),
     m_judgesPanel(judgesPanel),
-    m_starter(starter)
+    m_starter(starter),
+    m_startList(),
+    m_trainingTime(time),
+    m_competitionTime(time),
+    m_starterOffset(QTime(0,2,0,0))
 {
     QMessageBox::critical(NULL,tr("Open error!"),tr("Competition could not be opened due to the following error: "),QMessageBox::Ok,QMessageBox::Ok);
 }
