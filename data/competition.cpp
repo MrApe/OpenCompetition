@@ -13,6 +13,7 @@ Competition::Competition() :
         m_judgesPanel(NULL),
         m_starter(),
         m_startList(),
+        m_trainingList(),
         m_trainingTime(),
         m_competitionTime(),
         m_starterOffset(QTime(0,2,0,0))
@@ -36,9 +37,11 @@ Competition::Competition(const QString &name,
     m_judgesPanel(judgesPanel),
     m_starter(starter),
     m_startList(),
+    m_trainingList(),
     m_trainingTime(time),
     m_competitionTime(time),
-    m_starterOffset(QTime(0,2,0,0))
+    m_starterOffset(QTime(0,2,0,0)),
+    m_trainingOffset(QTime(0,1,0,0))
 {
     QMessageBox::critical(NULL,tr("Open error!"),tr("Competition could not be opened due to the following error: "),QMessageBox::Ok,QMessageBox::Ok);
 }

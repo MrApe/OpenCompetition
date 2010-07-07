@@ -6,24 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>175</width>
-    <height>90</height>
+    <width>208</width>
+    <height>281</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Training time:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QTimeEdit" name="trainingTime"/>
-   </item>
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
    <item row="1" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
@@ -42,7 +35,7 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QTimeEdit" name="offset">
+    <widget class="QTimeEdit" name="startOffset">
      <property name="toolTip">
       <string>Specify time of podium training in minues and seconds.</string>
      </property>
@@ -68,8 +61,105 @@
      </property>
     </widget>
    </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Training..</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="byclub">
+        <property name="text">
+         <string>..by club</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="instartingorder">
+        <property name="text">
+         <string>..in starting order</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Training Offset:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QTimeEdit" name="trainingOffset">
+     <property name="maximumTime">
+      <time>
+       <hour>0</hour>
+       <minute>10</minute>
+       <second>0</second>
+      </time>
+     </property>
+     <property name="minimumTime">
+      <time>
+       <hour>0</hour>
+       <minute>1</minute>
+       <second>0</second>
+      </time>
+     </property>
+     <property name="displayFormat">
+      <string>mm:ss</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QPushButton" name="rebuildTraining">
+     <property name="text">
+      <string>Rebuild traininglist</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../ressources.qrc">
+       <normaloff>:/ui/icons/images/icons/refresh_doc_64.png</normaloff>:/ui/icons/images/icons/refresh_doc_64.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Training time:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QTimeEdit" name="trainingTime"/>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QPushButton" name="rebuildStart">
+     <property name="text">
+      <string>Rebuild startlist</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../ressources.qrc">
+       <normaloff>:/ui/icons/images/icons/refresh_doc_64.png</normaloff>:/ui/icons/images/icons/refresh_doc_64.png</iconset>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

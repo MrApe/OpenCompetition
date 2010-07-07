@@ -39,6 +39,8 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     ModuleFactory::getInstance().addModule(judgePW);
 
     StartListWidget* startLW = new StartListWidget("startlist",m_competition);
+    connect(this,SIGNAL(competitionChanged()),startLW,SLOT(updateWidget()));
+    connect(this,SIGNAL(competitionChanged()),startLW,SIGNAL(competitionChanged()));
     ModuleFactory::getInstance().addModule(startLW);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));

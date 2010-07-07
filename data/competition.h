@@ -68,10 +68,12 @@ public:
     inline QList<Group>& getStarter(){return m_starter;}
     inline bool isRLT() const {return m_isRLT;}
     inline const QString& getDescription() const {return m_description;}
-    inline QList<Group*> getStartList() {return m_startList;}
+    inline QList<Group*>& getStartList() {return m_startList;}
+    inline QList<Group*>& getTrainingList() {return m_trainingList;}
     inline const QTime& getTrainingTime() const { return m_trainingTime;}
     inline const QTime& getCompetitionTime() const {return m_competitionTime;}
     inline const QTime& getStarterOffset() const {return m_starterOffset;}
+    inline const QTime& getTrainingOffset() const {return m_trainingOffset;}
 
 signals:
     void changed();
@@ -151,6 +153,7 @@ public slots:
     inline void setTrainingTime(const QTime& time) {m_trainingTime = time;}
     inline void setCompetitionTime(const QTime& time) {m_competitionTime = time;}
     inline void setStarterOffset(const QTime& offset) {m_starterOffset = offset;}
+    inline void setTrainingOffset(const QTime& offset) {m_trainingOffset = offset;}
 
 
 private:
@@ -162,9 +165,11 @@ private:
     JudgesPanel* m_judgesPanel;
     QList<Group> m_starter;
     QList<Group*> m_startList;
+    QList<Group*> m_trainingList;
     QTime m_trainingTime;
     QTime m_competitionTime;
     QTime m_starterOffset;
+    QTime m_trainingOffset;
 };
 
 #endif // COMPETITION_H

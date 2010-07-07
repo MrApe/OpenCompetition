@@ -58,7 +58,8 @@ HEADERS += modules/import/importmodule.h \
     modules/judgespanel/judgespanelwidget.h \
     modules/judgespanel/judgeeditorwidget.h \
     modules/startlist/startlistwidget.h \
-    modules/startlist/startdataeditor.h
+    modules/startlist/startdataeditor.h \
+    modules/startlist/types.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \

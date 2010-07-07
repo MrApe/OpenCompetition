@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "data/competition.h"
+#include "types.h"
 
 namespace Ui {
     class StartDataEditor;
@@ -13,6 +14,11 @@ class StartDataEditor : public QWidget {
 public:
     StartDataEditor(Competition* comp, QWidget *parent = 0);
     ~StartDataEditor();
+
+signals:
+    void sortingChanged(trainingOrderType newOrder);
+    void rebuildStartListRequested();
+    void rebuildTrainingListRequested();
 
 public slots:
     void updateValues();
@@ -26,6 +32,10 @@ private:
     QTime m_trainingTime;
     QTime m_competitionTime;
     QTime m_starterOffset;
+    QTime m_trainingOffset;
+
+private slots:
+    void updateTrainingOrderType();
 };
 
 #endif // STARTDATAEDITOR_H
