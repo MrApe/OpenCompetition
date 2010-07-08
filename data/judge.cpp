@@ -52,6 +52,20 @@ Judge::brevetType Judge::stringToBrevetType(const QString &brevetString)
     return NO;
 }
 
+const Judge Judge::judgeFromString(const QString &stringRepresentation)
+{
+    QString name = stringRepresentation.section(",",0,0).simplified();
+    name = name.isEmpty()?QObject::tr("NO_NAME"):name;
+    QString brevet = stringRepresentation.section(",",1,1).simplified();
+    Judge judge(name,stringToBrevetType(brevet));
+    QString pools = stringRepresentation.mid(stringRepresentation.indexOf("("),stringRepresentation.indexOf(")"));
+    if (pools.contains("A")) judge.addPool(Judge::ARTISTIC);
+    if (pools.contains("B")) judge.addPool(Judge::EXECUTION);
+    if (pools.contains("S")) judge.addPool(Judge::DIFFICULTY);
+
+    return judge;
+}
+
 QString Judge::poolListToString(QList<scoreType> pool)
 {
     QString poolString;

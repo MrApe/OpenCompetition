@@ -4,6 +4,7 @@
 #include "vector"
 #include "competitor.h"
 #include "club.h"
+#include "score.h"
 #include "tomanycompetitorsexception.h"
 #include "abstractXMLElement.h"
 
@@ -89,40 +90,48 @@ public:
       */
     QString hash() const;
 
+    /*!
+      This method looks for a score from a decent judge.
+      @param judge The judge the score was given from.
+      @return the score.
+      */
+    double getScoreFromJudge(const Judge& judge);
+
+    /*!
+      This method sets the score for a given Judge.
+      @param judge The judge.
+      @param score The score.
+      */
+    void setScoreForJudge(const Judge& judge, double score);
+
+    /*!
+      This method calculates the score for the current goup and returns it.
+      @return The final score.
+      */
+    double getFinalScore();
+
+    /*!
+      This method checks if the group is male.
+      @return True is the group has only male competitors.
+      */
+    bool isMale() const;
+
 
     /*
      * Inline getter and setter
      */
-    inline void setCompetitors(const QList<Competitor>& competitors){
-        m_competitors = competitors;
-    }
-    inline void setAge(const ageType age){
-        m_age = age;
-    }
-    inline void setType(const categorieType categorie){
-        m_categorie = categorie;
-    }
-    inline void setClub(const Club& cl){
-        m_club = cl;
-    }
-    inline const QList<Competitor>& getCompetitors() const{
-        return m_competitors;
-    }
-    inline QList<Competitor>& getCompetitors(){
-        return m_competitors;
-    }
-    inline ageType getAge() const{
-        return m_age;
-    }
-    inline categorieType getType() const{
-        return m_categorie;
-    }
-    inline const Club& getClub() const{
-        return m_club;
-    }
-    inline Club& getClub() {
-        return m_club;
-    }
+    inline void setCompetitors(const QList<Competitor>& competitors){m_competitors = competitors;}
+    inline void setAge(const ageType age){m_age = age;}
+    inline void setType(const categorieType categorie){m_categorie = categorie;}
+    inline void setClub(const Club& cl){m_club = cl;}
+    inline const QList<Competitor>& getCompetitors() const{return m_competitors;}
+    inline QList<Competitor>& getCompetitors(){return m_competitors;}
+    inline ageType getAge() const{return m_age;}
+    inline categorieType getType() const{return m_categorie;}
+    inline const Club& getClub() const{return m_club;}
+    inline Club& getClub() {return m_club;}
+    inline const QList<Score>& getScores()const {return m_scores;}
+    inline QList<Score>& getScores() {return m_scores;}
 
 
 private:
@@ -130,6 +139,7 @@ private:
     ageType m_age;
     categorieType m_categorie;
     Club m_club;
+    QList<Score> m_scores;
 };
 
 #endif // GROUP_H

@@ -31,7 +31,10 @@ SOURCES += main.cpp \
     modules/judgespanel/judgespanelwidget.cpp \
     modules/judgespanel/judgeeditorwidget.cpp \
     modules/startlist/startlistwidget.cpp \
-    modules/startlist/startdataeditor.cpp
+    modules/startlist/startdataeditor.cpp \
+    data/score.cpp \
+    modules/scoreInput/scoreinputwidget.cpp \
+    modules/scoreInput/scoreeditwidget.cpp
 HEADERS += modules/import/importmodule.h \
     modules/import/abstractimporter.h \
     data/abstractperson.h \
@@ -59,7 +62,10 @@ HEADERS += modules/import/importmodule.h \
     modules/judgespanel/judgeeditorwidget.h \
     modules/startlist/startlistwidget.h \
     modules/startlist/startdataeditor.h \
-    modules/startlist/types.h
+    modules/startlist/types.h \
+    data/score.h \
+    modules/scoreInput/scoreinputwidget.h \
+    modules/scoreInput/scoreeditwidget.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \
@@ -71,6 +77,8 @@ FORMS += modules/import/importmodule.ui \
     modules/judgespanel/judgespanelwidget.ui \
     modules/judgespanel/judgeeditorwidget.ui \
     modules/startlist/startlistwidget.ui \
-    modules/startlist/startdataeditor.ui
+    modules/startlist/startdataeditor.ui \
+    modules/scoreInput/scoreinputwidget.ui \
+    modules/scoreInput/scoreeditwidget.ui
 OTHER_FILES += lang/de_DE.ts
 RESOURCES += ressources.qrc

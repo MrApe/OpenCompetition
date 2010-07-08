@@ -15,6 +15,11 @@ StartListWidget::StartListWidget(const QString &name, Competition *comp, QWidget
     ui->traininglist->setColumnWidth(2,200);
     ui->traininglist->setColumnWidth(3,200);
 
+    ui->startlist->setColumnWidth(0,50);
+    ui->startlist->setColumnWidth(1,50);
+    ui->startlist->setColumnWidth(2,200);
+    ui->startlist->setColumnWidth(3,200);
+
     connect(this,SIGNAL(trainingOrderChanged()),this,SLOT(buildTrainingList()));
     connect(this,SIGNAL(trainingOrderChanged()),this,SLOT(showTrainingList()));
 

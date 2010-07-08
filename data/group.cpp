@@ -49,7 +49,8 @@ Group::Group():
         m_competitors(),
         m_age(),
         m_categorie(),
-        m_club(QObject::tr("NOT_GIVEN"))
+        m_club(QObject::tr("NOT_GIVEN")),
+        m_scores()
 {
 
 }
@@ -61,7 +62,8 @@ Group::Group(const QList<Competitor>& competitors,
         m_competitors(competitors),
         m_age(age),
         m_categorie(categorie),
-        m_club(cl)
+        m_club(cl),
+        m_scores()
 {
 }
 
@@ -69,7 +71,8 @@ Group::Group(const Group &other):
         m_competitors(other.getCompetitors()),
         m_age(other.getAge()),
         m_categorie(other.getType()),
-        m_club(other.getClub().getName())
+        m_club(other.getClub().getName()),
+        m_scores(other.getScores())
 {
 }
 
@@ -204,10 +207,18 @@ QDomElement Group::toDomElement(QDomDocument *parentDocument)
 
     QDomElement competitorsElement = parentDocument->createElement("competitors");
     groupElement.appendChild(competitorsElement);
-    QList<Competitor>::iterator it;
-    for (it = m_competitors.begin();it != m_competitors.end();it++)
+    QList<Competitor>::iterator compIT;
+    for (compIT = m_competitors.begin();compIT != m_competitors.end();compIT++)
     {
-        competitorsElement.appendChild(it->toDomElement(parentDocument));
+        competitorsElement.appendChild(compIT->toDomElement(parentDocument));
+    }
+
+    QDomElement scoreElement = parentDocument->createElement("scores");
+    groupElement.appendChild(scoreElement);
+    QList<Score>::iterator scoreIT;
+    for (scoreIT = m_scores.begin(); scoreIT != m_scores.end();scoreIT++)
+    {
+        scoreElement.appendChild(scoreIT->toDomElement(parentDocument));
     }
 
     return groupElement;
@@ -248,9 +259,101 @@ void Group::readFromDomElement(QDomElement &element)
                 }
             }
 
+            if (!nextElement.isNull() &&
+                nextElement.tagName() == "scores")
+            {
+                QDomNode scoreNode = nextElement.firstChild();
+                while (!scoreNode.isNull())
+                {
+                    QDomElement scoreElement = scoreNode.toElement();
+                    if (!scoreElement.isNull())
+                    {
+                        Score score;
+                        score.readFromDomElement(scoreElement);
+                        m_scores.append(score);
+                    }
+
+                    scoreNode = scoreNode.nextSibling();
+                }
+            }
+
             nextNode = nextNode.nextSibling();
         }
 
 
     }
+}
+
+double Group::getScoreFromJudge(const Judge& judge)
+{
+    if (!m_scores.isEmpty())
+    {
+        for (int i = 0; i< m_scores.size(); i++)
+        {
+            if (m_scores.at(i).getJudge() == judge)
+            {
+                return m_scores.at(i).getValue();
+            }
+        }
+    }
+    return 0.0;
+}
+
+bool Group::isMale() const
+{
+    if (m_categorie == MIXED_PAIR || m_categorie == INDIVIDUAL_MEN)
+    {
+        return true;
+    }
+    bool w = false;
+    for (int i = 0; i < m_competitors.size() && w ==false; i++)
+    {
+        w = m_competitors.at(i).getGender() == Competitor::FEMALE;
+    }
+    return !w;
+}
+
+double Group::getFinalScore()
+{
+    double a = 0.0;
+    int aCount = 0;
+    double b = 0.0;
+    int bCount = 0;
+    double s = 0.0;
+    int sCount = 0;
+    double divider = isMale()?2.0:1.9;
+    double line = 0.0;
+    double chair = 0.0;
+    for (int i = 0; i < m_scores.size(); i++)
+    {
+        switch (m_scores.at(i).getType())
+        {
+        case Judge::ARTISTIC:
+            a += m_scores.at(i).getValue();
+            aCount++;
+            break;
+        case Judge::EXECUTION:
+            b += m_scores.at(i).getValue();
+            bCount++;
+            break;
+        case Judge::DIFFICULTY:
+            s += m_scores.at(i).getValue();
+            sCount++;
+            break;
+        case Judge::CHAIR:
+            chair = m_scores.at(i).getValue();
+            break;
+        case Judge::LINE:
+            line += m_scores.at(i).getValue();
+            break;
+        default: //nothing;
+            break;
+        }
+    }
+
+    a = aCount==0?a:a/aCount;
+    b = bCount==0?b:b/bCount;
+    s = sCount==0?s:(s/sCount)/divider;
+
+    return a + b + s + chair + line;
 }

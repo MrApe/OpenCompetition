@@ -20,7 +20,7 @@
    <string>Startlist</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../ressources.qrc">
+   <iconset>
     <normaloff>:/ui/icons/images/icons/Logo.png</normaloff>:/ui/icons/images/icons/Logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -28,7 +28,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="trainingTab">
        <attribute name="title">
@@ -119,8 +119,6 @@
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="../../ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

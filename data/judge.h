@@ -1,6 +1,7 @@
 #ifndef JUDGE_H
 #define JUDGE_H
 
+#include <QList>
 #include "abstractperson.h"
 #include "abstractXMLElement.h"
 
@@ -58,6 +59,14 @@ public:
       @return Pool as QString.
       */
     static QString poolListToString(QList<scoreType> pool);
+
+    /*!
+      This method creates a judge out of it's string representation.
+      It only works, if the string was created by the Judge::toString() method.
+      @param stringRepresenation The judge as string.
+      @return The judge.
+      */
+    static const Judge judgeFromString(const QString& stringRepresentation);
 
     Judge(const QString& name,
           brevetType brevet);

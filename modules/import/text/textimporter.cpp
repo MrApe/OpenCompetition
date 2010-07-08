@@ -54,13 +54,7 @@ void TextImporter::parseText(QFile& file,Competition* target, QString* logMessag
            !line.contains("Starter")) {
 
         judge = line.remove(0,line.indexOf("*")+2);
-        QString name = judge.section(",",0,0).simplified();
-        QString brevet = judge.section(",",1,1).simplified();
-        Judge j(name,Judge::stringToBrevetType(brevet));
-        QString pools = judge.mid(judge.indexOf("("),judge.indexOf(")"));
-        if (pools.contains("A")) j.addPool(Judge::ARTISTIC);
-        if (pools.contains("B")) j.addPool(Judge::EXECUTION);
-        if (pools.contains("S")) j.addPool(Judge::DIFFICULTY);
+        Judge j = Judge::judgeFromString(judge);
 
         target->getJudgesPanel()->addJudge(j);
 

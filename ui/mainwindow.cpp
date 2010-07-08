@@ -12,6 +12,7 @@
 #include "modules/competitorlist/competitorlistwidget.h"
 #include "modules/judgespanel/judgespanelwidget.h"
 #include "modules/startlist/startlistwidget.h"
+#include "modules/scoreInput/scoreinputwidget.h"
 #include "ui/propertieswidget.h"
 #include "ui/aboutdialog.h"
 
@@ -42,6 +43,11 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     connect(this,SIGNAL(competitionChanged()),startLW,SLOT(updateWidget()));
     connect(this,SIGNAL(competitionChanged()),startLW,SIGNAL(competitionChanged()));
     ModuleFactory::getInstance().addModule(startLW);
+
+    ScoreInputWidget* scoreIP = new ScoreInputWidget("scoreinput",m_competition);
+    connect(this,SIGNAL(competitionChanged()),scoreIP,SLOT(updateWidget()));
+    connect(this,SIGNAL(competitionChanged()),scoreIP,SIGNAL(competitionChanged()));
+    ModuleFactory::getInstance().addModule(scoreIP);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
 
@@ -214,4 +220,9 @@ void MainWindow::on_Btn_Kampfrichter_clicked()
 void MainWindow::on_Btn_Startliste_clicked()
 {
     showModule("startlist");
+}
+
+void MainWindow::on_Btn_Wertungen_clicked()
+{
+    showModule("scoreinput");
 }
