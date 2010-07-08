@@ -75,7 +75,7 @@ Group::Group(const Group &other):
 
 bool Group::operator ==(const Group& other) const
 {
-    for (int i = 0; i<m_competitors.size(); i++)
+    for (int i = 0; i<m_competitors.size() && i < other.getCompetitors().size(); i++)
     {
         if (m_competitors.at(i) != other.getCompetitors().at(i))
         {

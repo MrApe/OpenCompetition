@@ -20,15 +20,7 @@
    <iconset resource="../../ressources.qrc">
     <normaloff>:/ui/icons/images/icons/Logo.png</normaloff>:/ui/icons/images/icons/Logo.png</iconset>
   </property>
-  <widget class="QWidget" name="centralWidget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>582</width>
-     <height>382</height>
-    </rect>
-   </property>
+  <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_11">
     <item>
      <widget class="QGroupBox" name="groupBox">
@@ -445,7 +437,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QToolButton" name="toolButton">
+         <widget class="QToolButton" name="save">
           <property name="text">
            <string>...</string>
           </property>
@@ -462,7 +454,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="trash">
+         <widget class="QToolButton" name="remove">
           <property name="acceptDrops">
            <bool>true</bool>
           </property>

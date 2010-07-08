@@ -12,6 +12,12 @@ CompetitorListWidget::CompetitorListWidget(const QString &name,Competition* comp
 {
     ui->setupUi(this);
 
+    connect(ui->competitorTable,SIGNAL(itemSelectionChanged()),this,SLOT(updateProperties()));
+    connect(ui->name,SIGNAL(editingFinished()),this,SLOT(changeCompetitorName()));
+    connect(ui->birth,SIGNAL(editingFinished()),this,SLOT(changeCompetitorBirth()));
+    connect(ui->gender,SIGNAL(currentIndexChanged(QString)),this,SLOT(changeCompetitorGender(QString)));
+    connect(ui->remove,SIGNAL(clicked()),this,SLOT(removeCompetitorFromTeam()));
+
     updateCompetitorList();
 
     //Sort items in club View

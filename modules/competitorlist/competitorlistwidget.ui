@@ -13,15 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="centralWidget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>362</width>
-     <height>452</height>
-    </rect>
-   </property>
+  <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QGroupBox" name="groupBox_2">
@@ -246,7 +238,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QToolButton" name="toolButton">
+            <widget class="QToolButton" name="remove">
              <property name="text">
               <string>X</string>
              </property>

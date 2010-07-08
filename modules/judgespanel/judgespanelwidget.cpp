@@ -11,6 +11,9 @@ JudgesPanelWidget::JudgesPanelWidget(const QString &name, Competition *comp, QWi
 {
     ui->setupUi(this);
 
+    connect(ui->remove,SIGNAL(clicked()),this,SLOT(removeJudge()));
+    connect(ui->save,SIGNAL(clicked()),this,SLOT(saveChanges()));
+
     ui->judgesTable->setColumnWidth(0,200);
     ui->judgesTable->setColumnWidth(1,80);
 

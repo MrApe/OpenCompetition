@@ -8,6 +8,8 @@ ClubListWidget::ClubListWidget(const QString& name, Competition* comp,QWidget *p
 {
     ui->setupUi(this);
 
+    connect(ui->clubTable,SIGNAL(itemSelectionChanged()),this,SLOT(updateDescription()));
+
     updateClubList();
 
     //Sort items in club View

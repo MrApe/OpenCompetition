@@ -106,7 +106,9 @@ public slots:
         @param time Time of the Competition.
     */
     inline void setTime(const QTime& time){
-        m_time = time;}
+        m_time = time;
+        m_trainingTime = QTime(m_time.hour()-2,m_time.minute(),m_time.second(),m_time.msec());
+        m_competitionTime = m_time;}
     /*!
       Set the date of the competition.
         @param date Date of the Competition.

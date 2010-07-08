@@ -14,9 +14,10 @@ Competition::Competition() :
         m_starter(),
         m_startList(),
         m_trainingList(),
-        m_trainingTime(),
-        m_competitionTime(),
-        m_starterOffset(QTime(0,2,0,0))
+        m_trainingTime(m_time.hour()-2,m_time.minute(),m_time.second(),m_time.msec()),
+        m_competitionTime(m_time),
+        m_starterOffset(QTime(0,2,0,0)),
+        m_trainingOffset(QTime(0,1,0,0))
 {
     m_starter = QList<Group>();
 
@@ -38,12 +39,11 @@ Competition::Competition(const QString &name,
     m_starter(starter),
     m_startList(),
     m_trainingList(),
-    m_trainingTime(time),
-    m_competitionTime(time),
+    m_trainingTime(m_time.hour()-2,m_time.minute(),m_time.second(),m_time.msec()),
+    m_competitionTime(m_time),
     m_starterOffset(QTime(0,2,0,0)),
     m_trainingOffset(QTime(0,1,0,0))
 {
-    QMessageBox::critical(NULL,tr("Open error!"),tr("Competition could not be opened due to the following error: "),QMessageBox::Ok,QMessageBox::Ok);
 }
 
 bool Competition::contains(const Group &group) const
@@ -91,11 +91,11 @@ void Competition::readFromDomElement(QDomElement &element)
 {
     if (element.tagName() == "competitiondata")
     {
-        m_name = element.attribute("name","");
-        m_date = QDate::fromString(element.attribute("date",""),"dd.MM.yyyy");
-        m_time = QTime::fromString(element.attribute("time",""),"hh:mm");
-        m_isRLT = element.attribute("isrlt","false")=="true";
-        m_description = element.attribute("desc","");
+        setName(element.attribute("name",""));
+        setDate(QDate::fromString(element.attribute("date",""),"dd.MM.yyyy"));
+        setTime(QTime::fromString(element.attribute("time",""),"hh:mm"));
+        setAsRLT(element.attribute("isrlt","false")=="true");
+        setDescription(element.attribute("desc",""));
 
         QDomNode nextNode = element.firstChild();
         while (!nextNode.isNull())
