@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>214</width>
     <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Control Panel</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../ressources.qrc">
     <normaloff>:/ui/icons/images/icons/Logo.png</normaloff>:/ui/icons/images/icons/Logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
@@ -174,9 +174,6 @@
       </item>
      </layout>
     </item>
-    <item>
-     <widget class="QMdiArea" name="mdiArea"/>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -184,7 +181,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>214</width>
      <height>27</height>
     </rect>
    </property>

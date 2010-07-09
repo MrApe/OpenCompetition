@@ -27,6 +27,9 @@ private:
     QSettings* m_settings;
 
 private slots:
+    void on_Btn_Rangliste_clicked();
+    void on_Btn_Urkunden_clicked();
+    void on_Btn_Beamer_clicked();
     void on_Btn_Wertungen_clicked();
     void on_Btn_Startliste_clicked();
     void on_Btn_Kampfrichter_clicked();

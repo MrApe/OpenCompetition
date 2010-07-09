@@ -226,3 +226,30 @@ void MainWindow::on_Btn_Wertungen_clicked()
 {
     showModule("scoreinput");
 }
+
+void MainWindow::on_Btn_Beamer_clicked()
+{
+    QMessageBox::information(this,
+                             tr("Not implemented yet"),
+                             tr("This feature is currently not implemented. We are working hard to complete it to serve all needs of our beloved users."),
+                             QMessageBox::Ok,
+                             QMessageBox::Ok);
+}
+
+void MainWindow::on_Btn_Urkunden_clicked()
+{
+    QMessageBox::information(this,
+                             tr("Not implemented yet"),
+                             tr("This feature is currently not implemented. We are working hard to complete it to serve all needs of our beloved users."),
+                             QMessageBox::Ok,
+                             QMessageBox::Ok);
+}
+
+void MainWindow::on_Btn_Rangliste_clicked()
+{
+    QMessageBox::information(this,
+                             tr("Not implemented"),
+                             tr("This feature is currently not implemented. We are working hard to complete it to serve all needs of our beloved users."),
+                             QMessageBox::Ok,
+                             QMessageBox::Ok);
+}
