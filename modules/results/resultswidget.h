@@ -25,6 +25,9 @@ private:
     Competition* m_competition;
 
     void showStartList();
+
+private slots:
+    void on_pushButton_clicked();
 };
 
 #endif // RESULTSWIDGET_H

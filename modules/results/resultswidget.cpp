@@ -1,6 +1,9 @@
 #include "resultswidget.h"
 #include "ui_resultswidget.h"
 #include "data/group.h"
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
 
 ResultsWidget::ResultsWidget(const QString &name, Competition *comp, QWidget *parent) :
     AbstractModule(name,parent),
@@ -108,5 +111,41 @@ void ResultsWidget::changeEvent(QEvent *e)
         break;
     default:
         break;
+    }
+}
+
+void ResultsWidget::on_pushButton_clicked()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setNameFilter(tr("CSV (*.csv *.txt)"));
+
+    QStringList fileNames;
+    if (dialog.exec())
+        fileNames = dialog.selectedFiles();
+
+    if (fileNames.size() > 0)
+    {
+        QFile outputFile(fileNames.at(0));
+        if (!outputFile.open(QIODevice::WriteOnly | QIODevice::Text))
+        {
+                 return;
+        } else {
+            QString trenner = "; ";
+            QTextStream out(&outputFile);
+            out << tr("Club") << trenner << tr("Starter") << trenner << tr("Artistic");
+            out << trenner << tr("Execution") << trenner << tr("Difficulty");
+            out << trenner << tr("Chair") << trenner << tr("Line");
+            out << trenner << tr("Final") << "\n";
+            for (int i = 0; i< ui->startlist->rowCount(); i++)
+            {     
+                for (int j = 0; j < ui->startlist->columnCount() -1; j++)
+                {
+                   out << ui->startlist->item(i,j)->text() << trenner;
+                }
+                out << ui->startlist->item(i,ui->startlist->columnCount() -1)->text() << "\n";
+            }
+        }
+        outputFile.close();
     }
 }
