@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ResultsWidget</class>
+ <widget class="QMainWindow" name="ResultsWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTableWidget" name="startlist">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>80</number>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>80</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Club</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Starter</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Artistic</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Execution</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Difficulty</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Chair</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Line</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Score</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

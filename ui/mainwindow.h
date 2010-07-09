@@ -27,6 +27,7 @@ private:
     QSettings* m_settings;
 
 private slots:
+    void on_Btn_Ergebnisliste_clicked();
     void on_Btn_Rangliste_clicked();
     void on_Btn_Urkunden_clicked();
     void on_Btn_Beamer_clicked();
@@ -42,7 +43,7 @@ private slots:
     void saveToFileAs();
     bool closeCompetition();
     void updateWindow();
-    void showModule(const QString& name);
+    bool showModule(const QString& name);
     void showAboutWindow();
 
 signals:

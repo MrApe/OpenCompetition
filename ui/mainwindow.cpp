@@ -13,6 +13,7 @@
 #include "modules/judgespanel/judgespanelwidget.h"
 #include "modules/startlist/startlistwidget.h"
 #include "modules/scoreInput/scoreinputwidget.h"
+#include "modules/results/resultswidget.h"
 #include "ui/propertieswidget.h"
 #include "ui/aboutdialog.h"
 
@@ -48,6 +49,10 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
     connect(this,SIGNAL(competitionChanged()),scoreIP,SLOT(updateWidget()));
     connect(this,SIGNAL(competitionChanged()),scoreIP,SIGNAL(competitionChanged()));
     ModuleFactory::getInstance().addModule(scoreIP);
+
+    ResultsWidget* resW = new ResultsWidget("results",m_competition);
+    connect(this,SIGNAL(competitionChanged()),resW,SLOT(updateWidget()));
+    ModuleFactory::getInstance().addModule(resW);
 
     connect(this,SIGNAL(competitionChanged()),this,SLOT(updateWindow()));
 
@@ -186,13 +191,15 @@ void MainWindow::saveToFileAs()
     }
 }
 
-void MainWindow::showModule(const QString &name)
+bool MainWindow::showModule(const QString &name)
 {
     AbstractModule* module = ModuleFactory::getInstance().getModuleByName(name);
     if (module != NULL) {
         emit competitionChanged();
         module->show();
+        return true;
     }
+    return false;
 }
 
 void MainWindow::on_Btn_gemVer_clicked()
@@ -252,4 +259,9 @@ void MainWindow::on_Btn_Rangliste_clicked()
                              tr("This feature is currently not implemented. We are working hard to complete it to serve all needs of our beloved users."),
                              QMessageBox::Ok,
                              QMessageBox::Ok);
+}
+
+void MainWindow::on_Btn_Ergebnisliste_clicked()
+{
+    showModule("results");
 }

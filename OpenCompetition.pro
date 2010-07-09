@@ -34,7 +34,8 @@ SOURCES += main.cpp \
     modules/startlist/startdataeditor.cpp \
     data/score.cpp \
     modules/scoreInput/scoreinputwidget.cpp \
-    modules/scoreInput/scoreeditwidget.cpp
+    modules/scoreInput/scoreeditwidget.cpp \
+    modules/results/resultswidget.cpp
 HEADERS += modules/import/importmodule.h \
     modules/import/abstractimporter.h \
     data/abstractperson.h \
@@ -65,7 +66,8 @@ HEADERS += modules/import/importmodule.h \
     modules/startlist/types.h \
     data/score.h \
     modules/scoreInput/scoreinputwidget.h \
-    modules/scoreInput/scoreeditwidget.h
+    modules/scoreInput/scoreeditwidget.h \
+    modules/results/resultswidget.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \
@@ -79,6 +81,7 @@ FORMS += modules/import/importmodule.ui \
     modules/startlist/startlistwidget.ui \
     modules/startlist/startdataeditor.ui \
     modules/scoreInput/scoreinputwidget.ui \
-    modules/scoreInput/scoreeditwidget.ui
+    modules/scoreInput/scoreeditwidget.ui \
+    modules/results/resultswidget.ui
 OTHER_FILES += lang/de_DE.ts
 RESOURCES += ressources.qrc
