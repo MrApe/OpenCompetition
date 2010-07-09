@@ -20,7 +20,7 @@
    <string>edit score</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../ressources.qrc">
+   <iconset>
     <normaloff>:/ui/icons/images/icons/properties_doc_64.png</normaloff>:/ui/icons/images/icons/properties_doc_64.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -181,21 +181,13 @@
       </spacer>
      </item>
      <item>
-      <widget class="QWidget" name="widget" native="true">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+      <widget class="QPushButton" name="save">
+       <property name="text">
+        <string>Save Score</string>
        </property>
-       <property name="minimumSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/ui/icons/images/icons/arrowright_green_64_h.png);</string>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/ui/icons/images/icons/arrowright_green_64.png</normaloff>:/ui/icons/images/icons/arrowright_green_64.png</iconset>
        </property>
       </widget>
      </item>
@@ -231,8 +223,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../../ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

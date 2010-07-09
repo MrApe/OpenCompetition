@@ -2,6 +2,7 @@
 #define SCOREEDITWIDGET_H
 
 #include <QWidget>
+#include <QTableWidgetItem>
 #include "data/competition.h"
 #include "data/group.h"
 
@@ -29,6 +30,10 @@ private:
     Ui::ScoreEditWidget *ui;
     Competition* m_competition;
     Group* m_group;
+
+private slots:
+    void sendScore();
+    void itemChanged(QTableWidgetItem*);
 };
 
 #endif // SCOREEDITWIDGET_H

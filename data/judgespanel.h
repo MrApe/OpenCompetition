@@ -31,6 +31,13 @@ public:
       */
     virtual void readFromDomElement(QDomElement &element);
 
+    /*!
+      This method returns a judge by name.
+      @param name The name of the judge.
+      @return A reference to the judge.
+      */
+    Judge getJudgeByName(const QString& name);
+
     inline void addJudge(Judge judge) {addJudgeToPool(judge);}
     inline void addArtisticJudge(Judge judge) {addJudgeTo(judge, &m_artisticJudges);}
     inline void addExecutionJudge(Judge judge) {addJudgeTo(judge, &m_executionJudges);}

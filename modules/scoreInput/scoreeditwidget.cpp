@@ -8,6 +8,13 @@ ScoreEditWidget::ScoreEditWidget(Competition* comp, QWidget *parent) :
     m_group(NULL)
 {
     ui->setupUi(this);
+
+//    connect(ui->artisticTable,SIGNAL(itemDoubleClicked(QTableWidgetItem*)),this,SLOT(itemChanged(QTableWidgetItem*)));
+//    connect(ui->executionTable,SIGNAL(itemDoubleClicked(QTableWidgetItem*)),this,SLOT(itemChanged(QTableWidgetItem*)));
+//    connect(ui->difficultyTable,SIGNAL(itemDoubleClicked(QTableWidgetItem*)),this,SLOT(itemChanged(QTableWidgetItem*)));
+//    connect(ui->chair,SIGNAL(editingFinished()),this,SLOT(sendScore()));
+//    connect(ui->line,SIGNAL(editingFinished()),this,SLOT(sendScore()));
+    connect(ui->save,SIGNAL(clicked()),this,SLOT(sendScore()));
 }
 
 ScoreEditWidget::~ScoreEditWidget()
@@ -87,6 +94,57 @@ void ScoreEditWidget::changeGroup(Group *newGroup)
         m_group = newGroup;
         updateWidget();
     }
+}
+
+void ScoreEditWidget::itemChanged(QTableWidgetItem *)
+{
+    sendScore();
+}
+
+void ScoreEditWidget::sendScore()
+{
+    if (m_group != NULL && m_competition != NULL)
+    {
+        m_group->getScores().clear();
+        for (int i=0; i< ui->artisticTable->rowCount(); i++)
+        {
+            Judge j = m_competition->getJudgesPanel()->getJudgeByName(ui->artisticTable->item(i,0)->text());
+            Score s(Judge::ARTISTIC,j,ui->artisticTable->item(i,1)->text().toDouble());
+            m_group->getScores().append(s);
+        }
+
+        for (int i=0; i< ui->executionTable->rowCount(); i++)
+        {
+            Judge j = m_competition->getJudgesPanel()->getJudgeByName(ui->executionTable->item(i,0)->text());
+            Score s(Judge::EXECUTION,j,ui->executionTable->item(i,1)->text().toDouble());
+            m_group->getScores().append(s);
+        }
+
+        for (int i=0; i< ui->difficultyTable->rowCount(); i++)
+        {
+            Judge j = m_competition->getJudgesPanel()->getJudgeByName(ui->difficultyTable->item(i,0)->text());
+            Score s(Judge::DIFFICULTY,j,ui->difficultyTable->item(i,1)->text().toDouble());
+            m_group->getScores().append(s);
+        }
+
+        if (m_competition->getJudgesPanel()->getChairJudges().size() > 0)
+        {
+            Judge j = *(m_competition->getJudgesPanel()->getChairJudges().at(0));
+            Score s(Judge::CHAIR,j,ui->chair->text().toDouble());
+            m_group->getScores().append(s);
+        }
+
+        if (m_competition->getJudgesPanel()->getLineJudges().size() > 0)
+        {
+            Judge j = *(m_competition->getJudgesPanel()->getLineJudges().at(0));
+            Score s(Judge::LINE,j,ui->line->text().toDouble());
+            m_group->getScores().append(s);
+        }
+
+    }
+
+    emit scoreChanged();
+
 }
 
 void ScoreEditWidget::changeEvent(QEvent *e)

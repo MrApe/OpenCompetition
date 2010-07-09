@@ -200,6 +200,21 @@ void JudgesPanel::readFromDomElement(QDomElement &element)
     }
 }
 
+Judge JudgesPanel::getJudgeByName(const QString &name)
+{
+    Judge j(name,Judge::NO);
+    for (int i = 0; i< m_judgesPool.size(); i++)
+    {
+        if (m_judgesPool.at(i).getName() == name)
+        {
+            j = m_judgesPool.at(i);
+            return j;
+        }
+    }
+    return j;
+
+}
+
 void JudgesPanel::extractJudgeFromXML(QDomElement& element, QList<Judge*> *target)
 {
     QDomNode aJudgeNode = element.firstChild();

@@ -20,6 +20,9 @@ ScoreInputWidget::ScoreInputWidget(const QString &name, Competition *competition
     addDockWidget(Qt::BottomDockWidgetArea,edDock);
     connect(this,SIGNAL(competitionChanged()),scoreEW,SLOT(updateWidget()));
     connect(this,SIGNAL(groupChanged(Group*)),scoreEW,SLOT(changeGroup(Group*)));
+
+    connect(scoreEW,SIGNAL(scoreChanged()),this,SIGNAL(competitionChanged()));
+    connect(scoreEW,SIGNAL(scoreChanged()),this,SLOT(updateWidget()));
 }
 
 ScoreInputWidget::~ScoreInputWidget()
