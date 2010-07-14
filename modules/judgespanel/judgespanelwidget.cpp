@@ -19,24 +19,48 @@ JudgesPanelWidget::JudgesPanelWidget(const QString &name, Competition *comp, QWi
 
     ui->artistic->setColumnWidth(0,200);
     ui->artistic->setColumnWidth(1,80);
+    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
+        ui->artistic->setDefaultDropAction(Qt::CopyAction);
+    #endif
+
 
     ui->execution->setColumnWidth(0,200);
     ui->execution->setColumnWidth(1,80);
+    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
+        ui->execution->setDefaultDropAction(Qt::CopyAction);
+    #endif
 
     ui->difficulty->setColumnWidth(0,200);
     ui->difficulty->setColumnWidth(1,80);
+    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
+        ui->difficulty->setDefaultDropAction(Qt::CopyAction);
+    #endif
 
     ui->chair->setColumnWidth(0,200);
     ui->chair->setColumnWidth(1,80);
+    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
+        ui->chair->setDefaultDropAction(Qt::CopyAction);
+    #endif
 
     ui->superior->setColumnWidth(0,200);
     ui->superior->setColumnWidth(1,80);
+    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
+        ui->superior->setDefaultDropAction(Qt::CopyAction);
+    #endif
 
     ui->line->setColumnWidth(0,200);
     ui->line->setColumnWidth(1,80);
+    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
+        ui->line->setDefaultDropAction(Qt::CopyAction);
+    #endif
 
     ui->assistant->setColumnWidth(0,200);
     ui->assistant->setColumnWidth(1,80);
+    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
+        ui->assistant->setDefaultDropAction(Qt::CopyAction);
+    #endif
+
+
 }
 
 JudgesPanelWidget::~JudgesPanelWidget()
@@ -51,7 +75,8 @@ void JudgesPanelWidget::closeEvent(QCloseEvent *)
 
 void JudgesPanelWidget::updateWidget()
 {
-    if (m_competition != NULL)
+    if (m_competition != NULL &&
+        m_competition->getJudgesPanel() != NULL)
     {
         updateJudgesPool();
         updateJudges(Judge::ARTISTIC);
@@ -66,82 +91,91 @@ void JudgesPanelWidget::updateWidget()
 
 void JudgesPanelWidget::updateJudgesPool()
 {
-    ui->judgesTable->setSortingEnabled(false);
-    ui->judgesTable->setRowCount(m_competition->getJudgesPanel()->getPool().size());
-    ui->judgesTable->clearContents();
-    m_judgesItemDB.clear();
-    QList<Judge>::iterator judge;
-    int row = 0;
-    QTableWidgetItem* item;
-    for (judge = m_competition->getJudgesPanel()->getPool().begin();
-         judge != m_competition->getJudgesPanel()->getPool().end();
-         judge++)
+    if (m_competition != NULL &&
+        m_competition->getJudgesPanel() != NULL)
     {
-        item = new QTableWidgetItem((*judge).getName());
-        ui->judgesTable->setItem(row,0,item);
-        m_judgesItemDB[item] = &(*judge);
-        item = new QTableWidgetItem(Judge::brevetTypeToString((*judge).getBrevet()));
-        ui->judgesTable->setItem(row,1,item);
-        m_judgesItemDB[item] = &(*judge);
-        item = new QTableWidgetItem(Judge::poolListToString((*judge).getPools()));
-        ui->judgesTable->setItem(row,2,item);
-        m_judgesItemDB[item] = &(*judge);
-        row++;
-    }
+        ui->judgesTable->setSortingEnabled(false);
+        ui->judgesTable->setRowCount(m_competition->getJudgesPanel()->getPool().size());
+        ui->judgesTable->clearContents();
+        m_judgesItemDB.clear();
+        QList<Judge>::iterator judge;
+        int row = 0;
+        QTableWidgetItem* item;
+        for (judge = m_competition->getJudgesPanel()->getPool().begin();
+        judge != m_competition->getJudgesPanel()->getPool().end();
+        judge++)
+        {
+            item = new QTableWidgetItem((*judge).getName());
+            ui->judgesTable->setItem(row,0,item);
+            m_judgesItemDB[item] = &(*judge);
+            item = new QTableWidgetItem(Judge::brevetTypeToString((*judge).getBrevet()));
+            ui->judgesTable->setItem(row,1,item);
+            m_judgesItemDB[item] = &(*judge);
+            item = new QTableWidgetItem(Judge::poolListToString((*judge).getPools()));
+            ui->judgesTable->setItem(row,2,item);
+            m_judgesItemDB[item] = &(*judge);
+            row++;
+        }
 
-    ui->judgesTable->setSortingEnabled(true);
+        ui->judgesTable->setSortingEnabled(true);
+    }
 }
 
 void JudgesPanelWidget::updateJudges(Judge::scoreType type)
 {
-    QTableWidget* target;
-    QList<Judge*> source;
-    bool sometingToDo = true;
-    switch (type){
-    case Judge::ARTISTIC:
-        target = ui->artistic;
-        source = m_competition->getJudgesPanel()->getArtisticJudges();
-        break;
-    case Judge::EXECUTION:
-        target = ui->execution;
-        source = m_competition->getJudgesPanel()->getExecutionJudges();
-        break;
-    case Judge::DIFFICULTY:
-        target = ui->difficulty;
-        source = m_competition->getJudgesPanel()->getDifficultyJudges();
-        break;
-    case Judge::CHAIR:
-        target = ui->chair;
-        source = m_competition->getJudgesPanel()->getChairJudges();
-        break;
-    case Judge::SUPERIOR:
-        target = ui->superior;
-        source = m_competition->getJudgesPanel()->getSuperiorJury();
-        break;
-    case Judge::ASSISTANT:
-        target = ui->assistant;
-        source = m_competition->getJudgesPanel()->getAssistantJudges();
-        break;
-    case Judge::LINE:
-        target = ui->assistant;
-        source = m_competition->getJudgesPanel()->getLineJudges();
-        break;
-    default: //nothing to do
-        sometingToDo = false;
-    }
+    if (m_competition != NULL &&
+        m_competition->getJudgesPanel() != NULL)
+    {
 
-    if (sometingToDo){
-        target->setRowCount(source.size());
-        target->clearContents();
-        QTableWidgetItem* item;
-        for (int row = 0; row < source.size(); row++)
-        {
-            item = new QTableWidgetItem(source.at(row)->getName());
-            target->setItem(row,0,item);
-            item = new QTableWidgetItem(Judge::brevetTypeToString(source.at(row)->getBrevet()));
-            target->setItem(row,1,item);
-            item = new QTableWidgetItem(Judge::poolListToString(source.at(row)->getPools()));
-            target->setItem(row,2,item);
+        QTableWidget* target;
+        QList<Judge*> source;
+        bool sometingToDo = true;
+        switch (type){
+        case Judge::ARTISTIC:
+            target = ui->artistic;
+            source = m_competition->getJudgesPanel()->getArtisticJudges();
+            break;
+        case Judge::EXECUTION:
+            target = ui->execution;
+            source = m_competition->getJudgesPanel()->getExecutionJudges();
+            break;
+        case Judge::DIFFICULTY:
+            target = ui->difficulty;
+            source = m_competition->getJudgesPanel()->getDifficultyJudges();
+            break;
+        case Judge::CHAIR:
+            target = ui->chair;
+            source = m_competition->getJudgesPanel()->getChairJudges();
+            break;
+        case Judge::SUPERIOR:
+            target = ui->superior;
+            source = m_competition->getJudgesPanel()->getSuperiorJury();
+            break;
+        case Judge::ASSISTANT:
+            target = ui->assistant;
+            source = m_competition->getJudgesPanel()->getAssistantJudges();
+            break;
+        case Judge::LINE:
+            target = ui->assistant;
+            source = m_competition->getJudgesPanel()->getLineJudges();
+            break;
+        default: //nothing to do
+            sometingToDo = false;
+        }
+
+        if (sometingToDo){
+            target->setRowCount(source.size());
+            target->clearContents();
+            QTableWidgetItem* item;
+            for (int row = 0; row < source.size(); row++)
+            {
+                item = new QTableWidgetItem(source.at(row)->getName());
+                target->setItem(row,0,item);
+                item = new QTableWidgetItem(Judge::brevetTypeToString(source.at(row)->getBrevet()));
+                target->setItem(row,1,item);
+                item = new QTableWidgetItem(Judge::poolListToString(source.at(row)->getPools()));
+                target->setItem(row,2,item);
+            }
         }
     }
 }

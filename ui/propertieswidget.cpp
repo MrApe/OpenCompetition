@@ -29,14 +29,18 @@ void PropertiesWidget::changeEvent(QEvent *e)
 
 void PropertiesWidget::updateProperties()
 {
-    setProperty(tr("Name"),m_competition->getName());
-    setProperty(tr("Date"),m_competition->getDate());
-    setProperty(tr("Time"),m_competition->getTime());
-    setProperty(tr("Ranking?"),m_competition->isRLT());
-    setProperty(tr("Description"),m_competition->getDescription());
-    setProperty(tr("Competitors"),m_competition->getStarter().size());
-    setProperty(tr("Judges assigned"),m_competition->getJudgesPanel()->size());
-    setProperty(tr("Judges pool"),m_competition->getJudgesPanel()->poolSize());
+    if (m_competition != NULL) {
+        setProperty(tr("Name"),m_competition->getName());
+        setProperty(tr("Date"),m_competition->getDate());
+        setProperty(tr("Time"),m_competition->getTime());
+        setProperty(tr("Ranking?"),m_competition->isRLT());
+        setProperty(tr("Description"),m_competition->getDescription());
+        setProperty(tr("Competitors"),m_competition->getStarter().size());
+        if (m_competition->getJudgesPanel() != NULL) {
+            setProperty(tr("Judges assigned"),m_competition->getJudgesPanel()->size());
+            setProperty(tr("Judges pool"),m_competition->getJudgesPanel()->poolSize());
+        }
+    }
 }
 
 void PropertiesWidget::addProperty(QString key, QString value)

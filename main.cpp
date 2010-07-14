@@ -11,9 +11,12 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     QSettings settings("TUBS","OpenCompetition");
 
-    QLocale::setDefault(QLocale::system());
+    //QLocale::setDefault(QLocale::system());
+    QLocale german(QLocale::German,QLocale::Germany);
+    QLocale::setDefault(german);
     QTranslator qtTranslator;
-    qtTranslator.load(QLocale::system().name(),"lang");
+    qtTranslator.load("lang/"+german.name());
+    std::cout << german.name().toStdString().c_str() << std::endl;
     a.installTranslator(&qtTranslator);
 
     OpenDialog od(&settings);

@@ -1,6 +1,8 @@
 # -------------------------------------------------
 # Project created by QtCreator 2010-05-04T12:31:20
 # -------------------------------------------------
+CONFIG += qt\
+        debug
 QT += sql \
     xml
 TARGET = OpenCompetition

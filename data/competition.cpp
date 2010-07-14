@@ -10,7 +10,7 @@ Competition::Competition() :
         m_time(),
         m_isRLT(false),
         m_description(),
-        m_judgesPanel(NULL),
+        m_judgesPanel(new JudgesPanel()),
         m_starter(),
         m_startList(),
         m_trainingList(),

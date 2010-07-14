@@ -121,9 +121,6 @@
             <property name="dragDropMode">
              <enum>QAbstractItemView::DropOnly</enum>
             </property>
-            <property name="defaultDropAction">
-             <enum>Qt::CopyAction</enum>
-            </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
             </property>
@@ -164,9 +161,6 @@
            <widget class="QTableWidget" name="execution">
             <property name="dragDropMode">
              <enum>QAbstractItemView::DropOnly</enum>
-            </property>
-            <property name="defaultDropAction">
-             <enum>Qt::CopyAction</enum>
             </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
@@ -209,9 +203,6 @@
             <property name="dragDropMode">
              <enum>QAbstractItemView::DropOnly</enum>
             </property>
-            <property name="defaultDropAction">
-             <enum>Qt::CopyAction</enum>
-            </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
             </property>
@@ -252,9 +243,6 @@
            <widget class="QTableWidget" name="chair">
             <property name="dragDropMode">
              <enum>QAbstractItemView::DropOnly</enum>
-            </property>
-            <property name="defaultDropAction">
-             <enum>Qt::CopyAction</enum>
             </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
@@ -297,9 +285,6 @@
             <property name="dragDropMode">
              <enum>QAbstractItemView::DropOnly</enum>
             </property>
-            <property name="defaultDropAction">
-             <enum>Qt::CopyAction</enum>
-            </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
             </property>
@@ -341,9 +326,6 @@
             <property name="dragDropMode">
              <enum>QAbstractItemView::DropOnly</enum>
             </property>
-            <property name="defaultDropAction">
-             <enum>Qt::CopyAction</enum>
-            </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
             </property>
@@ -384,9 +366,6 @@
            <widget class="QTableWidget" name="line">
             <property name="dragDropMode">
              <enum>QAbstractItemView::DropOnly</enum>
-            </property>
-            <property name="defaultDropAction">
-             <enum>Qt::CopyAction</enum>
             </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
