@@ -1,13 +1,14 @@
 # -------------------------------------------------
 # Project created by QtCreator 2010-05-04T12:31:20
 # -------------------------------------------------
+
 CONFIG += qt\
         debug
 QT += sql \
     xml
 TARGET = OpenCompetition
 TEMPLATE = app
-TRANSLATIONS = lang/de_DE.ts
+TRANSLATIONS = lang/OpenCompetition_de_DE.ts
 SOURCES += main.cpp \
     modules/import/importmodule.cpp \
     modules/import/abstractimporter.cpp \
@@ -85,5 +86,16 @@ FORMS += modules/import/importmodule.ui \
     modules/scoreInput/scoreinputwidget.ui \
     modules/scoreInput/scoreeditwidget.ui \
     modules/results/resultswidget.ui
-OTHER_FILES += lang/de_DE.ts
+OTHER_FILES += \
+    lang/OpenCompetition_de_DE.ts
 RESOURCES += ressources.qrc
+
+
+macx {
+    message("Building Mac specific")
+
+    #Only build X86 Binary 64-bit
+    CONFIG += x86 x86_64
+    #Integrate Core Foundations
+    LIBS += /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+}

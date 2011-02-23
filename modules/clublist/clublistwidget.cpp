@@ -48,7 +48,7 @@ void ClubListWidget::updateClubList()
         m_clublist[m_competition->getStarter().at(i).getClub()].insert(0,m_competition->getStarter().at(i));
     }
 
-    for (;ui->clubTable->rowCount()>0;ui->clubTable->removeRow(0));
+    for (;ui->clubTable->rowCount()>0;ui->clubTable->removeRow(0)) ;
     ui->clubTable->setSortingEnabled(false);
     for (QMap<Club,QList<Group> >::iterator i = m_clublist.begin(); i != m_clublist.end();i++)
     {
@@ -76,7 +76,7 @@ void ClubListWidget::updateClubList()
 
 void ClubListWidget::updateDescription()
 {
-    for (;ui->teamTable->rowCount()>0;ui->teamTable->removeRow(0));
+    for (;ui->teamTable->rowCount()>0;ui->teamTable->removeRow(0)) ;
     if (ui->clubTable->selectedItems().size() > 0)
     {
         QString club = ui->clubTable->selectedItems().at(0)->text();

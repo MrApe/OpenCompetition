@@ -15,7 +15,8 @@ Competitor::Competitor(const Competitor &other):
         AbstractPerson(other.getName()),
         m_birth(other.getBirth()),
         m_gender(other.getGender()),
-        m_club(other.getClub())
+        m_club(other.getClub()),
+        AbstractXMLElement()
 {
 }
 

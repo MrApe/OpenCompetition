@@ -9,12 +9,12 @@ ScoreEditWidget::ScoreEditWidget(Competition* comp, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
-        chair->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
+    #if QT_VERSION > 0x040602 // needs Qt 4.6.2 or better
+        ui->chair->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
     #endif
 
-    #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
-        line->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
+    #if QT_VERSION > 0x040602 // needs Qt 4.6.2 or better
+        ui->line->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
     #endif
 
 //    connect(ui->artisticTable,SIGNAL(itemDoubleClicked(QTableWidgetItem*)),this,SLOT(itemChanged(QTableWidgetItem*)));

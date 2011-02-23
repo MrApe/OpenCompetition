@@ -68,6 +68,7 @@ Group::Group(const QList<Competitor>& competitors,
 }
 
 Group::Group(const Group &other):
+        AbstractXMLElement(),
         m_competitors(other.getCompetitors()),
         m_age(other.getAge()),
         m_categorie(other.getType()),
