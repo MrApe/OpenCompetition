@@ -131,6 +131,14 @@ bool Judge::operator ==(const Judge& other) const
             m_pools == other.getPools());
 }
 
+bool Judge::operator ==(Judge* other) const
+{
+    return (m_name == other->getName() &&
+            m_brevet == other->getBrevet() &&
+            m_pools == other->getPools());
+}
+
+
 QDomElement Judge::toDomElement(QDomDocument *parentDocument)
 {
     QDomElement judgeElement = parentDocument->createElement("judge");

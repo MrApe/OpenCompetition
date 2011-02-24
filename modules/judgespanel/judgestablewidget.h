@@ -35,6 +35,7 @@ protected:
     virtual void dropEvent(QDropEvent *event);
 
 signals:
+    void tableChanged();
 
 public slots:
 

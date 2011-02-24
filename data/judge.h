@@ -74,7 +74,9 @@ public:
     Judge();
 
     bool operator ==(const Judge& other) const;
+    bool operator ==(Judge* other) const;
     bool operator !=(const Judge& other) const;
+    bool operator !=(Judge* other) const;
 
     /*!
       This method creates a DomElement out of this object and returns it to the caller.

@@ -7,7 +7,7 @@ JudgesPanelWidget::JudgesPanelWidget(const QString &name, Competition *comp, QWi
     AbstractModule(name,parent),
     ui(new Ui::JudgesPanelWidget),
     m_competition(comp),
-    m_judgesItemDB()
+    m_judgesItemCache()
 {
     ui->setupUi(this);
 
@@ -16,12 +16,14 @@ JudgesPanelWidget::JudgesPanelWidget(const QString &name, Competition *comp, QWi
 
     ui->judgesTable->setColumnWidth(0,200);
     ui->judgesTable->setColumnWidth(1,80);
+    connect(ui->judgesTable,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
 
     ui->artistic->setColumnWidth(0,200);
     ui->artistic->setColumnWidth(1,80);
     #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
         ui->artistic->setDefaultDropAction(Qt::CopyAction);
     #endif
+    connect(ui->artistic,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
 
 
     ui->execution->setColumnWidth(0,200);
@@ -29,39 +31,42 @@ JudgesPanelWidget::JudgesPanelWidget(const QString &name, Competition *comp, QWi
     #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
         ui->execution->setDefaultDropAction(Qt::CopyAction);
     #endif
+    connect(ui->execution,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
 
     ui->difficulty->setColumnWidth(0,200);
     ui->difficulty->setColumnWidth(1,80);
     #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
         ui->difficulty->setDefaultDropAction(Qt::CopyAction);
     #endif
+    connect(ui->difficulty,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
 
     ui->chair->setColumnWidth(0,200);
     ui->chair->setColumnWidth(1,80);
     #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
         ui->chair->setDefaultDropAction(Qt::CopyAction);
     #endif
+    connect(ui->chair,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
 
     ui->superior->setColumnWidth(0,200);
     ui->superior->setColumnWidth(1,80);
     #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
         ui->superior->setDefaultDropAction(Qt::CopyAction);
     #endif
+    connect(ui->superior,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
 
     ui->line->setColumnWidth(0,200);
     ui->line->setColumnWidth(1,80);
     #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
         ui->line->setDefaultDropAction(Qt::CopyAction);
     #endif
+    connect(ui->line,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
 
     ui->assistant->setColumnWidth(0,200);
     ui->assistant->setColumnWidth(1,80);
     #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
         ui->assistant->setDefaultDropAction(Qt::CopyAction);
     #endif
-        //connect(ui->assistant,SIGNAL())
-
-
+    connect(ui->assistant,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
 }
 
 JudgesPanelWidget::~JudgesPanelWidget()
@@ -96,9 +101,9 @@ void JudgesPanelWidget::updateJudgesPool()
         m_competition->getJudgesPanel() != NULL)
     {
         ui->judgesTable->setSortingEnabled(false);
-        ui->judgesTable->setRowCount(m_competition->getJudgesPanel()->getPool().size());
+        ui->judgesTable->setRowCount(0);
         ui->judgesTable->clearContents();
-        m_judgesItemDB.clear();
+        m_judgesItemCache.clear();
         QList<Judge>::iterator judge;
         int row = 0;
         QTableWidgetItem* item;
@@ -106,16 +111,20 @@ void JudgesPanelWidget::updateJudgesPool()
         judge != m_competition->getJudgesPanel()->getPool().end();
         judge++)
         {
-            item = new QTableWidgetItem((*judge).getName());
-            ui->judgesTable->setItem(row,0,item);
-            m_judgesItemDB[item] = &(*judge);
-            item = new QTableWidgetItem(Judge::brevetTypeToString((*judge).getBrevet()));
-            ui->judgesTable->setItem(row,1,item);
-            m_judgesItemDB[item] = &(*judge);
-            item = new QTableWidgetItem(Judge::poolListToString((*judge).getPools()));
-            ui->judgesTable->setItem(row,2,item);
-            m_judgesItemDB[item] = &(*judge);
-            row++;
+            if (!m_competition->getJudgesPanel()->isJudgeAssigned((*judge).getName()))
+            {
+                ui->judgesTable->insertRow(ui->judgesTable->rowCount());
+                item = new QTableWidgetItem((*judge).getName());
+                ui->judgesTable->setItem(row,0,item);
+                //m_judgesItemCache[item] = &(*judge);
+                item = new QTableWidgetItem(Judge::brevetTypeToString((*judge).getBrevet()));
+                ui->judgesTable->setItem(row,1,item);
+                //m_judgesItemCache[item] = &(*judge);
+                item = new QTableWidgetItem(Judge::poolListToString((*judge).getPools()));
+                ui->judgesTable->setItem(row,2,item);
+                //m_judgesItemCache[item] = &(*judge);
+                row++;
+            }
         }
 
         ui->judgesTable->setSortingEnabled(true);
@@ -183,7 +192,7 @@ void JudgesPanelWidget::updateJudges(Judge::scoreType type)
 
 void JudgesPanelWidget::changeJudge(QTableWidgetItem *changedItem)
 {
-    Judge* judgeToEdit = m_judgesItemDB[changedItem];
+    Judge* judgeToEdit = m_judgesItemCache[changedItem];
     JudgeEditorWidget editor(judgeToEdit);
     int ret = editor.exec();
     if (ret == QDialog::Accepted)
@@ -204,79 +213,73 @@ void JudgesPanelWidget::saveChanges()
     for (row =0; row < ui->artistic->rowCount(); row++)
     {
         QString judgeName = ui->artistic->item(row,0)->text();
-        QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
-        if (itemsInPool.size() > 0)
+        Judge* j = m_competition->getJudgesPanel()->getJudgeByName(judgeName);
+        if (j!= NULL)
         {
-            Judge* judgeListed = m_judgesItemDB[itemsInPool.at(0)];
-            m_competition->getJudgesPanel()->addArtisticJudge(*judgeListed);
+            m_competition->getJudgesPanel()->addArtisticJudge(*j);
         }
     }
 
     for (row =0; row < ui->execution->rowCount(); row++)
     {
         QString judgeName = ui->execution->item(row,0)->text();
-        QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
-        if (itemsInPool.size() > 0)
+        Judge* j = m_competition->getJudgesPanel()->getJudgeByName(judgeName);
+        if (j!= NULL)
         {
-            Judge* judgeListed = m_judgesItemDB[itemsInPool.at(0)];
-            m_competition->getJudgesPanel()->addExecutionJudge(*judgeListed);
+            m_competition->getJudgesPanel()->addExecutionJudge(*j);
         }
     }
 
     for (row =0; row < ui->difficulty->rowCount(); row++)
     {
         QString judgeName = ui->difficulty->item(row,0)->text();
-        QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
-        if (itemsInPool.size() > 0)
+        Judge* j = m_competition->getJudgesPanel()->getJudgeByName(judgeName);
+        if (j!= NULL)
         {
-            Judge* judgeListed = m_judgesItemDB[itemsInPool.at(0)];
-            m_competition->getJudgesPanel()->addDifficultyJudge(*judgeListed);
-        }
-    }
-
-    for (row =0; row < ui->chair->rowCount(); row++)
-    {
-        QString judgeName = ui->chair->item(row,0)->text();
-        QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
-        if (itemsInPool.size() > 0)
-        {
-            Judge* judgeListed = m_judgesItemDB[itemsInPool.at(0)];
-            m_competition->getJudgesPanel()->addChairJudge(*judgeListed);
+            m_competition->getJudgesPanel()->addDifficultyJudge(*j);
         }
     }
 
     for (row =0; row < ui->superior->rowCount(); row++)
     {
         QString judgeName = ui->superior->item(row,0)->text();
-        QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
-        if (itemsInPool.size() > 0)
+        Judge* j = m_competition->getJudgesPanel()->getJudgeByName(judgeName);
+        if (j!= NULL)
         {
-            Judge* judgeListed = m_judgesItemDB[itemsInPool.at(0)];
-            m_competition->getJudgesPanel()->addSuperiorJudge(*judgeListed);
+            m_competition->getJudgesPanel()->addSuperiorJudge(*j);
         }
     }
 
-    for (row =0; row < ui->line->rowCount(); row++)
+    for (row =0; row < ui->chair->rowCount(); row++)
     {
-        QString judgeName = ui->line->item(row,0)->text();
-        QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
-        if (itemsInPool.size() > 0)
+        QString judgeName = ui->chair->item(row,0)->text();
+        Judge* j = m_competition->getJudgesPanel()->getJudgeByName(judgeName);
+        if (j!= NULL)
         {
-            Judge* judgeListed = m_judgesItemDB[itemsInPool.at(0)];
-            m_competition->getJudgesPanel()->addLineJudge(*judgeListed);
+            m_competition->getJudgesPanel()->addChairJudge(*j);
         }
     }
 
     for (row =0; row < ui->assistant->rowCount(); row++)
     {
         QString judgeName = ui->assistant->item(row,0)->text();
-        QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
-        if (itemsInPool.size() > 0)
+        Judge* j = m_competition->getJudgesPanel()->getJudgeByName(judgeName);
+        if (j!= NULL)
         {
-            Judge* judgeListed = m_judgesItemDB[itemsInPool.at(0)];
-            m_competition->getJudgesPanel()->addAssistantJudge(*judgeListed);
+            m_competition->getJudgesPanel()->addAssistantJudge(*j);
         }
     }
+
+    for (row =0; row < ui->line->rowCount(); row++)
+    {
+        QString judgeName = ui->line->item(row,0)->text();
+        Judge* j = m_competition->getJudgesPanel()->getJudgeByName(judgeName);
+        if (j!= NULL)
+        {
+            m_competition->getJudgesPanel()->addLineJudge(*j);
+        }
+    }
+
 
     emit competitionChanged();
 
@@ -292,7 +295,7 @@ void JudgesPanelWidget::removeJudge()
         QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
         if (itemsInPool.size() > 0)
         {
-            Judge* judgeListed = m_judgesItemDB[itemsInPool.at(0)];
+            Judge* judgeListed = m_judgesItemCache[itemsInPool.at(0)];
             if (from == ui->artistic)
                 m_competition->getJudgesPanel()->getArtisticJudges().removeAll(judgeListed);
             if (from == ui->execution)

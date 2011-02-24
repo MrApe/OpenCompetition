@@ -32,7 +32,7 @@ protected:
 private:
     Ui::JudgesPanelWidget *ui;
     Competition* m_competition;
-    QMap<QTableWidgetItem*, Judge*> m_judgesItemDB;
+    QMap<QTableWidgetItem*, Judge*> m_judgesItemCache;
 
     void updateJudgesPool();
     void updateJudges(Judge::scoreType type);

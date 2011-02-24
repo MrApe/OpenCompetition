@@ -36,7 +36,14 @@ public:
       @param name The name of the judge.
       @return A reference to the judge.
       */
-    Judge getJudgeByName(const QString& name);
+    Judge* getJudgeByName(const QString& name);
+
+    /*!
+      This method checks wehther a judge is assigned.
+      @param name the Name of the judge.
+      @return true if judge is assigned to a specific score.
+      */
+    bool isJudgeAssigned(const QString& name);
 
     inline void addJudge(Judge judge) {addJudgeToPool(judge);}
     inline void addArtisticJudge(Judge judge) {addJudgeTo(judge, &m_artisticJudges);}
@@ -96,6 +103,7 @@ private:
     Judge* addJudgeToPool(Judge judge);
     void addJudgeTo(Judge judge, QList<Judge*> * to);
     Judge* findJudgeInPool(Judge judge);
+    Judge* findJudgeInPool(QString name);
 
     void extractJudgeFromXML(QDomElement& element, QList<Judge*>* target);
     void extractJudgeFromXML(QDomElement& element);

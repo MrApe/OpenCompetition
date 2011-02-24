@@ -116,22 +116,22 @@ void ScoreEditWidget::sendScore()
         m_group->getScores().clear();
         for (int i=0; i< ui->artisticTable->rowCount(); i++)
         {
-            Judge j = m_competition->getJudgesPanel()->getJudgeByName(ui->artisticTable->item(i,0)->text());
-            Score s(Judge::ARTISTIC,j,ui->artisticTable->item(i,1)->text().toDouble());
+            Judge* j = m_competition->getJudgesPanel()->getJudgeByName(ui->artisticTable->item(i,0)->text());
+            Score s(Judge::ARTISTIC,*j,ui->artisticTable->item(i,1)->text().toDouble());
             m_group->getScores().append(s);
         }
 
         for (int i=0; i< ui->executionTable->rowCount(); i++)
         {
-            Judge j = m_competition->getJudgesPanel()->getJudgeByName(ui->executionTable->item(i,0)->text());
-            Score s(Judge::EXECUTION,j,ui->executionTable->item(i,1)->text().toDouble());
+            Judge* j = m_competition->getJudgesPanel()->getJudgeByName(ui->executionTable->item(i,0)->text());
+            Score s(Judge::EXECUTION,*j,ui->executionTable->item(i,1)->text().toDouble());
             m_group->getScores().append(s);
         }
 
         for (int i=0; i< ui->difficultyTable->rowCount(); i++)
         {
-            Judge j = m_competition->getJudgesPanel()->getJudgeByName(ui->difficultyTable->item(i,0)->text());
-            Score s(Judge::DIFFICULTY,j,ui->difficultyTable->item(i,1)->text().toDouble());
+            Judge* j = m_competition->getJudgesPanel()->getJudgeByName(ui->difficultyTable->item(i,0)->text());
+            Score s(Judge::DIFFICULTY,*j,ui->difficultyTable->item(i,1)->text().toDouble());
             m_group->getScores().append(s);
         }
 

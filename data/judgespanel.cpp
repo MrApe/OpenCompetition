@@ -71,6 +71,7 @@ Judge* JudgesPanel::addJudgeToPool(Judge judge)
 
 void JudgesPanel::addJudgeTo(Judge judge, QList<Judge *> *to)
 {
+    //add to Pool to get consistent pointer
     Judge* judgePtr = addJudgeToPool(judge);
     if (!to->contains(judgePtr))
     {
@@ -85,6 +86,31 @@ Judge* JudgesPanel::findJudgeInPool(Judge judge)
         if ((*i) == judge) return &(*i);
     }
     return NULL;
+}
+
+Judge* JudgesPanel::findJudgeInPool(QString name)
+{
+    for (QList<Judge>::iterator i = m_judgesPool.begin(); i != m_judgesPool.end(); i++)
+    {
+        if ((*i).getName() == name) return &(*i);
+    }
+    return NULL;
+}
+
+bool JudgesPanel::isJudgeAssigned(const QString &name)
+{
+    Judge* toFind = findJudgeInPool(name);
+    if (toFind != NULL)
+    {
+        return (m_artisticJudges.contains(toFind) ||
+                m_executionJudges.contains(toFind) ||
+                m_difficultyJudges.contains(toFind) ||
+                m_chairJudges.contains(toFind) ||
+                m_superiorJury.contains(toFind) ||
+                m_assistantJudges.contains(toFind) ||
+                m_lineJudges.contains(toFind));
+    }
+    return false;
 }
 
 int JudgesPanel::size() const
@@ -200,19 +226,9 @@ void JudgesPanel::readFromDomElement(QDomElement &element)
     }
 }
 
-Judge JudgesPanel::getJudgeByName(const QString &name)
+Judge* JudgesPanel::getJudgeByName(const QString &name)
 {
-    Judge j(name,Judge::NO);
-    for (int i = 0; i< m_judgesPool.size(); i++)
-    {
-        if (m_judgesPool.at(i).getName() == name)
-        {
-            j = m_judgesPool.at(i);
-            return j;
-        }
-    }
-    return j;
-
+    return findJudgeInPool(name);
 }
 
 void JudgesPanel::extractJudgeFromXML(QDomElement& element, QList<Judge*> *target)

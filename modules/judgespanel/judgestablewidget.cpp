@@ -25,7 +25,7 @@ void judgesTableWidget::dropEvent(QDropEvent *event) {
         container.dropMimeData(event->mimeData(),Qt::CopyAction,0,0,QModelIndex());
         if (!isListed(container.item(0,0)->text())) {
             insertRow(rowCount());
-            for (int col = 0; col < columnCount(); col++) {
+            for (int col = 0; col < container.columnCount() && col < columnCount(); col++) {
                 QTableWidgetItem *item = new QTableWidgetItem(container.item(0,col)->text());
                 setItem(rowCount()-1,col,item);
             }
@@ -33,6 +33,7 @@ void judgesTableWidget::dropEvent(QDropEvent *event) {
             source->remove(container.item(0,0)->text());
             event->accept();
         }
+        emit tableChanged();
     }
 }
 
@@ -52,11 +53,13 @@ const Judge judgesTableWidget::remove(QString name){
     if (isListed(name)) {
         //find it
         for (int row = 0; row < rowCount(); row++) {
-            if (name == item(row,0)->text()) {
+            QString toCheck = item(row,0)->text();
+            if (name == toCheck) {
                 Judge retJudge(name,Judge::stringToBrevetType(item(row,2)->text()));
                 removeRow(row);
                 return retJudge;
             }
         }
     }
+    return Judge();
 }
