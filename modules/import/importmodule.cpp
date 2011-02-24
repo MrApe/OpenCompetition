@@ -69,9 +69,7 @@ void importModule::selectFiles(){
         QString act = *i;
         QList<QListWidgetItem*> duplicates = ui->meldungenListe->findItems(act,Qt::MatchExactly);
         for (QList<QListWidgetItem*>::iterator dup = duplicates.begin(); dup != duplicates.end(); dup++) {
-            //QListWidgetItem* toRemove = (*dup);
             (*dup)->setSelected(true);
-            //ui->meldungenListe->removeItemWidget(toRemove);
         }  
     }
     on_remove_clicked();

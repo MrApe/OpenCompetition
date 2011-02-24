@@ -38,7 +38,8 @@ SOURCES += main.cpp \
     data/score.cpp \
     modules/scoreInput/scoreinputwidget.cpp \
     modules/scoreInput/scoreeditwidget.cpp \
-    modules/results/resultswidget.cpp
+    modules/results/resultswidget.cpp \
+    modules/judgespanel/judgestablewidget.cpp
 HEADERS += modules/import/importmodule.h \
     modules/import/abstractimporter.h \
     data/abstractperson.h \
@@ -70,7 +71,8 @@ HEADERS += modules/import/importmodule.h \
     data/score.h \
     modules/scoreInput/scoreinputwidget.h \
     modules/scoreInput/scoreeditwidget.h \
-    modules/results/resultswidget.h
+    modules/results/resultswidget.h \
+    modules/judgespanel/judgestablewidget.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \

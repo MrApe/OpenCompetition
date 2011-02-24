@@ -13,10 +13,10 @@ Competitor::Competitor(const QString& name,
 
 Competitor::Competitor(const Competitor &other):
         AbstractPerson(other.getName()),
+        AbstractXMLElement(),
         m_birth(other.getBirth()),
         m_gender(other.getGender()),
-        m_club(other.getClub()),
-        AbstractXMLElement()
+        m_club(other.getClub())
 {
 }
 

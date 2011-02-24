@@ -163,12 +163,15 @@ void StartListWidget::buildTrainingList()
             clubStartList[(*gIt).getClub()].append(&(*gIt));
         }
 
-        QList<Club>::iterator keyIt;
-        for (keyIt = clubStartList.keys().begin();
-             keyIt != clubStartList.keys().end();
-             keyIt++)
+
+        QList<Club> clubKeyList = clubStartList.keys();
+        QList<Club>::iterator clubIt = clubKeyList.begin();
+        for (clubIt = clubKeyList.begin();
+             clubIt != clubKeyList.end();
+             clubIt++)
         {
-            m_competition->getTrainingList().append(clubStartList[(*keyIt)]);
+            Club c(*clubIt);
+            m_competition->getTrainingList().append(clubStartList[c]);
         }
     }
 

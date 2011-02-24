@@ -17,12 +17,12 @@ bool Club::operator !=(const Club& other) const
 
 bool Club::operator <(const Club& right) const
 {
-    return m_name < right.getName();
+    return QString::localeAwareCompare(m_name,right.getName())<0;
 }
 
 bool Club::operator >(const Club& right) const
 {
-    return m_name > right.getName();
+    return QString::localeAwareCompare(m_name,right.getName())>0;
 }
 
 

@@ -218,7 +218,11 @@ QString OpenDialog::getFilenameFromDialog(const QString& title, QFileDialog::Fil
 
 void OpenDialog::on_createNewBtn_clicked()
 {
-    QString filename = getFilenameFromDialog(tr("Specify the name of the competition."), QFileDialog::AnyFile);
+    QString filename =
+            QFileDialog::getSaveFileName(this,
+                                         tr("Specify the name of the competition."),
+                                         "",
+                                         tr("Competition *.cmp"));
     if (filename != "")
     {
         NewCompDialog newCompDiag(tr("Properties - ")+filename.section('/',-1),this);

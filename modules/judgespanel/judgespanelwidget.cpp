@@ -59,6 +59,7 @@ JudgesPanelWidget::JudgesPanelWidget(const QString &name, Competition *comp, QWi
     #if QT_VERSION > 0x040602 // needs Qt 3.1.1 or better
         ui->assistant->setDefaultDropAction(Qt::CopyAction);
     #endif
+        //connect(ui->assistant,SIGNAL())
 
 
 }
