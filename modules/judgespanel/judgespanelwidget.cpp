@@ -11,9 +11,6 @@ JudgesPanelWidget::JudgesPanelWidget(const QString &name, Competition *comp, QWi
 {
     ui->setupUi(this);
 
-    connect(ui->remove,SIGNAL(clicked()),this,SLOT(removeJudge()));
-    connect(ui->save,SIGNAL(clicked()),this,SLOT(saveChanges()));
-
     ui->judgesTable->setColumnWidth(0,200);
     ui->judgesTable->setColumnWidth(1,80);
     connect(ui->judgesTable,SIGNAL(tableChanged()),this,SLOT(saveChanges()));
@@ -210,6 +207,7 @@ void JudgesPanelWidget::changeJudge(QTableWidgetItem *changedItem)
 void JudgesPanelWidget::saveChanges()
 {
     int row = 0;
+    m_competition->getJudgesPanel()->clearAssignments();
     for (row =0; row < ui->artistic->rowCount(); row++)
     {
         QString judgeName = ui->artistic->item(row,0)->text();
@@ -283,37 +281,6 @@ void JudgesPanelWidget::saveChanges()
 
     emit competitionChanged();
 
-}
-
-void JudgesPanelWidget::removeJudge()
-{
-    QTableWidget* from = ui->judgeTabs->currentWidget()->findChild<QTableWidget*>();
-    if (from->selectedItems().size() > 0)
-    {
-        int row = from->selectedItems().at(0)->row();
-        QString judgeName = from->item(row,0)->text();
-        QList<QTableWidgetItem*> itemsInPool = ui->judgesTable->findItems(judgeName,Qt::MatchExactly);
-        if (itemsInPool.size() > 0)
-        {
-            Judge* judgeListed = m_judgesItemCache[itemsInPool.at(0)];
-            if (from == ui->artistic)
-                m_competition->getJudgesPanel()->getArtisticJudges().removeAll(judgeListed);
-            if (from == ui->execution)
-                m_competition->getJudgesPanel()->getExecutionJudges().removeAll(judgeListed);
-            if (from == ui->difficulty)
-                m_competition->getJudgesPanel()->getDifficultyJudges().removeAll(judgeListed);
-            if (from == ui->chair)
-                m_competition->getJudgesPanel()->getChairJudges().removeAll(judgeListed);
-            if (from == ui->superior)
-                m_competition->getJudgesPanel()->getSuperiorJury().removeAll(judgeListed);
-            if (from == ui->assistant)
-                m_competition->getJudgesPanel()->getAssistantJudges().removeAll(judgeListed);
-            if (from == ui->line)
-                m_competition->getJudgesPanel()->getLineJudges().removeAll(judgeListed);
-            from->removeRow(row);
-        }
-    }
-    saveChanges();
 }
 
 void JudgesPanelWidget::changeEvent(QEvent *e)

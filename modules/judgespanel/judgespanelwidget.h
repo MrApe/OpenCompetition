@@ -40,7 +40,6 @@ private:
 private slots:
     void changeJudge(QTableWidgetItem* changedItem);
     void saveChanges();
-    void removeJudge();
 
 };
 

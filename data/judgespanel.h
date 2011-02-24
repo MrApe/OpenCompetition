@@ -62,6 +62,8 @@ public:
     inline QList<Judge*>& getChairJudges(){return m_chairJudges;}
     inline QList<Judge*>& getAssistantJudges(){return m_assistantJudges;}
     inline QList<Judge>& getPool(){return m_judgesPool;}
+
+    void clearAssignments();
     int size() const;
     int poolSize() const;
 

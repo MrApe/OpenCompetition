@@ -113,6 +113,17 @@ bool JudgesPanel::isJudgeAssigned(const QString &name)
     return false;
 }
 
+void JudgesPanel::clearAssignments()
+{
+    m_artisticJudges.clear();
+    m_executionJudges.clear();
+    m_difficultyJudges.clear();
+    m_chairJudges.clear();
+    m_superiorJury.clear();
+    m_assistantJudges.clear();
+    m_lineJudges.clear();
+}
+
 int JudgesPanel::size() const
 {
     int s = m_artisticJudges.size();
