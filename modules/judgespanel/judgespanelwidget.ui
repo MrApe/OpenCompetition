@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>1024</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -21,7 +21,7 @@
     <normaloff>:/ui/icons/images/icons/Logo.png</normaloff>:/ui/icons/images/icons/Logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2">
     <item>
      <widget class="QGroupBox" name="groupBox">
       <property name="sizePolicy">

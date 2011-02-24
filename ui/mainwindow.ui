@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>214</width>
+    <width>358</width>
     <height>600</height>
    </rect>
   </property>
@@ -181,8 +181,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>214</width>
-     <height>27</height>
+     <width>358</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDatei">
@@ -201,7 +201,35 @@
     </property>
     <addaction name="action_about"/>
    </widget>
+   <widget class="QMenu" name="menuRegistration">
+    <property name="title">
+     <string>Registration</string>
+    </property>
+    <addaction name="action_import"/>
+    <addaction name="actionRegistered_clubs"/>
+    <addaction name="actionCompetitors"/>
+    <addaction name="actionJudges"/>
+   </widget>
+   <widget class="QMenu" name="menuCompetition">
+    <property name="title">
+     <string>Competition</string>
+    </property>
+    <addaction name="actionStarting_list"/>
+    <addaction name="actionScoore_input"/>
+    <addaction name="actionBeamer_output"/>
+   </widget>
+   <widget class="QMenu" name="menuResults">
+    <property name="title">
+     <string>Results</string>
+    </property>
+    <addaction name="actionCertificates"/>
+    <addaction name="actionResult_list"/>
+    <addaction name="actionRanking_points"/>
+   </widget>
    <addaction name="menuDatei"/>
+   <addaction name="menuRegistration"/>
+   <addaction name="menuCompetition"/>
+   <addaction name="menuResults"/>
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -268,6 +296,86 @@
   <action name="action_about">
    <property name="text">
     <string>&amp;about</string>
+   </property>
+  </action>
+  <action name="action_import">
+   <property name="text">
+    <string>Import..</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionRegistered_clubs">
+   <property name="text">
+    <string>Registered clubs</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionCompetitors">
+   <property name="text">
+    <string>Competitors</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionJudges">
+   <property name="text">
+    <string>Judges</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+J</string>
+   </property>
+  </action>
+  <action name="actionStarting_list">
+   <property name="text">
+    <string>Starting list</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionScoore_input">
+   <property name="text">
+    <string>Score input</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+I</string>
+   </property>
+  </action>
+  <action name="actionBeamer_output">
+   <property name="text">
+    <string>Beamer output</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionCertificates">
+   <property name="text">
+    <string>Certificates</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
+  </action>
+  <action name="actionResult_list">
+   <property name="text">
+    <string>Result list</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+R</string>
+   </property>
+  </action>
+  <action name="actionRanking_points">
+   <property name="text">
+    <string>Ranking points</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>
@@ -365,6 +473,150 @@
     <hint type="destinationlabel">
      <x>399</x>
      <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionBeamer_output</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_Beamer</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>377</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCertificates</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_Urkunden</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>453</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCompetitors</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_startfeld</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>171</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionJudges</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_Kampfrichter</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRanking_points</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_Rangliste</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>538</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRegistered_clubs</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_gemVer</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionResult_list</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_Ergebnisliste</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionScoore_input</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_Wertungen</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>335</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionStarting_list</sender>
+   <signal>triggered()</signal>
+   <receiver>Btn_Startliste</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>292</y>
     </hint>
    </hints>
   </connection>
