@@ -246,7 +246,7 @@ void CompetitorListWidget::removeCompetitorFromTeam()
                      m_shownCompetitor->getGender()==Competitor::MALE?
                         Group::INDIVIDUAL_MEN:Group::INDIVIDUAL_WOMEN,
                      m_shownCompetitor->getClub());
-            m_competition->addGroup(gr);
+            m_competition->addGroups(gr);
         }
         m_groupsOfShownCompetitor.removeAt(index);
         emit competitionChanged();

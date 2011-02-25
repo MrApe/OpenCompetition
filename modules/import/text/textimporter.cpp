@@ -105,7 +105,7 @@ void TextImporter::parseText(QFile& file,Competition* target, QString* logMessag
 
         Group found(competitors,age,cat,c);
         logMessage->append(QObject::tr("Found group: \n"));
-        target->addGroup(found,logMessage);
+        target->addGroups(found,logMessage);
 
         //look for more teams
         while (!line.contains("Kategorie:") &&

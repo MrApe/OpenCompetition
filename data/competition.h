@@ -80,8 +80,62 @@ signals:
 
 
     //! Inline setter as slots
-public slots:
+public slots:  
+    /*!
+      Set the name of the competition.
+        @param name Name of the Competition.
+    */
+    inline void setName(const QString& name){m_name = name;}
+    /*!
+      Set the time of the competition.
+        @param time Time of the Competition.
+    */
+    inline void setTime(const QTime& time){
+        m_time = time;
+        m_trainingTime = QTime(m_time.hour()-2,m_time.minute(),m_time.second(),m_time.msec());
+        m_competitionTime = m_time;}
+    /*!
+      Set the date of the competition.
+        @param date Date of the Competition.
+    */
+    inline void setDate(const QDate& date){m_date = date;}
+    /*!
+      Set the judges panel for this competition.
+        @param judgesPanel Judges for this competition.
+    */
+    inline void setJudgesPanel(JudgesPanel* judgesPanel){m_judgesPanel = judgesPanel;}
+    /*!
+      Set wether this competition is an RLT.
+        @param isRLT true is this competition is an RLT.
+    */
+    inline void setAsRLT(bool isRLT){m_isRLT = isRLT;}
+    /*!
+      Set the description of this competition.
+        @param description Text describing this competition.
+    */
+    inline void setDescription(const QString& description){m_description = description;}
+    /*!
+      Set the training time of this competition.
+        @param time Time of training.
+    */
+    inline void setTrainingTime(const QTime& time) {m_trainingTime = time;}
+    /*!
+      Set the start time of this competition.
+        @param time Time of competition.
+    */
+    inline void setCompetitionTime(const QTime& time) {m_competitionTime = time;}
+    /*!
+      Set the time between two starters during competition.
+        @param offset Time til next starter.
+    */
+    inline void setStarterOffset(const QTime& offset) {m_starterOffset = offset;}
+    /*!
+      Set the time between two starters during training.
+        @param offset Time til next starter.
+    */
+    inline void setTrainingOffset(const QTime& offset) {m_trainingOffset = offset;}
 
+    //More complex functions to modify thsi competition
     /*!
       This function saves the competition as XML-Data
       @param filename The filename.
@@ -96,82 +150,58 @@ public slots:
       */
     bool loadFromFile(const QString& filename, QString* errorMsg = 0,int* errorLine = 0,int* errorColumn = 0);
     /*!
-      Set the name of the competition.
-        @param name Name of the Competition.
-    */
-    inline void setName(const QString& name){
-        m_name = name;}
+      This function adds the given groups to the competition.
+      Groups are interpretet as starter and can be individuals, too.
+      @param groups Groups to add.
+      */
+    void addGroups(QList<Group>& groups, QString* logMessage = 0);
     /*!
-      Set the time of the competition.
-        @param time Time of the Competition.
-    */
-    inline void setTime(const QTime& time){
-        m_time = time;
-        m_trainingTime = QTime(m_time.hour()-2,m_time.minute(),m_time.second(),m_time.msec());
-        m_competitionTime = m_time;}
+      This function adds the given group to the competition.
+      Groups are interpretet as starter and can be individuals, too.
+      @param group Group to add.
+      */
+    void addGroup(Group& group, QString* logMessage = 0);
+
     /*!
-      Set the date of the competition.
-        @param date Date of the Competition.
-    */
-    inline void setDate(const QDate& date){
-        m_date = date;}
+      This method adds the given competitior to the compepetition.
+      @param competitor Competitor to add.
+      */
+    void addCompetitor(const Competitor& competitor);
+
     /*!
-      Set the judges panel for this competition.
-        @param judgesPanel Judges for this competition.
-    */
-    inline void setJudgesPanel(JudgesPanel* judgesPanel){
-        m_judgesPanel = judgesPanel;}
+      This method adds the given club to the competition.
+      @param club Club to add.
+      */
+    void addClub(const Club& club);
+
+
+
+private:
+    //main properties
+    QString m_name;
+    QDate m_date;
+    QTime m_time;
+    bool m_isRLT;
+    QString m_description;
+
+    //judges combined in a JudgesPanel
+    JudgesPanel* m_judgesPanel;
+
+    //main data lists
+    QList<Club> m_clubs;
+    QList<Competitor> m_competitors;
+    QList<Group> m_starter;
+
+    //composed lists
+    QList<Group*> m_startList;
+    QList<Group*> m_trainingList;
+
     /*!
       Set the groups and invividuals starting in this competition.
         @param starter Starter of this competition.
     */
     inline void setStarter(QList<Group> starter){
         m_starter = starter;}
-    /*!
-      Set wether this competition is an RLT.
-        @param isRLT true is this competition is an RLT.
-    */
-    inline void setAsRLT(bool isRLT){
-        m_isRLT = isRLT;}
-    /*!
-      Set the description of this competition.
-        @param description Text describing this competition.
-    */
-    inline void setDescription(const QString& description){
-        m_description = description;}
-    /*!
-      This function adds the given groups to the competition.
-      Groups are interpretet as starter and can be individuals.
-      @param groups Groups to be added.
-      */
-    void addGroups(QList<Group>& groups, QString* logMessage = 0);
-    /*!
-      This function adds the given group to the competition.
-      Groups are interpretet as starter and can be individuals.
-      @param group Group to be added.
-      */
-    void addGroup(Group& group, QString* logMessage = 0);
-
-    inline void setTrainingTime(const QTime& time) {m_trainingTime = time;}
-    inline void setCompetitionTime(const QTime& time) {m_competitionTime = time;}
-    inline void setStarterOffset(const QTime& offset) {m_starterOffset = offset;}
-    inline void setTrainingOffset(const QTime& offset) {m_trainingOffset = offset;}
-
-
-private:
-    QString m_name;
-    QDate m_date;
-    QTime m_time;
-    bool m_isRLT;
-    QString m_description;
-    JudgesPanel* m_judgesPanel;
-    QList<Group> m_starter;
-    QList<Group*> m_startList;
-    QList<Group*> m_trainingList;
-    QTime m_trainingTime;
-    QTime m_competitionTime;
-    QTime m_starterOffset;
-    QTime m_trainingOffset;
 };
 
 #endif // COMPETITION_H

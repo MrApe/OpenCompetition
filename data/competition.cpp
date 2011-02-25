@@ -10,17 +10,17 @@ Competition::Competition() :
         m_time(),
         m_isRLT(false),
         m_description(),
-        m_judgesPanel(new JudgesPanel()),
-        m_starter(),
-        m_startList(),
-        m_trainingList(),
         m_trainingTime(m_time.hour()-2,m_time.minute(),m_time.second(),m_time.msec()),
         m_competitionTime(m_time),
         m_starterOffset(QTime(0,2,0,0)),
-        m_trainingOffset(QTime(0,1,0,0))
+        m_trainingOffset(QTime(0,1,0,0)),
+        m_judgesPanel(new JudgesPanel()),
+        m_clubs(),
+        m_competitors(),
+        m_starter(),
+        m_startList(),
+        m_trainingList()
 {
-    m_starter = QList<Group>();
-
 }
 
 Competition::Competition(const QString &name,
@@ -28,21 +28,22 @@ Competition::Competition(const QString &name,
                          const QTime &time,
                          bool isRLT,
                          const QString& description,
-                         JudgesPanel* judgesPanel,
-                         QList<Group>starter) :
-    m_name(name),
-    m_date(date),
-    m_time(time),
-    m_isRLT(isRLT),
-    m_description(description),
-    m_judgesPanel(judgesPanel),
-    m_starter(starter),
-    m_startList(),
-    m_trainingList(),
-    m_trainingTime(m_time.hour()-2,m_time.minute(),m_time.second(),m_time.msec()),
-    m_competitionTime(m_time),
-    m_starterOffset(QTime(0,2,0,0)),
-    m_trainingOffset(QTime(0,1,0,0))
+                         JudgesPanel* judgesPanel) :
+m_name(name),
+m_date(date),
+m_time(time),
+m_isRLT(isRLT),
+m_description(description),
+m_trainingTime(m_time.hour()-2,m_time.minute(),m_time.second(),m_time.msec()),
+m_competitionTime(m_time),
+m_starterOffset(QTime(0,2,0,0)),
+m_trainingOffset(QTime(0,1,0,0)),
+m_judgesPanel(judgesPanel),
+m_clubs(),
+m_competitors(),
+m_starter(),
+m_startList(),
+m_trainingList()
 {
 }
 
@@ -193,7 +194,7 @@ void Competition::addGroups(QList<Group>& groups, QString* logMessage)
     }
 }
 
-void Competition::addGroup(Group &group, QString *logMessage)
+void Competition::addGroups(Group &group, QString *logMessage)
 {
     QList<Group> groups;
     groups.append(group);
