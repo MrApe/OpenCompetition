@@ -73,7 +73,8 @@ JudgesPanelWidget::~JudgesPanelWidget()
 
 void JudgesPanelWidget::closeEvent(QCloseEvent *)
 {
-    saveChanges();
+    //No longer necessary. Commits are done directly
+    //saveChanges();
 }
 
 void JudgesPanelWidget::updateWidget()

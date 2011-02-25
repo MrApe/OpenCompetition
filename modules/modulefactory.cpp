@@ -27,6 +27,15 @@ AbstractModule* ModuleFactory::getModuleByName(QString name)
     return m_moduleList[name];
 }
 
+void ModuleFactory::closeAllModules()
+{
+    QList<QString>::iterator mod;
+    for (mod = m_moduleList.keys().begin(); mod != m_moduleList.keys().end(); mod++)
+    {
+        getModuleByName(*mod)->close();
+    }
+}
+
 ModuleFactory::ModuleFactory(QObject* parent):
     QObject(parent){}
 

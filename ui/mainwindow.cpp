@@ -26,6 +26,8 @@ MainWindow::MainWindow(const QString& openFileName,QSettings* settings, QWidget 
 {   
     ui->setupUi(this);
 
+    ui->menuBar->setParent(NULL);
+
     ClubListWidget* clubLW = new ClubListWidget("clublist",m_competition);
     connect(this,SIGNAL(competitionChanged()),clubLW,SLOT(updateWidget()));
     ModuleFactory::getInstance().addModule(clubLW);
@@ -133,6 +135,7 @@ void MainWindow::openCompetitionFromFile(const QString &filename)
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     if (closeCompetition()) {
+        ModuleFactory::getInstance().closeAllModules();
         event->accept();
     } else {
         event->ignore();

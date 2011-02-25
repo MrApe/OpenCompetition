@@ -22,7 +22,17 @@ public:
       */
     void addModule(AbstractModule* newModule);
 
+
+    /*!
+      This function returns a module with the given name.
+      If there is no such module it returns NULL.
+      */
     AbstractModule* getModuleByName(const QString name);
+
+    /*!
+      This method closes all modules listed in thsi factory.
+      */
+    void closeAllModules();
 
 private:
     ModuleFactory(QObject * parent = 0);
