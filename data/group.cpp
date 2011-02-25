@@ -97,9 +97,9 @@ bool Group::operator!=(const Group& other) const
     return !(*this==other);
 }
 
-bool Group::contains(Competitor &competitor)
+bool Group::contains(const Competitor &competitor) const
 {
-    for (QList<Competitor>::iterator i = m_competitors.begin(); i != m_competitors.end(); i++)
+    for (QList<Competitor>::const_iterator i = m_competitors.begin(); i != m_competitors.end(); i++)
     {
         if ((*i)==competitor) return true;
     }
@@ -119,7 +119,7 @@ QString Group::hash() const
     return hash;
 }
 
-QString Group::toString()
+QString Group::toString() const
 {
     QString output;
     output.append(QObject::tr("Club: ")+m_club.getName()+"\n");

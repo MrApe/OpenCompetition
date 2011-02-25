@@ -2,7 +2,7 @@
 #define COMPETITOR_H
 
 #include "abstractperson.h"
-#include "data/club.h"
+#include "club.h"
 #include "abstractXMLElement.h"
 
 class Competitor : public AbstractPerson, public AbstractXMLElement

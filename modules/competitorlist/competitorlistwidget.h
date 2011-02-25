@@ -23,6 +23,7 @@ public slots:
     void changeCompetitorBirth();
     void changeCompetitorGender(const QString& genderString);
     void removeCompetitorFromTeam();
+    void showGroupListContextMenu();
 
 protected:
     void changeEvent(QEvent *e);
@@ -39,6 +40,10 @@ private:
 
 signals:
     void competitionChanged();
+
+private slots:
+    void on_addCompetitor_clicked();
+    void addCompetitor(Group* group);
 };
 
 #endif // COMPETITORLISTWIDGET_H

@@ -2,9 +2,9 @@
 #define GROUP_H
 
 #include "vector"
-#include "competitor.h"
-#include "club.h"
-#include "score.h"
+#include "data/competitor.h"
+#include "data/club.h"
+#include "data/score.h"
 #include "tomanycompetitorsexception.h"
 #include "abstractXMLElement.h"
 
@@ -44,7 +44,7 @@ public:
     bool operator ==(const Group& other) const;
     bool operator!=(const Group& other) const;
 
-    QString toString();
+    QString toString() const;
 
     /*!
       This method adds a competitor to the group. It throws an exception is the group is full.
@@ -83,7 +83,7 @@ public:
       @param competitor Competitor to find.
       @return True is the competitor is part of the group. False otherwise.
       */
-    bool contains(Competitor& competitor);
+    bool contains(const Competitor& competitor) const;
 
     /*!
       This method creates a unique hash for this group.

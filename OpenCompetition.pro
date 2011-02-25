@@ -39,7 +39,8 @@ SOURCES += main.cpp \
     modules/scoreInput/scoreinputwidget.cpp \
     modules/scoreInput/scoreeditwidget.cpp \
     modules/results/resultswidget.cpp \
-    modules/judgespanel/judgestablewidget.cpp
+    modules/judgespanel/judgestablewidget.cpp \
+    modules/competitorlist/addteamaction.cpp
 HEADERS += modules/import/importmodule.h \
     modules/import/abstractimporter.h \
     data/abstractperson.h \
@@ -72,7 +73,8 @@ HEADERS += modules/import/importmodule.h \
     modules/scoreInput/scoreinputwidget.h \
     modules/scoreInput/scoreeditwidget.h \
     modules/results/resultswidget.h \
-    modules/judgespanel/judgestablewidget.h
+    modules/judgespanel/judgestablewidget.h \
+    modules/competitorlist/addteamaction.h
 FORMS += modules/import/importmodule.ui \
     ui/opendialog.ui \
     ui/mainwindow.ui \

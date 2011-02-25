@@ -1,6 +1,10 @@
 #include "competitorlistwidget.h"
 #include "ui_competitorlistwidget.h"
+#include "addteamaction.h"
+#include "data/tomanycompetitorsexception.h"
+#include <cmath>
 #include <QMessageBox>
+#include <QMenu>
 
 CompetitorListWidget::CompetitorListWidget(const QString &name,Competition* comp, QWidget *parent) :
     AbstractModule(name,parent),
@@ -17,6 +21,7 @@ CompetitorListWidget::CompetitorListWidget(const QString &name,Competition* comp
     connect(ui->birth,SIGNAL(editingFinished()),this,SLOT(changeCompetitorBirth()));
     connect(ui->gender,SIGNAL(currentIndexChanged(QString)),this,SLOT(changeCompetitorGender(QString)));
     connect(ui->remove,SIGNAL(clicked()),this,SLOT(removeCompetitorFromTeam()));
+    connect(ui->add,SIGNAL(clicked()),this,SLOT(showGroupListContextMenu()));
 
     updateCompetitorList();
 
@@ -252,6 +257,59 @@ void CompetitorListWidget::removeCompetitorFromTeam()
     }
 }
 
+void CompetitorListWidget::showGroupListContextMenu()
+{
+    QMenu* list = new QMenu(ui->add);
+
+    QMap<Club,QList<Group*> > clublist;
+    for (int starterI = 0; starterI < m_competition->getStarter().size();starterI++)
+    {
+        Group* groupRef = new Group(m_competition->getStarter().at(starterI));
+        clublist[m_competition->getStarter().at(starterI).getClub()].insert(0,groupRef);
+    }
+
+    for (QMap<Club,QList<Group*> >::iterator clubEntry = clublist.begin(); clubEntry != clublist.end();clubEntry++)
+    {
+        QString clubName = clubEntry.key().getName();
+        QMenu* clubSubMenu = list->addMenu(clubName);
+
+        QList<Group*>::iterator groupI;
+        for (groupI = clubEntry.value().begin();groupI != clubEntry.value().end();groupI++)
+        {
+            QString entryString = Group::categorieToString((*groupI)->getType()) +
+                                   ", " +
+                                   Group::ageToString((*groupI)->getAge()) +
+                                   ", ";
+            QString comp = "(";
+            QList<Competitor>::Iterator compI;
+            for (compI = (*groupI)->getCompetitors().begin(); compI != (*groupI)->getCompetitors().end();compI++)
+            {
+               comp.append((*compI).getName());
+               if (compI+1 != (*groupI)->getCompetitors().end()){
+                   comp.append(",");
+               }
+            }
+            entryString.append(")").append(comp);
+            AddTeamAction* starterAction = new AddTeamAction((*groupI));
+            starterAction->setText(entryString);
+            connect(starterAction,SIGNAL(triggered(Group*)),this,SLOT(addCompetitor(Group*)));
+            clubSubMenu->addAction(starterAction);
+        }
+    }
+
+    list->exec(ui->add->mapToGlobal(QPoint(0,0)));
+}
+
+void CompetitorListWidget::addCompetitor(Group* group)
+{
+    try {
+        group->addCompetitor((*m_shownCompetitor));
+    } catch (ToManyCompetitorsException e)
+    {
+        QMessageBox::information(this,tr("Too many competitors."),e.what(),QMessageBox::Ok);
+    }
+
+}
 
 void CompetitorListWidget::changeEvent(QEvent *e)
 {
@@ -263,4 +321,9 @@ void CompetitorListWidget::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+
+void CompetitorListWidget::on_addCompetitor_clicked()
+{
 }
