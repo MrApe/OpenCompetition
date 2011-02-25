@@ -64,8 +64,8 @@ public:
     inline QTime& getTime()  {return m_time;}
     inline QDate& getDate()  {return m_date;}
     inline JudgesPanel* getJudgesPanel()  {return m_judgesPanel;}
-    inline const QList<Group>& getStarter() const {return m_starter;}
-    inline QList<Group>& getStarter(){return m_starter;}
+    inline const QList<Group>& getStarter() const {return m_groups;}
+    inline QList<Group>& getStarter(){return m_groups;}
     inline bool isRLT() const {return m_isRLT;}
     inline const QString& getDescription() const {return m_description;}
     inline QList<Group*>& getStartList() {return m_startList;}
@@ -190,7 +190,7 @@ private:
     //main data lists
     QList<Club> m_clubs;
     QList<Competitor> m_competitors;
-    QList<Group> m_starter;
+    QList<Group> m_groups;
 
     //composed lists
     QList<Group*> m_startList;
@@ -201,7 +201,7 @@ private:
         @param starter Starter of this competition.
     */
     inline void setStarter(QList<Group> starter){
-        m_starter = starter;}
+        m_groups = starter;}
 };
 
 #endif // COMPETITION_H

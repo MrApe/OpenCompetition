@@ -17,7 +17,7 @@ Competition::Competition() :
         m_judgesPanel(new JudgesPanel()),
         m_clubs(),
         m_competitors(),
-        m_starter(),
+        m_groups(),
         m_startList(),
         m_trainingList()
 {
@@ -41,7 +41,7 @@ m_trainingOffset(QTime(0,1,0,0)),
 m_judgesPanel(judgesPanel),
 m_clubs(),
 m_competitors(),
-m_starter(),
+m_groups(),
 m_startList(),
 m_trainingList()
 {
@@ -49,10 +49,10 @@ m_trainingList()
 
 bool Competition::contains(const Group &group) const
 {
-    if (m_starter.empty()) return false;
-    for (int i = 0; i < m_starter.size();i++)
+    if (m_groups.empty()) return false;
+    for (int i = 0; i < m_groups.size();i++)
     {
-        if (group == m_starter.at(i)) return true;
+        if (group == m_groups.at(i)) return true;
     }
 
     return false;
@@ -80,7 +80,7 @@ QDomElement Competition::toDomElement(QDomDocument* parentDocument)
     //Add competitors
     QDomElement starterElement = parentDocument->createElement("starterdata");
     QList<Group>::iterator it;
-    for (it = m_starter.begin() ; it != m_starter.end();it++){
+    for (it = m_groups.begin() ; it != m_groups.end();it++){
         starterElement.appendChild(it->toDomElement(parentDocument));
     }
     competitionElement.appendChild(starterElement);
@@ -129,7 +129,7 @@ void Competition::readFromDomElement(QDomElement &element)
                     {
                         Group gr;
                         gr.readFromDomElement(groupElement);
-                        m_starter.append(gr);
+                        m_groups.append(gr);
                     }
 
                     groupNode = groupNode.nextSibling();
@@ -190,7 +190,7 @@ void Competition::addGroups(QList<Group>& groups, QString* logMessage)
     {
         Group newGroup(groups.at(i));
         if (logMessage!=0) logMessage->append(newGroup.toString());
-        if (!m_starter.contains(newGroup)) m_starter.append(newGroup);
+        if (!m_groups.contains(newGroup)) m_groups.append(newGroup);
     }
 }
 
